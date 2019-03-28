@@ -1,3 +1,22 @@
 body {
-  padding-top: 56px;
+    padding-top: 56px;
+}
+
+@media (max-width: 920px ) {
+    .nav-item {
+        padding-right: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: row !important;
+    }
+}
+
+.navbar-brand {
+    margin-right: 0;
+    font-size: 17px;
+}
+.navbar-nav {
+    padding-left: 0!important;
+    padding-right: 0!important;
 }

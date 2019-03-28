@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Express Shop</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/product.css" rel="stylesheet">
+</head>
+<body style="padding: 0;background: whitesmoke;">
+<%- include header.ejs %>
+<div class="container">
+    <div class="card">
+        <div class="container-fluid">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="http://placehold.it/1000x600"/></div>
+                    </div>
+                    <h5><strong class="review-no">Product Code - <%= product.productCode %></strong></h5>
+                </div>
+                <div class="details col-md-6">
+                    <h3 class="product-title"><%= product.productName %></h3>
+                    <div class="rating">
+                        <!--<div class="stars">-->
+                        <!--<span class="fa fa-star checked"></span>-->
+                        <!--<span class="fa fa-star checked"></span>-->
+                        <!--<span class="fa fa-star checked"></span>-->
+                        <!--<span class="fa fa-star"></span>-->
+                        <!--<span class="fa fa-star"></span>-->
+                        <!--</div>-->
+                        <strong class="review-no">Category - <%= product.productLine %></strong>
+                    </div>
+                    <p class="product-description"><%= product.productDescription %></p>
+                    <div class="card-footer-actions">
+                        <h4 class="price">current price: <span>$<%= product.buyPrice %></span></h4>
+                        <h5 class="sizes"
+                        <% if (product.quantityInStock <= 10) { %>
+                            style="color: red;"
+                                <% } %>
+                        ><%= product.quantityInStock %> In Stock</h5>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div
+</body>
+</html>

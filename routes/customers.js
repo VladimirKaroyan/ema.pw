@@ -4,9 +4,9 @@ let con = require('../database');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    con.query('select * from products').then(function (data) {
-        res.render('index', {
-            title: 'Express',
+    con.query('select * from customers').then(function (data) {
+        res.render('customers', {
+            title: 'Customers',
             data: data
         });
     });
