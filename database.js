@@ -2,9 +2,9 @@ let mysql = require('mysql');
 let con = mysql.createConnection({
     host: "remotemysql.com",
     port: "3306",
-    user: "LzhnQiZjpm",
-    password: "b5xdxdeCxv",
-    database: "LzhnQiZjpm"
+    user: "i5t70PMWgi",
+    password: "LRWwmlebWZ",
+    database: "i5t70PMWgi"
 });
 
 con.connect(function (err) {
