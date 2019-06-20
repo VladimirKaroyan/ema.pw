@@ -3,7 +3,7 @@ $(document).ready(function () {
 // Shopping Cart API
 // ************************************************
 
-    var shoppingCart = (function () {
+    let shoppingCart = (function () {
         // =============================
         // Private methods and propeties
         // =============================
@@ -35,33 +35,34 @@ $(document).ready(function () {
         // =============================
         // Public methods and propeties
         // =============================
-        var obj = {};
+        let obj = {};
 
         // Add to cart
         obj.addItemToCart = function (name, price, count, productCode) {
-            for (var item in cart) {
+            for (let item in cart) {
                 if (cart[item].name === name) {
                     cart[item].count++;
                     saveCart();
                     return;
                 }
             }
-            var item = new Item(name, price, count, productCode);
+            let item = new Item(name, price, count, productCode);
             cart.push(item);
             saveCart();
         };
         // Set count from item
         obj.setCountForItem = function (name, count) {
-            for (var i in cart) {
+            for (let i in cart) {
                 if (cart[i].name === name) {
                     cart[i].count = count;
                     break;
                 }
             }
+            saveCart();
         };
         // Remove item from cart
         obj.removeItemFromCart = function (name) {
-            for (var item in cart) {
+            for (let item in cart) {
                 if (cart[item].name === name) {
                     cart[item].count--;
                     if (cart[item].count === 0) {
@@ -75,7 +76,7 @@ $(document).ready(function () {
 
         // Remove all items from cart
         obj.removeItemFromCartAll = function (name) {
-            for (var item in cart) {
+            for (let item in cart) {
                 if (cart[item].name === name) {
                     cart.splice(item, 1);
                     break;
@@ -100,8 +101,8 @@ $(document).ready(function () {
 
         // Total cart
         obj.totalCart = function () {
-            var totalCart = 0;
-            for (var item in cart) {
+            let totalCart = 0;
+            for (let item in cart) {
                 totalCart += cart[item].price * cart[item].count;
             }
             return Number(totalCart.toFixed(2));
@@ -109,7 +110,7 @@ $(document).ready(function () {
 
         // List cart
         obj.listCart = function () {
-            var cartCopy = [];
+            let cartCopy = [];
             for (i in cart) {
                 item = cart[i];
                 itemCopy = {};
@@ -144,9 +145,9 @@ $(document).ready(function () {
 // Add item
     $('.add-to-cart').click(function (event) {
         event.preventDefault();
-        var name = $('.product-title').text();
-        var price = parseInt($('.price').text().replace(/^\D+/g, ''));
-        var productCode = $('.productCode').text();
+        let name = $('.product-title').text();
+        let price = parseInt($('.price').text().replace(/^\D+/g, ''));
+        let productCode = $('.productCode').text();
         shoppingCart.addItemToCart(name, price, 1, productCode);
         $('#cart').modal('show');
         displayCart();
@@ -163,14 +164,13 @@ $(document).ready(function () {
         let price = parseFloat($(itemSelector).find('.item-price').text().replace('$', ''));
         let count = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
         let productCode = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
-        console.log([name, price, count, productCode]);
         return [name, price, count, productCode];
     }
 
     function displayCart() {
-        var cartArray = shoppingCart.listCart();
-        var output = "";
-        for (var i in cartArray) {
+        let cartArray = shoppingCart.listCart();
+        let output = "";
+        for (let i in cartArray) {
             output += "<tr class='item'>"
                 + "<td><div class='item-name'>" + cartArray[i].name + "</div></td>"
                 + "<td><div class='item-price'>$" + cartArray[i].price + "</div></td>"
@@ -188,6 +188,8 @@ $(document).ready(function () {
         $('.total-count').html(shoppingCart.totalCount());
     }
 
+    displayCart();
+
 // Delete item button
 
     $('.show-cart').on("click", ".delete-item", function (event) {
@@ -200,36 +202,46 @@ $(document).ready(function () {
 // -1
     $('.show-cart').on("click", ".minus-item", function (event) {
         let item = getItem($(this).closest('.item'));
+        let count = item[2] - 1;
         if (item[2] <= 1) {
-            shoppingCart.removeItemFromCartAll(item[0]);
+            shoppingCart.removeItemFromCartAll(item[0], count);
         }
-        shoppingCart.setCountForItem(item[0], item[2] - 1);
+        shoppingCart.setCountForItem(item[0],);
         displayCart();
-    })
+    });
 // +1
     $('.show-cart').on("click", ".plus-item", function (event) {
         let item = getItem($(this).closest('.item'));
-        shoppingCart.setCountForItem(item[0], item[2] + 1);
+        let count = item[2] + 1;
+        shoppingCart.setCountForItem(item[0], count);
         displayCart();
-        console.log(shoppingCart.totalCart());
     });
 
 // Item count input
     $('.show-cart').on("change", ".item-count", function (event) {
-        var name = $(this).data('name');
-        var count = Number($(this).val());
+        let name = $(this).data('name');
+        let count = Number($(this).val());
         shoppingCart.setCountForItem(name, count);
         displayCart();
     });
-    displayCart();
-
 //Make order
     $('#make-order-button').click(function () {
-        console.log('sending ajax request');
+        $(this).prop('disabled', true);
         $.ajax({
             url: '/make-order',
-            data: {data: JSON.stringify(cart)},
-            method: 'POST'
+            method: 'POST',
+            data: {
+                data: JSON.stringify(cart),
+                totalPrice: shoppingCart.totalCart()
+            },
+            success: function (req) {
+                let ids = JSON.stringify(req);
+                let text = (cart.length > 1) ? 'Your Order IDs Are - ' + ids : 'Your Order ID Is - ' + ids;
+                $('.order-id').text(text);
+                $('#cart').modal('hide');
+                $(this).prop('disabled', false);
+                $('#success_tic').modal('show');
+            }
         })
     });
 });

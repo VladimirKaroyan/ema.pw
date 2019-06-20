@@ -5,13 +5,20 @@ let con = require('../database');
 /* GET home page. */
 router.post('/', function (req, res, next) {
     let orderData = JSON.parse(req.body.data);
-    for (let i in orderData) {
-        let query = `INSERT INTO orderdetails (orderNumber, productCode, quantityOrdered, priceEach, orderLineNumber, totalprice) VALUES ('',${orderData[i].productcode},${orderData[i].count},${orderData[i].price},${''},${orderData[i].count*orderData[i].price})`;
-        console.log(query);
-        con.query(query.toString()).then(function (data) {
-            console.log('Success');
-        });
-    }
+    let orderTotalPrice = JSON.parse(req.body.totalPrice);
+    let sendQuery = new Promise(function (resolve, reject) {
+        let orderCodes = [];
+        for (let i in orderData) {
+            let query = `INSERT INTO orders (${`orderId`}, ${`productName`}, ${`productCode`}, ${`productQty`}, ${`productTotalPrice`}) VALUES (null ,'${orderData[i].name}','${orderData[i].productcode}','${orderData[i].count}','${orderTotalPrice}')`;
+            con.query(query.toString()).then(function (data) {
+                orderCodes.push(data.insertId);
+            });
+        }
+        setTimeout(resolve, 1000, orderCodes);
+    });
+    sendQuery.then(function (values) {
+        res.send(values);
+    });
 });
 
 module.exports = router;

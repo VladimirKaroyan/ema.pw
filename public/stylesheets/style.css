@@ -120,6 +120,10 @@ body {
     }
 }
 
+h5.order-id {
+    margin: 30px;
+}
+
 @-webkit-keyframes checkmark {
     0% {
         height: 0;
