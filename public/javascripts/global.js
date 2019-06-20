@@ -189,7 +189,14 @@ $(document).ready(function () {
     }
 
     displayCart();
-
+// Disable order button
+    $('#cart').on('show.bs.modal', function () {
+        if (cart.length === 0) {
+            $('#make-order-button').prop('disabled', true);
+        } else {
+            $('#make-order-button').prop('disabled', false);
+        }
+    });
 // Delete item button
 
     $('.show-cart').on("click", ".delete-item", function (event) {
