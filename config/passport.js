@@ -2,7 +2,15 @@ var LocalStrategy = require("passport-local").Strategy;
 
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-var dbconfig = require('../../node_passport_login-master/config/database');
+var dbconfig = {
+    'connection': {
+        'host': 'remotemysql.com',
+        'user': 'i5t70PMWgi',
+        'password': 'LRWwmlebWZ',
+    },
+    'database': 'i5t70PMWgi',
+    'user_table': 'users'
+}
 var connection = mysql.createConnection(dbconfig.connection);
 
 connection.query('USE ' + dbconfig.database);
