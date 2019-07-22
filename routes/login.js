@@ -1,26 +1,27 @@
 let express = require('express');
 let router = express.Router();
 let con = require('../database');
-
+let passport = require('passport');
+require('../config/passport')(passport);
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('login', {
         title: 'Express',
+        user: req.user
     });
 });
-router.get('/user', function (req, res) {
-    let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    let username = req.query.username;
-    let password = req.query.password;
-    let query = `SELECT * FROM ${'`users`'} WHERE ${'`username`'} = '${username}' AND ${'`password`'} = '${password}'`;
-    con.query(query).then(function (data) {
-        if (data.length === 0) {
-            console.log('Failed to log in with username: ' + username + ' from ip address: ' + ip);
-            res.status(500).send('Something broke!')
+router.post('/', passport.authenticate('local-login', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }),
+    function (req, res) {
+        if (req.body.remember) {
+            req.session.cookie.maxAge = 1000 * 60 * 3;
         } else {
-            res.send('Hoorah');
+            req.session.cookie.expires = false;
         }
-    })
-});
+        res.redirect('/');
+    });
 
 module.exports = router;

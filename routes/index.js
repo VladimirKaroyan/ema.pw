@@ -7,7 +7,8 @@ router.get('/', function (req, res, next) {
     con.query('select * from products').then(function (data) {
         res.render('index', {
             title: 'Express',
-            data: data
+            data: data,
+            user: req.user
         });
     });
 });

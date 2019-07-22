@@ -3,7 +3,7 @@ let router = express.Router();
 let con = require('../database');
 
 /* GET home page. */
-router.post('/', function (req, res, next) {
+router.post('/', isLoggedIn, function (req, res, next) {
     let orderData = JSON.parse(req.body.data);
     let orderTotalPrice = JSON.parse(req.body.totalPrice);
     let sendQuery = new Promise(function (resolve, reject) {
@@ -20,5 +20,11 @@ router.post('/', function (req, res, next) {
         res.send(values);
     });
 });
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.status(402);
+    res.send('loginerr');
+}
 
 module.exports = router;

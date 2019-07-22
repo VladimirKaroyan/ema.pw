@@ -9,7 +9,8 @@ router.get('/:prCode', function (req, res, next) {
     con.query(query).then(function (data) {
         res.render('products', {
             title: 'Express',
-            product: data[0]
+            product: data[0],
+            user: req.user
         });
     });
 });

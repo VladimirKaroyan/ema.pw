@@ -241,13 +241,16 @@ $(document).ready(function () {
                 data: JSON.stringify(cart),
                 totalPrice: shoppingCart.totalCart()
             },
-            success: function (req) {
+            success: function (req, res) {
                 let ids = JSON.stringify(req);
                 let text = (cart.length > 1) ? 'Your Order IDs Are - ' + ids : 'Your Order ID Is - ' + ids;
                 $('.order-id').text(text);
                 $('#cart').modal('hide');
                 $(this).prop('disabled', false);
                 $('#success_tic').modal('show');
+            },
+            error: function (req, res) {
+                if (req.responseText === "loginerr") window.location.replace('/login');
             }
         })
     });
