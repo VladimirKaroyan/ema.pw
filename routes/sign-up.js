@@ -8,6 +8,7 @@ router.get('/', function (req, res, next) {
     res.render('signup', {
         title: 'Express',
         user: req.user,
+        message: req.flash('signupMessage'),
     });
 });
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Express Shop</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/stylesheets/user-order.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <%- include app.scripts.ejs %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<%- include header.ejs %>
+<div class="container">
+    <div class="table-title">
+        <div class="row">
+            <h2 style="margin: 0 auto;">Order <b>Details</b></h2>
+        </div>
+    </div>
+    <table style="text-align: center" id="product_table" class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Product</th>
+            <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% orders.forEach(function(order, index){ %>
+            <tr>
+                <td><%= index %></td>
+                <td><%= order.orderId %></td>
+                <td><%= new Date(new Date(order.order_date) + ' UTC').toLocaleString() %></td>
+                <td><%= order.productName %></td>
+                <td><%= order.productQty %></td>
+                <td><a href="/product/<%= order.productCode %>"><%= order.productCode %></a></td>
+                <td><%= order.productTotalPrice %> $</td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#product_table').DataTable();
+    });
+</script>
+</body>
+</html>

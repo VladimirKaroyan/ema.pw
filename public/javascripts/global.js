@@ -19,15 +19,15 @@ $(document).ready(function () {
 
         // Save cart
         function saveCart() {
-            sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
         }
 
         // Load cart
         function loadCart() {
-            cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
+            cart = JSON.parse(localStorage.getItem('shoppingCart'));
         }
 
-        if (sessionStorage.getItem("shoppingCart") != null) {
+        if (localStorage.getItem("shoppingCart") != null) {
             loadCart();
         }
 
@@ -84,6 +84,8 @@ $(document).ready(function () {
             }
             if (cart.length === 0) {
                 $('#cart').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
             }
             saveCart();
         };
@@ -248,6 +250,8 @@ $(document).ready(function () {
                 $('#cart').modal('hide');
                 $(this).prop('disabled', false);
                 $('#success_tic').modal('show');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
             },
             error: function (req, res) {
                 if (req.responseText === "loginerr") window.location.replace('/login');

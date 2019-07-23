@@ -7,7 +7,8 @@ require('../config/passport')(passport);
 router.get('/', function (req, res, next) {
     res.render('login', {
         title: 'Express',
-        user: req.user
+        user: req.user,
+        message: req.flash('loginMessage'),
     });
 });
 router.post('/', passport.authenticate('local-login', {

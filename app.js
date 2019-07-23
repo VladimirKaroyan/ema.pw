@@ -17,6 +17,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var signUpRouter = require('./routes/sign-up');
 var ordersRouter = require('./routes/orders');
+var UserOrdersRouter = require('./routes/myorders');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/product', productsRouter);
 app.use('/login', loginRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/make-order', ordersRouter);
+app.use('/myorders', UserOrdersRouter);
 app.use('/logout', function (req, res) {
     req.logout();
     res.redirect('/');

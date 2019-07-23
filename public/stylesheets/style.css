@@ -28,6 +28,14 @@ body {
     height: 100%;
 }
 
+.nav-link {
+    padding: 0;
+}
+
+.nav-link.logined {
+    padding: 0 5px 0 0;
+}
+
 #success_tic .page-body {
     background-color: #FFFFFF;
     margin: 10% auto;
