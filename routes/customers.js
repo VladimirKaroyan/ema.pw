@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let con = require('../database');
+let shopservice = require('../services/database');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {

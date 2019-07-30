@@ -33,7 +33,7 @@ body {
 }
 
 .nav-link.logined {
-    padding: 0 5px 0 0;
+    padding: 5px 5px 5px 0;
 }
 
 #success_tic .page-body {
@@ -55,6 +55,12 @@ body {
     font-size: 30px;
     padding: 3px 15px;
     margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+    .cart-button {
+        margin-top: 5px;
+    }
 }
 
 #success_tic .checkmark-circle {

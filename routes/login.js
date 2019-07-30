@@ -1,6 +1,5 @@
 let express = require('express');
 let router = express.Router();
-let con = require('../database');
 let passport = require('passport');
 require('../config/passport')(passport);
 /* GET home page. */

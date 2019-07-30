@@ -17,6 +17,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var signUpRouter = require('./routes/sign-up');
 var ordersRouter = require('./routes/orders');
+var adminPanel = require('./routes/adminPanel');
+var deleteProduct = require('./routes/deleteProduct');
 var UserOrdersRouter = require('./routes/myorders');
 
 var app = express();
@@ -45,10 +47,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/customers', customersRouter);
 app.use('/product', productsRouter);
+app.use('/delete-product', deleteProduct);
 app.use('/login', loginRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/make-order', ordersRouter);
 app.use('/myorders', UserOrdersRouter);
+app.use('/admin-panel', adminPanel);
 app.use('/logout', function (req, res) {
     req.logout();
     res.redirect('/');

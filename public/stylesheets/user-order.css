@@ -38,7 +38,7 @@ table.dataTable tbody tr {
     background-color: transparent !important;
 }
 
-#product_table_length, .dataTables_filter {
+.dataTables_length, .dataTables_filter {
     padding: 30px 0;
 }
 
@@ -47,12 +47,14 @@ input[type="search"], select {
     border-radius: 5px;
 }
 
-.dataTables_info, .dataTables_length {
-    float: left;
-}
+@media (min-width: 1200px) {
+    .dataTables_info, .dataTables_length {
+        float: left;
+    }
 
-.dataTables_paginate, .dataTables_filter {
-    float: right;
+    .dataTables_paginate, .dataTables_filter {
+        float: right;
+    }
 }
 
 .dataTables_paginate, .dataTables_info {
@@ -99,4 +101,8 @@ a.paginate_button.current {
     z-index: 3;
     color: #fff !important;
     border-color: #337ab7 !important;
+}
+
+thead th {
+    cursor: pointer;
 }

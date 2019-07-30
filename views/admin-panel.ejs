@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include app.scripts.ejs %>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+    <link href="/stylesheets/user-order.css" rel="stylesheet">
+    <!-- Fontfaces CSS-->
+    <link href="stylesheets/font-face.css" rel="stylesheet" media="all">
+    <link href="/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!--&lt;!&ndash; Bootstrap CSS&ndash;&gt;-->
+    <link href="/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="stylesheets/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="">
+<div class="page-wrapper">
+    <!-- MENU SIDEBAR-->
+    <div class="page-container">
+        <%- include header.ejs %>
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <% if(message.length > 0) { %>
+                    <div class="alert alert-success"><%= message %></div>
+                <% } %>
+                <div class="container-fluid">
+                    <div class="row m-t-25">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c1">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-account-o"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2><%= data.length %></h2>
+                                            <span>Orders</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c3">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-calendar-note"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2><%= lastWeekOrders.length %></h2>
+                                            <span>Orders This Week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c2">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-shopping-cart"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2><%= itemsSold %></h2>
+                                            <span>Items Sold</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="overview-item overview-item--c4">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-money"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2><%= earnings %></h2>
+                                            <span>Total Earnings</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 100%">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#orders" role="tab">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#products" role="tab">Products</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent" style="width: 100%;">
+                            <div class="tab-pane fade show active" id="orders" role="tabpanel"
+                                 aria-labelledby="home-tab">
+                                <div class="container">
+                                    <table style="text-align: center; width: 100%" id="order_table" class="table">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <!--<th>#</th>-->
+                                            <th>Order ID</th>
+                                            <th>User ID</th>
+                                            <th>Order Date</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Product</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% orders.forEach(function(order, index){ %>
+                                            <tr>
+                                                <!--<td><%= index %></td>-->
+                                                <td><%= order.orderId %></td>
+                                                <td><%= order.user_id %></td>
+                                                <td><%= new Date(new Date(order.order_date) + ' UTC').toLocaleString() %></td>
+                                                <td><%= order.productName %></td>
+                                                <td><%= order.productQty %></td>
+                                                <td>
+                                                    <a href="/product/<%= order.productCode %>"><%= order.productCode %></a>
+                                                </td>
+                                                <td><%= order.productTotalPrice %>$</td>
+                                            </tr>
+                                        <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="container">
+                                    <table style="text-align: center;" id="product_table"
+                                           class="table table-responsive-md">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th width="20px">#</th>
+                                            <th width="190px"> Product Code</th>
+                                            <th width="170px">Product Name</th>
+                                            <th width="500px">Product Description</th>
+                                            <th>Quantity In Stock</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% products.forEach(function(product, index){ %>
+                                            <tr>
+                                                <td><%= index %></td>
+                                                <td><%= product.productCode %></td>
+                                                <td><%= product.productName %></td>
+                                                <td><%= product.productDescription %></td>
+                                                <td><%= product.quantityInStock %></td>
+                                                <td><%= product.buyPrice %>$</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a><br>
+                                                    <a href="/delete-product/<%= product.productCode %>">
+                                                        <i class="fa fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
+
+<!-- Main JS-->
+<script>
+    $(document).ready(function () {
+        $('#order_table').DataTable();
+        $('#product_table').DataTable();
+    });
+</script>
+
+</body>
+
+</html>
+<!-- end document-->

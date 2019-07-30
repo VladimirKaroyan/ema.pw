@@ -1,10 +1,10 @@
 let express = require('express');
 let router = express.Router();
-let con = require('../database');
+let shopservice = require('../services/database');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    con.query('select * from products').then(function (data) {
+    shopservice.getAllProducts().then(function (data) {
         res.render('index', {
             title: 'Express',
             data: data,
