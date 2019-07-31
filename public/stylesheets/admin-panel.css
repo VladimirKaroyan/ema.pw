@@ -280,6 +280,10 @@ a.nav-link.logined:not(.logout), .cart-button {
     display: none;
 }
 
+.modal-dialog {
+    max-width: 700px !important;
+}
+
 td:nth-child(7) {
     display: flex;
     flex-wrap: wrap;

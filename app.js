@@ -19,6 +19,7 @@ var signUpRouter = require('./routes/sign-up');
 var ordersRouter = require('./routes/orders');
 var adminPanel = require('./routes/adminPanel');
 var deleteProduct = require('./routes/deleteProduct');
+var updateProduct = require('./routes/updateProduct');
 var UserOrdersRouter = require('./routes/myorders');
 
 var app = express();
@@ -48,6 +49,7 @@ app.use('/users', usersRouter);
 app.use('/customers', customersRouter);
 app.use('/product', productsRouter);
 app.use('/delete-product', deleteProduct);
+app.use('/update-product', updateProduct);
 app.use('/login', loginRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/make-order', ordersRouter);

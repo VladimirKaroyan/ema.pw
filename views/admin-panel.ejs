@@ -5,25 +5,17 @@
     <%- include app.scripts.ejs %>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>Dashboard</title>
     <link href="/stylesheets/user-order.css" rel="stylesheet">
     <!-- Fontfaces CSS-->
-    <link href="stylesheets/font-face.css" rel="stylesheet" media="all">
+    <!--<link href="stylesheets/font-face.css" rel="stylesheet" media="all">-->
     <link href="/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
     <!--&lt;!&ndash; Bootstrap CSS&ndash;&gt;-->
     <link href="/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
-
     <!-- Main CSS-->
-    <link href="stylesheets/theme.css" rel="stylesheet" media="all">
+    <link href="stylesheets/admin-panel.css" rel="stylesheet" media="all">
 
+    <script type="text/javascript" src="/javascripts/update-product.js"></script>
 </head>
 
 <body class="">
@@ -164,13 +156,13 @@
                                         <% products.forEach(function(product, index){ %>
                                             <tr>
                                                 <td><%= index %></td>
-                                                <td><%= product.productCode %></td>
-                                                <td><%= product.productName %></td>
-                                                <td><%= product.productDescription %></td>
-                                                <td><%= product.quantityInStock %></td>
-                                                <td><%= product.buyPrice %>$</td>
+                                                <td class="prod_code"><%= product.productCode %></td>
+                                                <td class="prod_name"><%= product.productName %></td>
+                                                <td class="prod_desc"><%= product.productDescription %></td>
+                                                <td class="prod_qty"><%= product.quantityInStock %></td>
+                                                <td class="prod_price"><%= product.buyPrice %>$</td>
                                                 <td>
-                                                    <a href="#">
+                                                    <a data-toggle="modal" data-target="#updProdModal" href="#">
                                                         <i class="fa fa-edit"></i>
                                                     </a><br>
                                                     <a href="/delete-product/<%= product.productCode %>">
@@ -192,7 +184,48 @@
     <!-- END MAIN CONTENT-->
     <!-- END PAGE CONTAINER-->
 </div>
-
+<div class="modal fade bd-example-modal-lg" id="updProdModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updProdForm" action="/update-product" method="post">
+                    <div class="form-group">
+                        <label for="prod-code" class="col-form-label">Product Code:</label>
+                        <input type="text" class="form-control" id="prod-code" name="prodcode" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-name" class="col-form-label">Product Name:</label>
+                        <input type="text" class="form-control" id="prod-name" name="prodname">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-desc" class="col-form-label">Product Description:</label>
+                        <textarea type="text" class="form-control" id="prod-desc" name="proddesc"
+                                  style="min-height: 150px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-qty" class="col-form-label">Product Quantity:</label>
+                        <input type="number" class="form-control" id="prod-qty" name="prodqty" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-price" class="col-form-label">Product Price ($):</label>
+                        <input type="number" class="form-control" id="prod-price" name="prodprice" min="0" step="0.01">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Main JS-->
 <script>
     $(document).ready(function () {

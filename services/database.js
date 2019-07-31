@@ -40,6 +40,15 @@ async function deleteProduct(productCode) {
     });
 }
 
+async function updateProduct(code, name, desc, qty, price) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', quantityInStock = '${qty}', buyPrice = '${price}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
+            if (err) throw err;
+            resolve(rows);
+        });
+    });
+}
+
 async function getUserOrders(userId) {
     return promise = new Promise(async function (resolve, reject) {
         con.query(`SELECT * FROM orders WHERE user_id = '${userId}'`, function (err, rows, fields) {
@@ -118,5 +127,6 @@ module.exports = {
     getUserOrders,
     createOrder,
     getAdminPanel,
-    deleteProduct
+    deleteProduct,
+    updateProduct
 };
