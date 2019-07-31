@@ -1,10 +1,9 @@
 let express = require('express');
 let router = express.Router();
-let shopservice = require('../services/database');
+let shopservice = require('../../services/database');
 
 /* GET home page. */
 router.post('/', isLoggedIn, function (req, res, next) {
-    console.log(req.body);
     let prodCode = req.body.prodcode;
     let prodName = req.body.prodname;
     let prodDesc = req.body.proddesc;

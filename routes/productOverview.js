@@ -6,7 +6,7 @@ let shopservice = require('../services/database');
 router.get('/:prCode', function (req, res, next) {
     let code = req.params.prCode.toString();
     shopservice.getProduct(code).then(function (data) {
-        res.render('products', {
+        res.render('productOverview', {
             title: 'Express',
             product: data[0],
             user: req.user

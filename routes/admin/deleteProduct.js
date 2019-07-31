@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let shopservice = require('../services/database');
+let shopservice = require('../../services/database');
 
 /* GET home page. */
 router.get('/:prCode', isLoggedIn, function (req, res, next) {

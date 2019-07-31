@@ -15,6 +15,48 @@ body {
 .navbar-brand {
     margin-right: 0;
     font-size: 17px;
+    font-family: cursive;
+}
+
+.cart-button {
+    padding-right: 0;
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    color: #fff;
+}
+
+.fa-shopping-basket {
+    font-size: 30px;
+    color: white;
+}
+
+a.nav-link.logined button {
+    font-size: 15px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.item-name {
+    min-width: 200px;
+}
+
+.item .input-group {
+    flex-wrap: nowrap;
+}
+
+input.item-count.form-control {
+    min-width: 150px;
+}
+
+@media screen and (max-width: 962px) {
+    .navbar-collapse {
+        padding: 15px 0;
+    }
 }
 
 .navbar-nav {
@@ -32,8 +74,10 @@ body {
     padding: 0;
 }
 
-.nav-link.logined {
-    padding: 5px 5px 5px 0;
+@media (min-width: 962px) {
+    .nav-link.logined {
+        padding: 5px 5px 5px 0;
+    }
 }
 
 #success_tic .page-body {

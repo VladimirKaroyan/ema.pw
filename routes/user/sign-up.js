@@ -1,8 +1,8 @@
 let express = require('express');
 let router = express.Router();
-let shopservice = require('../services/database');
+let shopservice = require('../../services/database');
 let passport = require('passport');
-require('../config/passport')(passport);
+require('../../config/passport')(passport);
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('signup', {

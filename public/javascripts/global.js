@@ -182,7 +182,7 @@ $(document).ready(function () {
                 + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
                 + " = "
                 + "<td>" + cartArray[i].total + "$</td>"
-                + "<input type='hidden'>" + cartArray[i].productcode + "$</input>"
+                + "<input type='hidden' value='" + cartArray[i].productcode + "'/>"
                 + "</tr>";
         }
         $('.show-cart').html(output);
@@ -215,7 +215,7 @@ $(document).ready(function () {
         if (item[2] <= 1) {
             shoppingCart.removeItemFromCartAll(item[0], count);
         }
-        shoppingCart.setCountForItem(item[0],);
+        shoppingCart.setCountForItem(item[0], count);
         displayCart();
     });
 // +1

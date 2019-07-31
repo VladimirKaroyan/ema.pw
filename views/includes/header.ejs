@@ -1,13 +1,13 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">
-            Express Shop
-        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="navbar-brand" href="/">
+            Express Shop
+        </a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <div>
                 <% if (!user) { %>
@@ -25,26 +25,26 @@
                     </ul>
                 <% } else { %>
                     <div class="d-flex flex-wrap justify-content-between">
-                        <h4 style="color: white; padding: 5px 1rem; margin: 0; padding-left: 0;"><%= user.username %></h4>
-                        <a class="nav-link logined logout" href="/logout">
-                            <button class="btn btn-info">Logout</button>
-                        </a>
-                        <a class="nav-link logined" href="/myorders">
-                            <button class="btn btn-info">My Orders</button>
-                        </a>
+                        <!--<h4 style="color: white; padding: 5px 1rem; margin: 0; padding-left: 0;"><%= user.username %></h4>-->
                         <% if (user && user.admin !== 0) { %>
                             <a class="nav-link logined" href="/admin-panel">
                                 <button class="btn btn-info">Admin Panel</button>
                             </a>
                         <% } %>
+                        <a class="nav-link logined" href="/myorders">
+                            <button class="btn btn-info">My Orders</button>
+                        </a>
+                        <a class="nav-link logined logout" href="/logout">
+                            <button class="btn btn-info">Logout</button>
+                        </a>
                     </div>
                 <% } %>
             </div>
-            <button type="button" class="btn btn-primary cart-button" data-toggle="modal" data-target="#cart">Cart
-                (<span
-                        class="total-count"></span>)
-            </button>
         </div>
+        <button type="button" class="cart-button" data-toggle="modal" data-target="#cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="total-count"></span>
+        </button>
     </div>
 </nav>
 <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

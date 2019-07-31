@@ -9,7 +9,7 @@ let con = mysql.createConnection({
 
 con.connect(function (err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connecting to DB was successfully!");
 });
 
 
@@ -101,7 +101,6 @@ async function getAdminPanel() {
         let lastWeekOrders = await getOrdersWithInterval(7);
         let productSum = await getProductQtySum();
         let earnings = await getEarnings();
-        console.log('returning');
         resolve({
             'orders': orders,
             'products': products,
@@ -115,6 +114,10 @@ async function getAdminPanel() {
 async function createOrder(order, orderTotalPrice, user_id) {
     return promise = new Promise(async function (resolve, reject) {
         con.query(`INSERT INTO orders (${`orderId`}, ${`productName`}, ${`productCode`}, ${`productQty`}, ${`productTotalPrice`}, ${`user_id`}) VALUES (null ,'${order.name}','${order.productcode}','${order.count}','${orderTotalPrice}', '${user_id}')`, function (err, rows, fields) {
+            if (err) throw err;
+            resolve(rows);
+        });
+        con.query(`UPDATE products SET quantityInStock = ${`quantityInStock`}-${order.count} WHERE products.productCode = '${order.productcode}'`, function (err, rows, fields) {
             if (err) throw err;
             resolve(rows);
         });

@@ -1,11 +1,11 @@
 let express = require('express');
 let router = express.Router();
-let shopservice = require('../services/database');
+let shopservice = require('../../services/database');
 
 /* GET home page. */
 router.get('/', isLoggedIn, function (req, res, next) {
     shopservice.getAdminPanel().then(function (data) {
-        res.render('admin-panel', {
+        res.render('admin/admin-panel', {
             title: 'Express',
             message: req.flash('successMessage'),
             data: data['orders'],
