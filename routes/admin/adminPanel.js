@@ -5,12 +5,14 @@ let shopservice = require('../../services/database');
 /* GET home page. */
 router.get('/', isLoggedIn, function (req, res, next) {
     shopservice.getAdminPanel().then(function (data) {
+        if (data instanceof Error) throw res.render('error', {error: data});
         res.render('admin/admin-panel', {
             title: 'Express',
             message: req.flash('successMessage'),
             data: data['orders'],
             user: req.user,
             products: data['products'],
+            productLines: data['productLines'],
             orders: data['orders'],
             earnings: data['earnings'],
             itemsSold: data['productSum'],

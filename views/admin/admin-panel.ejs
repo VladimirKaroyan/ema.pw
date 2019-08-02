@@ -26,62 +26,64 @@
                     <div class="alert alert-success"><%= message %></div>
                 <% } %>
                 <div class="container-fluid">
-                    <div class="row m-t-25">
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c1">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-account-o"></i>
-                                        </div>
-                                        <div class="text">
-                                            <h2><%= data.length %></h2>
-                                            <span>Orders</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c3">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-calendar-note"></i>
-                                        </div>
-                                        <div class="text">
-                                            <h2><%= lastWeekOrders.length %></h2>
-                                            <span>Orders This Week</span>
+                    <div class="container" style="padding-left: 0;">
+                        <div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-account-o"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2><%= data.length %></h2>
+                                                <span>Orders</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c2">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-shopping-cart"></i>
-                                        </div>
-                                        <div class="text">
-                                            <h2><%= itemsSold %></h2>
-                                            <span>Items Sold</span>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2><%= lastWeekOrders.length %></h2>
+                                                <span>Orders This Week</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="overview-item overview-item--c4">
-                                <div class="overview__inner">
-                                    <div class="overview-box clearfix">
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-card"></i>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2><%= itemsSold %></h2>
+                                                <span>Items Sold</span>
+                                            </div>
                                         </div>
-                                        <div class="text">
-                                            <h2><%= earnings %>$</h2>
-                                            <span>Total Earnings</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-card"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2><%= earnings %>$</h2>
+                                                <span>Total Earnings</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -89,86 +91,99 @@
                         </div>
                     </div>
                     <div class="row">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 100%">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#orders" role="tab">Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#products" role="tab">Products</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="myTabContent" style="width: 100%;">
-                            <div class="tab-pane fade show active" id="orders" role="tabpanel"
-                                 aria-labelledby="home-tab">
-                                <div class="container">
-                                    <table style="text-align: center; width: 100%" id="order_table" class="table">
-                                        <thead class="thead-dark">
-                                        <tr>
-                                            <!--<th>#</th>-->
-                                            <th>Order ID</th>
-                                            <th>User ID</th>
-                                            <th>Order Date</th>
-                                            <th>Product Name</th>
-                                            <th>Quantity</th>
-                                            <th>Product</th>
-                                            <th>Total Price</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <% orders.forEach(function(order, index){ %>
+                        <div class="container">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist" style="width: 100%">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#orders"
+                                       role="tab">Orders</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#products" role="tab">Products</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent" style="width: 100%;">
+                                <div class="tab-pane fade show active" id="orders" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <div class="container" style="padding-left: 0;">
+                                        <table style="text-align: center; width: 100%" id="order_table"
+                                               class="table table-responsive-md">
+                                            <thead class="thead-dark">
                                             <tr>
-                                                <!--<td><%= index %></td>-->
-                                                <td><%= order.orderId %></td>
-                                                <td><%= order.user_id %></td>
-                                                <td><%= new Date(new Date(order.order_date) + ' UTC').toLocaleString() %></td>
-                                                <td><%= order.productName %></td>
-                                                <td><%= order.productQty %></td>
-                                                <td>
-                                                    <a href="/product/<%= order.productCode %>"><%= order.productCode %></a>
-                                                </td>
-                                                <td><%= order.productTotalPrice %>$</td>
+                                                <!--<th>#</th>-->
+                                                <th>Order ID</th>
+                                                <th>User ID</th>
+                                                <th>Order Date</th>
+                                                <th>Product Name</th>
+                                                <th>Quantity</th>
+                                                <th>Product</th>
+                                                <th>Total Price</th>
                                             </tr>
-                                        <% }) %>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            <% orders.forEach(function(order, index){ %>
+                                                <tr>
+                                                    <!--<td><%= index %></td>-->
+                                                    <td><%= order.orderId %></td>
+                                                    <td><%= order.user_id %></td>
+                                                    <td><%= new Date(new Date(order.order_date) + ' UTC').toLocaleString() %></td>
+                                                    <td><%= order.productName %></td>
+                                                    <td><%= order.productQty %></td>
+                                                    <td>
+                                                        <a href="/product/<%= order.productCode %>"><%= order.productCode %></a>
+                                                    </td>
+                                                    <td><%= order.productTotalPrice %>$</td>
+                                                </tr>
+                                            <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="products" role="tabpanel">
-                                <div class="container">
-                                    <table style="text-align: center;" id="product_table"
-                                           class="table table-responsive-md">
-                                        <thead class="thead-dark">
-                                        <tr>
-                                            <th width="20px">#</th>
-                                            <th width="190px"> Product Code</th>
-                                            <th width="170px">Product Name</th>
-                                            <th width="500px">Product Description</th>
-                                            <th>Quantity In Stock</th>
-                                            <th>Price</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <% products.forEach(function(product, index){ %>
+                                <div class="tab-pane fade" id="products" role="tabpanel">
+                                    <div class="container">
+                                        <div class="col-md-12"
+                                             style="text-align: right; padding-right: 0; padding-top: 15px;">
+                                            <button type="button" class="btn btn-primary add_new_product"
+                                                    data-toggle="modal" data-target="#addProdModal">
+                                                <i class="fas fa-plus"></i> Add New Product
+                                            </button>
+                                        </div>
+                                        <table style="text-align: center;" id="product_table"
+                                               class="table table-responsive-md">
+                                            <thead class="thead-dark">
                                             <tr>
-                                                <td><%= index %></td>
-                                                <td class="prod_code"><%= product.productCode %></td>
-                                                <td class="prod_name"><%= product.productName %></td>
-                                                <td class="prod_desc"><%= product.productDescription %></td>
-                                                <td class="prod_qty"><%= product.quantityInStock %></td>
-                                                <td class="prod_price"><%= product.buyPrice %>$</td>
-                                                <td>
-                                                    <a data-toggle="modal" data-target="#updProdModal" href="#">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a><br>
-                                                    <a href="/delete-product/<%= product.productCode %>">
-                                                        <i class="fa fa-trash-alt"></i>
-                                                    </a>
-                                                </td>
+                                                <th width="20px">#</th>
+                                                <th width="190px"> Product Code</th>
+                                                <th width="170px">Product Name</th>
+                                                <th width="170px">Product Line</th>
+                                                <th width="500px">Product Description</th>
+                                                <th>Quantity In Stock</th>
+                                                <th>Price</th>
+                                                <th>Action</th>
                                             </tr>
-                                        <% }) %>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            <% products.forEach(function(product, index){ %>
+                                                <tr>
+                                                    <td><%= index %></td>
+                                                    <td class="prod_code"><%= product.productCode %></td>
+                                                    <td class="prod_name"><%= product.productName %></td>
+                                                    <td class="prod_line"><%= product.productLine %></td>
+                                                    <td class="prod_desc"><%= product.productDescription %></td>
+                                                    <td class="prod_qty"><%= product.quantityInStock %></td>
+                                                    <td class="prod_price"><%= product.buyPrice %>$</td>
+                                                    <td>
+                                                        <a data-toggle="modal" data-target="#updProdModal" href="#">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a><br>
+                                                        <a href="/delete-product/<%= product.productCode %>">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -201,6 +216,14 @@
                         <input type="text" class="form-control" id="prod-name" name="prodname">
                     </div>
                     <div class="form-group">
+                        <label for="prod-line" class="col-form-label">Product Line:</label>
+                        <select class="form-control" id="prod-line" name="prodline">
+                            <% productLines.forEach(function(line) { %>
+                                <option value="<%= line['productLine'] %>"><%= line['productLine'] %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="prod-desc" class="col-form-label">Product Description:</label>
                         <textarea type="text" class="form-control" id="prod-desc" name="proddesc"
                                   style="min-height: 150px;"></textarea>
@@ -216,6 +239,57 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="addProdModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updProdForm" action="/add-product" method="post">
+                    <div class="form-group">
+                        <label for="prod-code" class="col-form-label">Product Code:</label>
+                        <input type="text" class="form-control" id="addprod-code" name="addprodcode" value="S10_">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-name" class="col-form-label">Product Name:</label>
+                        <input type="text" class="form-control" id="addprod-name" name="addprodname">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-name" class="col-form-label">Product Line:</label>
+                        <select class="form-control" name="addprodline">
+                            <% productLines.forEach(function(line) { %>
+                                <option value="<%= line['productLine'] %>"><%= line['productLine'] %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-desc" class="col-form-label">Product Description:</label>
+                        <textarea type="text" class="form-control" id="addprod-desc" name="addproddesc"
+                                  style="min-height: 150px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-qty" class="col-form-label">Product Quantity:</label>
+                        <input type="number" class="form-control" id="addprod-qty" name="addprodqty" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-price" class="col-form-label">Product Price ($):</label>
+                        <input type="number" class="form-control" id="addprod-price" name="addprodprice" min="0"
+                               step="0.01">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
                     </div>
                 </form>
             </div>

@@ -22,19 +22,8 @@
         .container {
             display: flex;
             flex-direction: column;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
             align-items: center;
             max-width: 800px;
-
-        }
-
-        @media (max-width: 650px) {
-            .container {
-                width: 85%;
-            }
         }
 
         .container .header {
@@ -76,6 +65,8 @@
             padding: 1rem;
             border: 1px solid #DCDCDC;
             border-radius: 0.25rem;
+            word-break: break-all;
+            margin-bottom: 1rem;
         }
 
         @media (max-width: 650px) {
@@ -174,7 +165,7 @@
     </div>
     <h1 class="header"><%= error.status %> ERROR</h1>
     <div class="instructions">
-        <%= message %>
+        <%= error.message %>
     </div>
 </div>
 </body>

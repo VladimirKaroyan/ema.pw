@@ -11,6 +11,7 @@ router.post('/', isLoggedIn, function (req, res, next) {
         let orderCodes = [];
         orderData.map(function (order) {
             shopservice.createOrder(order, orderTotalPrice, user_id).then(function (data) {
+                if (data instanceof Error) throw res.render('error', {error: data});
                 orderCodes.push(data.insertId);
             });
         });

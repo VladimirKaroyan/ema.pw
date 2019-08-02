@@ -6,6 +6,8 @@ let shopservice = require('../services/database');
 router.get('/:prCode', function (req, res, next) {
     let code = req.params.prCode.toString();
     shopservice.getProduct(code).then(function (data) {
+        console.log(data);
+        if (data instanceof Error) throw res.render('error', {error: data});
         res.render('productOverview', {
             title: 'Express',
             product: data[0],

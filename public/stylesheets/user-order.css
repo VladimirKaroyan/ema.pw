@@ -43,8 +43,16 @@ table.dataTable tbody tr {
 }
 
 input[type="search"], select {
-    border: 0;
+    border: 1px solid;
     border-radius: 5px;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+
+@media (max-width: 962px) {
+    .dataTables_length, .dataTables_filter {
+        padding: 10px 0;
+    }
 }
 
 @media (min-width: 1200px) {

@@ -18,6 +18,7 @@ let ordersRouter = require('./routes/user/makeOrder');
 let adminPanel = require('./routes/admin/adminPanel');
 let deleteProduct = require('./routes/admin/deleteProduct');
 let updateProduct = require('./routes/admin/updateProduct');
+let addProduct = require('./routes/admin/addProduct');
 let UserOrdersRouter = require('./routes/user/myorders');
 
 // view engine setup
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/product', productsRouter);
 app.use('/delete-product', deleteProduct);
 app.use('/update-product', updateProduct);
+app.use('/add-product', addProduct);
 app.use('/login', loginRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/make-order', ordersRouter);

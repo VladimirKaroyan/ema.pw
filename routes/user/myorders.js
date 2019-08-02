@@ -6,6 +6,7 @@ let shopservice = require('../../services/database');
 router.get('/', isLoggedIn, function (req, res, next) {
     let userId = req.user.id;
     shopservice.getUserOrders(userId).then(function (data) {
+        if (data instanceof Error) throw res.render('error', {error: data});
         res.render('user/myorders', {
             orders: data,
             user: req.user,

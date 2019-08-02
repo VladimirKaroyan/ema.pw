@@ -55,7 +55,7 @@ input.item-count.form-control {
 
 @media screen and (max-width: 962px) {
     .navbar-collapse {
-        padding: 15px 0;
+        margin: 15px 0;
     }
 }
 
