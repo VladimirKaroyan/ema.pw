@@ -13,17 +13,21 @@
     "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
+    "excel4node": "^1.7.2",
+    "exceljs": "^1.15.0",
     "express": "~4.16.0",
     "express-session": "^1.16.2",
     "fs": "0.0.1-security",
     "http-errors": "~1.6.2",
     "jquery": "^3.3.1",
     "morgan": "^1.9.1",
+    "msexcel-builder": "0.0.2",
     "mysql": "^2.16.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "querystring": "^0.2.0",
-    "shopify-cartjs": "^0.4.1"
+    "shopify-cartjs": "^0.4.1",
+    "tmp": "^0.1.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.29",

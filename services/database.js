@@ -152,5 +152,6 @@ module.exports = {
     getAdminPanel,
     deleteProduct,
     updateProduct,
-    addProduct
+    addProduct,
+    getAllOrders
 };

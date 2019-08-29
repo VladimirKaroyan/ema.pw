@@ -5295,6 +5295,17 @@ h4 {
     left: 10px;
 }
 
+.report-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 0;
+}
+
+.report-buttons a {
+    color: whitesmoke !important;
+    text-decoration: none !important;
+}
+
 .switch.switch-text {
     position: relative;
     display: inline-block;

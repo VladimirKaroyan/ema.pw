@@ -17,6 +17,7 @@ let signUpRouter = require('./routes/user/login');
 let ordersRouter = require('./routes/user/makeOrder');
 let adminPanel = require('./routes/admin/adminPanel');
 let deleteProduct = require('./routes/admin/deleteProduct');
+let downloadOrdersReport = require('./routes/reports/downloadOrdersReport');
 let updateProduct = require('./routes/admin/updateProduct');
 let addProduct = require('./routes/admin/addProduct');
 let UserOrdersRouter = require('./routes/user/myorders');
@@ -51,6 +52,7 @@ app.use('/sign-up', signUpRouter);
 app.use('/make-order', ordersRouter);
 app.use('/myorders', UserOrdersRouter);
 app.use('/admin-panel', adminPanel);
+app.use('/download-order-report', downloadOrdersReport);
 app.use('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
