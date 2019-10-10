@@ -35,6 +35,18 @@ a.nav-link.logined button {
     font-size: 15px !important;
 }
 
+.products-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+
+.products-row > div.col-lg-4 {
+    padding: 15px;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -53,9 +65,13 @@ input.item-count.form-control {
     min-width: 150px;
 }
 
-@media screen and (max-width: 962px) {
+@media screen and (max-width: 991px) {
     .navbar-collapse {
         margin: 15px 0;
+    }
+
+    .col-lg-12.main-container {
+        padding: 0;
     }
 }
 
@@ -74,10 +90,8 @@ body {
     padding: 0;
 }
 
-@media (min-width: 962px) {
-    .nav-link.logined {
-        padding: 5px 5px 5px 0;
-    }
+.nav-link.logined {
+    padding: 5px 5px 5px 0;
 }
 
 #success_tic .page-body {

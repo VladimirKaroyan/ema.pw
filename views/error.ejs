@@ -166,6 +166,7 @@
     <h1 class="header"><%= error.status %> ERROR</h1>
     <div class="instructions">
         <%= error.message %>
+        <% if (error.message !== 'Not Found') console.error(error.message) %>
     </div>
 </div>
 </body>
