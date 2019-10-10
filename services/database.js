@@ -9,9 +9,9 @@ let con = mysql.createConnection({
 
 con.connect(function (err) {
     if (err) resolve(err);
-    console.log("Connecting to DB was successfully!");
+    console.log("Connecting to DB was s" +
+        "uccessfully!");
 });
-
 
 async function getAllProducts() {
     return promise = new Promise(async function (resolve, reject) {
