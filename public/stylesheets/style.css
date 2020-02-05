@@ -1,15 +1,6 @@
-body {
-    padding-top: 56px;
-}
-
-@media (max-width: 920px ) {
-    .nav-item {
-        padding-right: 10px;
-    }
-
-    .navbar-nav {
-        flex-direction: row !important;
-    }
+.navbar-toggler-icon {
+    width: 40px !important;
+    height: auto !important;
 }
 
 .navbar-brand {
@@ -31,8 +22,53 @@ body {
     color: white;
 }
 
-a.nav-link.logined button {
-    font-size: 15px !important;
+a.nav-link {
+    color: #6C6C6C;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+a.nav-link.shop {
+    color: #6C63FF;
+    font-weight: 500;
+}
+
+.btn-order {
+    background: #6C63FF;
+    color: #FFFFFF;
+    font-size: 18px !important;
+    line-height: 28px !important;
+    border: 1px solid #000000;
+    padding: 10px 90px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 100px !important;
+}
+
+.review-tabs .btn {
+    padding: 5px 20px !important;
+    text-align: center;
+    color: #BABABA;
+    background: #FFFFFF;
+    font-size: 1.3vw !important;
+}
+
+
+.review-tabs .btn.active {
+    color: #FFFFFF !important;
+    background: #6C63FF !important;
+}
+
+@media (min-width: 962px) {
+    .review-tabs .btn {
+        width: 80%;
+    }
+
+    li.nav-item:nth-child(4n-1) a, li.nav-item:nth-child(4n) a {
+        float: right;
+    }
 }
 
 .products-row {
@@ -92,9 +128,10 @@ input.item-count.form-control {
 }
 
 body {
-    background-color: #e6e6e6;
+    background-color: #FBFAFC !important;
     width: 100%;
     height: 100%;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .nav-link.logined {
@@ -102,7 +139,22 @@ body {
 }
 
 .navbar {
-    padding: 0 15px !important;
+    padding: 0 !important;
+}
+
+.p-t-165 {
+    padding-top: 165px;
+}
+
+footer i.fab {
+    display: inline-block;
+    border-radius: 60px;
+    border: 2px solid;
+    padding: 0.3em 0.32em;
+}
+
+footer {
+    border-top: 1px solid #6C63FF;
 }
 
 #success_tic .page-body {
@@ -277,6 +329,34 @@ h5.order-id {
         height: 75px;
         width: 37.5px;
         opacity: 1;
+    }
+}
+
+@media (max-width: 982px ) {
+    .nav-item {
+        padding-right: 10px;
+    }
+
+    .navbar-nav {
+        flex-direction: row !important;
+    }
+
+    .col-md-12 {
+        padding: 0 !important;
+    }
+
+    .container {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 767px ) {
+    .col-md-6 {
+        padding: 0 !important;
+    }
+
+    .review-tabs .btn {
+        font-size: 3.5vw !important;
     }
 }
 

@@ -150,6 +150,7 @@ module.exports = {
     createOrder,
     getAdminPanel,
     deleteProduct,
+    getProductLines,
     updateProduct,
     addProduct,
     getAllOrders
