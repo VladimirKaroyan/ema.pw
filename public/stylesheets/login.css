@@ -9,7 +9,7 @@ html, body {
     font-family: 'Numans', sans-serif;
 }
 
-.container {
+.container:not(.navbar) {
     height: 100%;
     align-content: center;
 }
