@@ -10,7 +10,8 @@ router.post('/', isLoggedIn, function (req, res, next) {
     let prodDesc = req.body.proddesc;
     let prodQty = req.body.prodqty;
     let prodPrice = req.body.prodprice;
-    shopservice.updateProduct(prodCode, prodName, prodLine, prodDesc, prodQty, prodPrice).then(function (data) {
+    let prodPreviewImage = req.body.prodpreviewimage;
+    shopservice.updateProduct(prodCode, prodName, prodLine, prodDesc, prodQty, prodPrice, prodPreviewImage).then(function (data) {
         req.flash('successMessage', 'Product Was Successfully Updated.');
         res.redirect('/admin-panel');
     });

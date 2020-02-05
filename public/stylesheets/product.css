@@ -95,6 +95,7 @@ img {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        align-items: center;
     }
 }
 

@@ -1,16 +1,15 @@
 let mysql = require('mysql');
 let con = mysql.createConnection({
-    host: "remotemysql.com",
+    host: "127.0.0.1",
     port: "3306",
-    user: "i5t70PMWgi",
-    password: "LRWwmlebWZ",
-    database: "i5t70PMWgi"
+    user: "root",
+    password: "",
+    database: "nodestore"
 });
 
 con.connect(function (err) {
     if (err) resolve(err);
-    console.log("Connecting to DB was s" +
-        "uccessfully!");
+    console.log("Connecting to DB was successfully!");
 });
 
 async function getAllProducts() {
@@ -49,18 +48,18 @@ async function deleteProduct(productCode) {
     });
 }
 
-async function updateProduct(code, name, line, desc, qty, price) {
+async function updateProduct(code, name, line, desc, qty, price, preview) {
     return promise = new Promise(async function (resolve, reject) {
-        con.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', quantityInStock = '${qty}', buyPrice = '${price}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
+        con.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', quantityInStock = '${qty}', buyPrice = '${price}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
             if (err) resolve(err);
             resolve(rows);
         });
     });
 }
 
-async function addProduct(code, name, line, desc, qty, price) {
+async function addProduct(code, name, line, desc, qty, price, preview) {
     return promise = new Promise(async function (resolve, reject) {
-        con.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, quantityInStock, buyPrice, MSRP) VALUES ('${code}', '${name}', '${line}', '', '${desc}', '${qty}', '${price}', '0')`, function (err, rows, fields) {
+        con.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, quantityInStock, buyPrice, MSRP, previewImage) VALUES ('${code}', '${name}', '${line}', '', '${desc}', '${qty}', '${price}', '0', '${preview}')`, function (err, rows, fields) {
             if (err) resolve(err);
             resolve(rows);
         });

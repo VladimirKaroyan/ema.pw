@@ -8,11 +8,13 @@ $(document).ready(function () {
         let prodDesc = $(dataCol).find('.prod_desc').text();
         let prodQty = $(dataCol).find('.prod_qty').text();
         let prodPrice = $(dataCol).find('.prod_price').text().replace('$', '');
+        let prodPreviewImage = $(dataCol).find('.prod_preview_image').val().replace('$', '');
         modal.find('#prod-code').prop('value', prodCode);
         modal.find('#prod-name').prop('value', prodName);
         modal.find('#prod-line').prop('value', prodLine);
         modal.find('#prod-desc').prop('value', prodDesc);
         modal.find('#prod-qty').prop('value', prodQty);
         modal.find('#prod-price').prop('value', prodPrice);
+        modal.find('#prod-preview-image').prop('value', prodPreviewImage);
     })
 });

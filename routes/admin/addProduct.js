@@ -10,7 +10,8 @@ router.post('/', isLoggedIn, function (req, res, next) {
     let prodDesc = req.body.addproddesc;
     let prodQty = req.body.addprodqty;
     let prodPrice = req.body.addprodprice;
-    shopservice.addProduct(prodCode, prodName, prodLine, prodDesc, prodQty, prodPrice).then(function (data, error, err) {
+    let prodPreviewImage = req.body.addprodpreviewimage;
+    shopservice.addProduct(prodCode, prodName, prodLine, prodDesc, prodQty, prodPrice, prodPreviewImage).then(function (data, error, err) {
         if (data instanceof Error) throw res.render('error', {error: data});
         req.flash('successMessage', 'Product Was Successfully Created.');
         res.redirect('/admin-panel');
