@@ -4,13 +4,13 @@ var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
 var dbconfig = {
     'connection': {
-        'host': '127.0.0.1',
-        'user': 'root',
-        'password': '',
+        'host': 'remotemysql.com',
+        'user': 'i5t70PMWgi',
+        'password': 'LRWwmlebWZ',
     },
-    'database': 'nodestore',
+    'database': 'i5t70PMWgi',
     'user_table': 'users'
-}
+};
 var connection = mysql.createConnection(dbconfig.connection);
 
 connection.query('USE ' + dbconfig.database);
