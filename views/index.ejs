@@ -33,7 +33,7 @@
                 Магазин
             </h1>
             <div class="row my-4">
-                <ul class="nav nav-tabs col-md-12" id="shop-product-tabs" role="tablist">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center" id="shop-product-tabs" role="tablist">
                     <% for (let key in sortData) { %>
                         <li class="nav-item">
                             <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"

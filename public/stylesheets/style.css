@@ -427,6 +427,10 @@ i.fab.fa-facebook {
         width: 98% !important;
     }
 
+    #shop-product-tabs {
+        justify-content: space-between !important;
+    }
+
     #shop-content .carousel-control-prev i, #shop-content .carousel-control-next i {
         font-size: 25px;
     }
