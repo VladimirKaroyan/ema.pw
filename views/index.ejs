@@ -28,68 +28,68 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="row my-4">
-                <ul class="nav nav-tabs col-md-12" id="myTab" role="tablist" style="padding-left: 15px;">
-                    <% for (let key in sortData) { %>
-                        <li class="nav-item">
-                            <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
-                               id="profile-tab"
-                               data-toggle="tab" href="#<%= key.replace(/ /g, '') %>"
-                               role="tab"> <img class="navbar-toggler-icon" width="40"
-                                                src="/images/<%= key %>-icon-small.png" alt=""> <%= key %></a>
-                        </li>
-                    <% } %>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <% for (let key in sortData) { %>
-                        <div class="col-md-12 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
-                             id="<%= key.replace(/ /g, '') %>" role="tabpanel"
-                             aria-labelledby="home-tab">
-                            <div class="products-row">
-                                <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
-                                     class="carouselPrograms carousel slide" data-ride="carousel"
-                                     data-interval="false">
-                                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                                        <% sortData[key].forEach(function(product, index){ %>
-                                            <div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
-                                                <div class="card h-100">
-                                                    <a href="product/<%= product.productCode %>">
-                                                        <img class="card-img-top"
-                                                             src="<%= product.previewImage || 'http://placehold.it/700x400' %>"
-                                                             alt="">
-                                                    </a>
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">
-                                                            <a href="product/<%= product.productCode %>"><%= product.productName %></a>
-                                                        </h4>
-                                                        <h5><%= product.buyPrice %>$</h5>
-                                                        <p class="card-text"><%= product.productDescription %></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <% }) %>
-                                    </div>
+        <!--<div class="col-md-12">-->
+            <!--<div class="row my-4">-->
+                <!--<ul class="nav nav-tabs col-md-12" id="myTab" role="tablist" style="padding-left: 15px;">-->
+                    <!--<% for (let key in sortData) { %>-->
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"-->
+                               <!--id="profile-tab"-->
+                               <!--data-toggle="tab" href="#<%= key.replace(/ /g, '') %>"-->
+                               <!--role="tab"> <img class="navbar-toggler-icon" width="40"-->
+                                                <!--src="/images/<%= key %>-icon-small.png" alt=""> <%= key %></a>-->
+                        <!--</li>-->
+                    <!--<% } %>-->
+                <!--</ul>-->
+                <!--<div class="tab-content" id="myTabContent">-->
+                    <!--<% for (let key in sortData) { %>-->
+                        <!--<div class="col-md-12 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"-->
+                             <!--id="<%= key.replace(/ /g, '') %>" role="tabpanel"-->
+                             <!--aria-labelledby="home-tab">-->
+                            <!--<div class="products-row">-->
+                                <!--<div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"-->
+                                     <!--class="carouselPrograms carousel slide" data-ride="carousel"-->
+                                     <!--data-interval="false">-->
+                                    <!--<div class="carousel-inner row w-100 mx-auto" role="listbox">-->
+                                        <!--<% sortData[key].forEach(function(product, index){ %>-->
+                                            <!--<div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">-->
+                                                <!--<div class="card h-100">-->
+                                                    <!--<a href="product/<%= product.productCode %>">-->
+                                                        <!--<img class="card-img-top"-->
+                                                             <!--src="<%= product.previewImage || 'http://placehold.it/700x400' %>"-->
+                                                             <!--alt="">-->
+                                                    <!--</a>-->
+                                                    <!--<div class="card-body">-->
+                                                        <!--<h4 class="card-title">-->
+                                                            <!--<a href="product/<%= product.productCode %>"><%= product.productName %></a>-->
+                                                        <!--</h4>-->
+                                                        <!--<h5><%= product.buyPrice %>$</h5>-->
+                                                        <!--<p class="card-text"><%= product.productDescription %></p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--<% }) %>-->
+                                    <!--</div>-->
 
-                                    <a class="carousel-control-prev" href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
-                                       data-slide="prev">
-                                        <i class="fas fa-chevron-left"></i>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next text-faded" href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
-                                       data-slide="next">
-                                        <i class="fas fa-chevron-right"></i>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    <% } %>
-                </div>
+                                    <!--<a class="carousel-control-prev" href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"-->
+                                       <!--data-slide="prev">-->
+                                        <!--<i class="fas fa-chevron-left"></i>-->
+                                        <!--<span class="sr-only">Previous</span>-->
+                                    <!--</a>-->
+                                    <!--<a class="carousel-control-next text-faded" href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"-->
+                                       <!--data-slide="next">-->
+                                        <!--<i class="fas fa-chevron-right"></i>-->
+                                        <!--<span class="sr-only">Next</span>-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--<% } %>-->
+                <!--</div>-->
 
-            </div>
-            <!--/.row-->
-        </div>
+            <!--</div>-->
+            <!--&lt;!&ndash;/.row&ndash;&gt;-->
+        <!--</div>-->
         <div class="col-md-12">
             <div class="row d-flex flex-row align-items-center">
                 <div class="col-md-6 pt-4">
