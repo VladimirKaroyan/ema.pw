@@ -497,7 +497,11 @@ i.fab.fa-facebook {
 
 @media (max-width: 1200px) {
     .navbar {
-        padding: 5px 25px !important;
+        padding: 5px 0 !important;
+    }
+
+    .navbar-brand {
+        margin-left: -5px;
     }
 
     .cart-button {
