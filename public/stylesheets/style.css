@@ -52,7 +52,7 @@ a.nav-link.shop {
     text-align: center;
     color: #BABABA;
     background: #FFFFFF;
-    font-size: 1vw !important;
+    font-size: 15px !important;
 }
 
 
@@ -101,43 +101,6 @@ input.item-count.form-control {
     min-width: 150px;
 }
 
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1290px !important;
-        padding: 0 !important;
-    }
-
-    .container-fluid {
-        padding: 0 !important;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .navbar-collapse {
-        margin: 15px 0;
-    }
-
-    .col-lg-12.main-container {
-        padding: 0;
-    }
-
-    footer a.nav-link {
-        padding-left: 0;
-    }
-
-    .blog-posts .carousel-inner {
-        padding: 0 !important;
-    }
-
-    .blog-posts .carousel {
-        padding: 15px !important;
-    }
-
-    .blog-posts .carousel-control-prev, .blog-posts .carousel-control-next {
-        width: 10px !important;
-    }
-}
-
 .navbar-nav {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -148,6 +111,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif !important;
+    overflow-x: hidden;
 }
 
 .nav-link.logined {
@@ -162,20 +126,76 @@ body {
     padding-top: 165px;
 }
 
-footer i.fab {
+footer i.fab, #shop-product-tabs i.fab {
     display: inline-block;
     border-radius: 60px;
     border: 2px solid;
-    padding: 0.3em 0.32em;
+    padding: 0.3em;
 }
 
 footer {
-    border-top: 1px solid #6C63FF;
+    padding-left: 65px;
+    border-top: 1px solid #BABABA;
+}
+
+#shop-content {
+    padding-top: 50px;
+}
+
+#shop-content .card-body {
+    margin: -12% auto 0 auto;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(181, 181, 181, 0.1);
+    border-radius: 30px;
+    padding-top: 15% !important;
+}
+
+#shop-content .card-title a {
+    color: #616161;
+    text-decoration: none;
+}
+
+.card-text {
+    margin-bottom: 0;
+}
+
+#shop-content .card > a {
+    z-index: 10;
 }
 
 .blog-posts {
     background: #7067FD;
     border-radius: 30px;
+    margin: 15px !important;
+}
+
+ul#shop-product-tabs {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(181, 181, 181, 0.1);
+    border-radius: 30px !important;
+    border: 0 !important;
+}
+
+ul#shop-product-tabs li a {
+    border-radius: 30px;
+    border: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul#shop-product-tabs li a i {
+    margin-right: 10px;
+}
+
+ul#shop-product-tabs li a.active {
+    background: #6C63FF;
+    color: #FFFFFF;
+}
+
+ul#shop-product-tabs li a.active i {
+    color: #FFFFFF !important;
 }
 
 .blog-posts .carousel {
@@ -186,13 +206,21 @@ footer {
     padding: 60px;
 }
 
-.blog-posts .carousel-control-prev, .blog-posts .carousel-control-next {
-    color: #FFFFFF;
-    opacity: 1;
-    width: 100px;
+#shop-content .carousel-control-prev i, #shop-content .carousel-control-next i {
+    background: #6C63FF;
+    font-size: 35px;
+    border-radius: 60px;
+    border: 2px solid;
+    padding: 0.3em 0.5em;
 }
 
-.blog-posts .carousel-control-prev i, .blog-posts .carousel-control-next i {
+.carousel-control-prev, .carousel-control-next {
+    color: #FFFFFF;
+    opacity: 1 !important;
+    width: 100px !important;
+}
+
+.carousel-control-prev i, .carousel-control-next i {
     font-size: 55px;
 }
 
@@ -201,6 +229,59 @@ footer {
     margin: 0 4.5%;
     border-radius: 0 0 30px 30px;
 }
+
+#shop-content .carousel-control-prev, #shop-content .carousel-control-next {
+    width: max-content !important;
+}
+
+/*Icons*/
+
+i.fab.fa-instagram {
+    color: #FF63EF;
+}
+
+i.fab.fa-youtube {
+    color: #FF0A0A;
+    padding: 0.5rem 0.4rem !important;
+}
+
+i.fab.fa-odnoklassniki {
+    color: #FFBA07;
+    padding: 0.4rem 0.6rem !important;
+}
+
+i.fab.fa-vkontakte {
+    color: #0066FF;
+    padding: 0.4rem 0.35rem !important;
+}
+
+i.fab.fa-vkontakte:before {
+    content: "\f189";
+}
+
+i.fab.fa-telegram {
+    color: #256FFF;
+    padding: 0.4rem 0.5rem !important;
+}
+
+.fa-telegram:before {
+    content: "\f3fe";
+}
+
+i.fab.fa-twitter {
+    color: #63B4FF;
+}
+
+i.fab.fa-facebook {
+    color: #3225FF;
+    padding: 0.5rem 0.8rem !important;
+}
+
+.fa-facebook:before {
+    content: "\f39e";
+}
+
+/**/
 
 /*Carousel*/
 
@@ -226,7 +307,6 @@ footer {
     .carouselPrograms .carousel-inner .active.carousel-item + .carousel-item + .carousel-item {
         position: absolute;
         top: 0;
-        right: -33.333%;
         z-index: -1;
         display: block;
         visibility: visible;
@@ -324,6 +404,59 @@ footer {
         visibility: visible;
         display: block;
         visibility: visible;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1290px !important;
+        padding: 0 !important;
+    }
+
+    .container-fluid {
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #shop-content .card-body {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 20% !important;
+        width: 98% !important;
+    }
+
+    #shop-content .carousel-control-prev i, #shop-content .carousel-control-next i {
+        font-size: 25px;
+    }
+
+    .navbar-collapse {
+        margin: 15px 0;
+    }
+
+    .col-lg-12.main-container {
+        padding: 0;
+    }
+
+    footer a.nav-link {
+        padding-left: 0;
+    }
+
+    .blog-posts {
+        margin: 0 !important;;
+    }
+
+    .blog-posts .carousel-inner {
+        padding: 0 !important;
+    }
+
+    .blog-posts .carousel {
+        padding: 15px !important;
+    }
+
+    .blog-posts .carousel-control-prev, .blog-posts .carousel-control-next {
+        width: 10px !important;
     }
 }
 
