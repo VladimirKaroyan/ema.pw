@@ -1,15 +1,15 @@
 let mysql = require('mysql');
 var db_config = {
-    // host: "remotemysql.com",
-    // port: "3306",
-    // user: "i5t70PMWgi",
-    // password: "LRWwmlebWZ",
-    // database: "i5t70PMWgi"
-    host: "localhost",
+    host: "remotemysql.com",
     port: "3306",
-    user: "root",
-    password: "",
-    database: "nodestore"
+    user: "i5t70PMWgi",
+    password: "LRWwmlebWZ",
+    database: "i5t70PMWgi"
+    // host: "localhost",
+    // port: "3306",
+    // user: "root",
+    // password: "",
+    // database: "nodestore"
 };
 
 var con;
