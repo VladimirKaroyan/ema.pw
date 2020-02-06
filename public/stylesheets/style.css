@@ -458,6 +458,10 @@ i.fab.fa-facebook {
     .blog-posts .carousel-control-prev, .blog-posts .carousel-control-next {
         width: 10px !important;
     }
+
+    .bg-sm-img {
+        display: none;
+    }
 }
 
 /**/
