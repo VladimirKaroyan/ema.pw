@@ -462,6 +462,10 @@ i.fab.fa-facebook {
     .bg-sm-img {
         display: none;
     }
+
+    footer {
+        padding-left: 0 !important;;
+    }
 }
 
 /**/
