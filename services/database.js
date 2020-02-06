@@ -1,17 +1,52 @@
 let mysql = require('mysql');
-let con = mysql.createConnection({
+var db_config = {
     host: "remotemysql.com",
     port: "3306",
     user: "i5t70PMWgi",
     password: "LRWwmlebWZ",
     database: "i5t70PMWgi"
-});
+};
 
+var con;
 
-con.connect(function (err) {
-    if (err) resolve(err);
-    console.log("Connecting to DB was successfully!");
-});
+function handleDisconnect() {
+    console.log('Connecting to DB');
+    con = mysql.createConnection(db_config); // Recreate the connection, since
+    // the old one cannot be reused.
+    var del = con._protocol._delegateError;
+
+    con.connect(function (err) {              // The server is either down
+        if (err) {                                     // or restarting (takes a while sometimes).
+            resolve('Error when connecting to db:', err);
+            setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+        }
+        console.log("Connecting to DB was successfully!");// to avoid a hot loop, and to allow our node script to
+    });                                     // process asynchronous requests in the meantime.
+                                            // If you're also serving http, display a 503 error.
+    con.on('error', function (err) {
+        console.log('db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {// Connection to the MySQL server is usually
+            handleDisconnect();                         // lost due to either server restart, or a
+        } else {                                      // connnection idle timeout (the wait_timeout
+            throw err;                                  // server variable configures this)
+        }
+    });
+
+    con._protocol._delegateError = function(err, sequence){
+        return del.call(this, err, sequence);
+    };
+}
+
+handleDisconnect();
+
+async function getConnection() {
+    if (con === undefined) getConnection();
+    else {
+        return promise = new Promise(async function (resolve, reject) {
+            resolve(con);
+        });
+    }
+}
 
 async function getAllProducts() {
     return promise = new Promise(async function (resolve, reject) {
@@ -145,6 +180,7 @@ async function createOrder(order, orderTotalPrice, user_id) {
 }
 
 module.exports = {
+    getConnection,
     getProduct,
     getAllProducts,
     getUserOrders,

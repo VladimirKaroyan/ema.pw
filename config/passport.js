@@ -2,19 +2,10 @@ var LocalStrategy = require("passport-local").Strategy;
 
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
-var dbconfig = {
-    'connection': {
-        'host': 'remotemysql.com',
-        'user': 'i5t70PMWgi',
-        'password': 'LRWwmlebWZ',
-    },
-    'database': 'i5t70PMWgi',
-    'user_table': 'users'
-};
-var connection = mysql.createConnection(dbconfig.connection);
-
-connection.query('USE ' + dbconfig.database);
-
+let shopservice = require('../services/database');
+var con = shopservice.getConnection().then(function (connec) {
+    connection = connec;
+});
 module.exports = function (passport) {
     passport.serializeUser(function (user, done) {
         done(null, user.id);
