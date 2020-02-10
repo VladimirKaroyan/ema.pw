@@ -24,12 +24,9 @@
                         Блог
                     </a>
                     <% if (user) { %>
-                        <a class="nav-link user" href="/profile">
+                        <a class="nav-link user" href="#">
                             <img src="/images/user-icon.png" class="glyphicon-resize-small" alt="">
                             <%= user['first_name'] + ' ' + user['last_name'] %>
-                        </a>
-                        <a class="nav-link" href="/logout">
-                            Выйти
                         </a>
                     <% } else { %>
                         <a class="nav-link blog" href="/login">

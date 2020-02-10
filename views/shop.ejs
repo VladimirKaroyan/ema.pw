@@ -1,0 +1,142 @@
+<html>
+<head>
+    <title>Express Shop</title>
+    <!-- Bootstrap core CSS -->
+    <%- include includes/app.scripts.ejs %>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/product.css" rel="stylesheet">
+</head>
+<body style="padding: 0; background: whitesmoke;">
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="border-right text-center position-relative" id="sidebar-wrapper">
+        <img class="pt-5" src="/images/user-icon-big.png" alt="">
+        <h4 class="user-name pt-4"><%= user.first_name + ' ' + user.last_name %></h4>
+        <div class="d-flex align-items-center justify-content-around pb-1 border-bottom" style="font-size: 14px">
+            <p>
+                Ваш баланс: 300
+            </p>
+            <p>
+                <a href="#" class="nav-link text-white text-decoration-none d-flex align-items-center"
+                   style="padding: 0!important; font-size: 14px;">
+                    Пополнить <img class="pl-1" src="/images/wallet-icon.png" alt="">
+                </a>
+            </p>
+        </div>
+        <div class="list-group text-left pt-3">
+            <div class="pt-1 pb-1">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
+                    <i class="fas fa-shopping-bag"></i> Мои заказы</a>
+            </div>
+            <div class="pt-1 pb-1">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
+                    <i class="fas fa-shopping-basket"></i> Корзина</a>
+            </div>
+            <div class="pt-1 pb-1">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
+                    <i class="fas fa-question-circle"></i> Помощь</a>
+            </div>
+            <div class="pt-1 pb-1">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
+                    <i class="fas fa-cog"></i> Настройки</a>
+            </div>
+        </div>
+        <a href="/logout" class="nav-link text-white position-absolute bottom-0"><i class="fas fa-arrow-circle-left"></i> Выйти</a>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <%- include includes/header.ejs %>
+
+        <div class="container">
+            <div class="services pt-3">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center" id="shop-product-tabs" role="tablist">
+                    <% for (let key in sortData) { %>
+                        <li class="nav-item">
+                            <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
+                               id="profile-tab"
+                               data-toggle="tab" href="#<%= key.replace(/ /g, '') %>"
+                               role="tab">
+                                <i class="fab fa-<%= key.toLowerCase().trim() %>"></i> <%= key %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="products pt-5 pb-5">
+                <ul class="nav nav-tabs border-0" role="tablist">
+                    <li class="nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 text-center cursor-pointer">
+                        <a class="nav-link border-0 bg-transparent p-0" href="#" data-toggle="tab"
+                           role="tab">
+                            <div class="card-body bg-white border-30 shadow hover-6c">
+                                <h2 class="text-center color-61">Лайки</h2>
+                                <img src="/images/likes.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item  col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 text-center cursor-pointer">
+                        <a class="nav-link active border-0 bg-transparent p-0" href="#" data-toggle="tab"
+                           role="tab">
+                            <div class="card-body bg-white border-30 shadow hover-6c">
+                                <h2 class="text-center color-61">Подписчики</h2>
+                                <img src="/images/followers.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 text-center cursor-pointer">
+                        <a class="nav-link border-0 bg-transparent p-0" href="#" data-toggle="tab"
+                           role="tab">
+                            <div class="card-body bg-white border-30 shadow hover-6c">
+                                <h2 class="text-center color-61">Ретвиты</h2>
+                                <img src="/images/retwits.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="options">
+                <div class="d-flex flex-wrap">
+                    <div class="col-md-8 d-flex align-items-baseline">
+                        <label for="count" class="pr-2">Количество: </label>
+                        <input type="range" class="custom-range" min="0" max="5000" id="count">
+                    </div>
+                    <div class="col-md-4 d-flex flex-column">
+                        <div class="d-flex align-items-baseline">
+                            <label for="speed" class="pr-2">Скорость</label>
+                            <input type="range" class="custom-range w-100" min="1" max="3" id="speed">
+                        </div>
+                        <div class="input-hints">
+                            <span>Среднее</span>
+                            <span>Хорошее</span>
+                            <span>Элит</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-5 pb-5 pl-3 pr-3 w-100">
+                    <div class="border-30 bg-white">
+                        <div class="p-3 d-flex">
+                            <label for="profile_url" class="m-0 pr-2">Ссылка на вашу страницу: </label>
+                            <input type="text" class="border-0 w-75" id="profile_url">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="finish-part text-center pb-5 mb-5">
+                <h4 class="color-6c m-0">Итого: <span class="price">3000</span> руб</h4>
+                <button class="btn btn-order mt-4">Оформить заказ</button>
+            </div>
+            <div class="bottom-image text-right float-right" style="margin-top: -160px;">
+                <img src="/images/shop-bottom.png" class="w-75" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

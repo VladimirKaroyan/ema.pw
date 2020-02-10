@@ -17,11 +17,6 @@
     color: #fff;
 }
 
-.fa-shopping-basket {
-    font-size: 30px;
-    color: white;
-}
-
 a.nav-link {
     color: #6C6C6C;
     font-style: normal;
@@ -66,7 +61,7 @@ a.nav-link.shop {
         width: 80%;
     }
 
-    li.nav-item:nth-child(4n-1) a, li.nav-item:nth-child(4n) a {
+    .review-tabs li.nav-item:nth-child(4n-1) a, .review-tabs li.nav-item:nth-child(4n) a {
         float: right;
     }
 }
@@ -186,7 +181,7 @@ ul#shop-product-tabs li a {
 }
 
 ul#shop-product-tabs li a i {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 ul#shop-product-tabs li a.active {
@@ -265,7 +260,7 @@ i.fab.fa-telegram {
 }
 
 .fa-telegram:before {
-    content: "\f3fe";
+    content: "\f3fe" !important;
 }
 
 i.fab.fa-twitter {
@@ -282,6 +277,34 @@ i.fab.fa-facebook {
 }
 
 /**/
+
+.border-30 {
+    border-radius: 30px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.color-61 {
+    color: #616161;
+}
+
+.color-6c {
+    color: #6C63FF;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.hover-6c:hover .color-61, a.active .hover-6c .color-61 {
+    color: white !important;
+}
+
+.hover-6c:hover, a.active .hover-6c {
+    background-color: #6C63FF !important;
+}
 
 /*Carousel*/
 
