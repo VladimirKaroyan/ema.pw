@@ -36,7 +36,7 @@ a.nav-link.shop {
     font-size: 18px !important;
     line-height: 28px !important;
     border: 1px solid #000000;
-    padding: 10px 90px !important;
+    padding: 10px 60px !important;
     box-sizing: border-box !important;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
     border-radius: 100px !important;
@@ -529,6 +529,10 @@ i.fab.fa-facebook {
 
     .cart-button {
         margin-top: 5px;
+    }
+
+    .bottom-image {
+        display: none;
     }
 }
 
