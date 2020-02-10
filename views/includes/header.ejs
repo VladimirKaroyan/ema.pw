@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark w-100 container">
     <div class="container col-md-12" style="margin: 0;">
-        <a class="navbar-brand pl-3" href="#">
+        <a class="navbar-brand pl-3" href="/">
             <img src="/images/smmlike-logo.png" alt="">
         </a>
         <button class="navbar-toggler text-black-50" type="button" data-toggle="collapse"
@@ -27,6 +27,9 @@
                         <a class="nav-link user" href="/profile">
                             <img src="/images/user-icon.png" class="glyphicon-resize-small" alt="">
                             <%= user['first_name'] + ' ' + user['last_name'] %>
+                        </a>
+                        <a class="nav-link" href="/logout">
+                            Выйти
                         </a>
                     <% } else { %>
                         <a class="nav-link blog" href="/login">

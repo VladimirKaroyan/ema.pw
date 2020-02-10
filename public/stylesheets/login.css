@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html, body {
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #FBFAFC !important;
     height: 100%;
     font-family: 'Numans', sans-serif;
 }
@@ -15,11 +13,12 @@ html, body {
 }
 
 .card {
-    height: 410px;
+    height: max-content;
     margin-top: auto;
     margin-bottom: auto;
-    width: 400px;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 50%;
+    background-color: #6C63FF;
+    border-radius: 30px;
 }
 
 .social_icon span {
@@ -43,13 +42,6 @@ html, body {
     top: -45px;
 }
 
-.input-group-prepend span {
-    width: 50px;
-    background-color: #FFC312;
-    color: black;
-    border: 0 !important;
-}
-
 input:focus {
     outline: 0 0 0 0 !important;
     box-shadow: 0 0 0 0 !important;
@@ -67,10 +59,28 @@ input:focus {
     margin-right: 5px;
 }
 
-.login_btn {
-    color: black;
-    background-color: #FFC312;
-    width: 100px;
+form {
+    padding: 20px 150px;
+}
+
+.form-control {
+    border-radius: 30px;
+    background: transparent !important;
+    color: white !important;
+    border-color: white !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: white !important;
+}
+
+.login-button {
+    color: white !important;
+    cursor: pointer;
 }
 
 .login_btn:hover {
@@ -84,4 +94,30 @@ input:focus {
 
 .links a {
     margin-left: 4px;
+}
+
+input.form-control::-webkit-input-placeholder { /* Edge */
+    color: #FFFFFF;
+}
+
+input.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #FFFFFF;
+}
+
+input.form-control::placeholder {
+    color: #FFFFFF;
+}
+
+@media (max-width: 962px) {
+    form {
+        padding: 0;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .unicorn-bottom {
+        display: none;
+    }
 }

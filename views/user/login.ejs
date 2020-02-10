@@ -15,46 +15,39 @@
     </style>
 </head>
 <body>
-<%- include ../includes/header.ejs %>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header border-0">
                 <% if(message.length > 0) { %>
                     <div class="alert alert-danger"><%= message %></div>
                 <% } %>
-                <h3>Login to your Express account</h3>
-                <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
-                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body pb-0">
+                <h2 class="text-center text-white font-weight-bold">Добро пожаловать</h2>
                 <form action="/login" method="post">
+                    <label for="username" class="text-white pl-3 font-weight-bolder">Логин*</label>
                     <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="username" placeholder="Username">
-
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                     </div>
+                    <label for="password" class="text-white pl-3 font-weight-bolder">Пароль*</label>
                     <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="Password">
                     </div>
-                    <div class="form-group">
-                        <button id="login" class="btn float-right login_btn" type="submit">Login</button>
+                    <div class="form-group text-center">
+                        <button id="login" class="login-button text-center bg-transparent border-0" type="submit">
+                            <a class="nav-link">
+                                Войти
+                            </a>
+                        </button>
+                        <div class="d-flex justify-content-center links nav-link">
+                            Нету аккаунта?<a href="/sign-up"
+                                             style="text-decoration: none; color: #FFFFFF; font-weight: 700;">Регистрация</a>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Don't have an account?<a href="/sign-up"
-                                             style="text-decoration: none; color: #0062cc; font-weight: 700;">Sign Up</a>
-                </div>
+                <img src="/images/unicorn-login.png" class="position-absolute unicorn-bottom" alt="" style="bottom: 0; right: 0; width: 20%;">
             </div>
         </div>
     </div>
