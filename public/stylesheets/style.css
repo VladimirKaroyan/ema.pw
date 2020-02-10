@@ -30,6 +30,10 @@ a.nav-link.shop {
     font-weight: 500;
 }
 
+.nav-item {
+    max-height: 60px;
+}
+
 .btn-order {
     background: #6C63FF;
     color: #FFFFFF;
