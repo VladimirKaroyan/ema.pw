@@ -1,0 +1,94 @@
+<html>
+<head>
+    <%- include ../includes/app.scripts.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/product.css" rel="stylesheet">
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include ../includes/user-sidebar.ejs %>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <%- include ../includes/header.ejs %>
+
+        <div class="container">
+            <form action="/settings" method="post">
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="first_name" class="m-0 p-3 color-52">Имя: </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="text" class="border-0 w-100 form-control" required id="first_name"
+                                   value="<%= user.first_name %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="last_name" class="m-0 p-3 color-52">Фамилия: </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="text" class="border-0 w-100 form-control" required id="last_name"
+                                   value="<%= user.last_name %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="username" class="m-0 p-3 color-52">Логин: </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="text" class="border-0 w-100 form-control" required id="username"
+                                   value="<%= user.username %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="email" class="m-0 p-3 color-52">Почта: </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="email" class="border-0 w-100 form-control" required id="email"
+                                   value="<%= user.email %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="current_password" class="m-0 p-3 color-52">Действующий пароль ( не заполняйте что бы оставить
+                        прежним): </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="password" class="border-0 w-100 form-control" required id="current_password">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="new_password" class="m-0 p-3 color-52">Новый пароль ( не заполняйте что бы оставить
+                        прежним): </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="password" class="border-0 w-100 form-control" id="new_password">
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pl-3 pr-3 w-100">
+                    <label for="new_password_again" class="m-0 p-3 color-52">Подтвердите пароль: </label>
+                    <div class="border-30 bg-white">
+                        <div class="p-3 w-100 m-0 form-group">
+                            <input type="password" class="border-0 w-100 form-control" id="new_password_again">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-5 mb-5">
+                    <button class="btn btn-order mt-4" type="submit">Сохранить</button>
+                </div>
+                <div class="bottom-image text-right float-right" style="margin-top: -160px;">
+                    <img src="/images/settings-bottom.png" class="w-75" alt="">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

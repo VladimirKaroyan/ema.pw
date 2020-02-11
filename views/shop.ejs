@@ -12,40 +12,7 @@
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="border-right text-center position-relative" id="sidebar-wrapper">
-        <img class="pt-5" src="/images/user-icon-big.png" alt="">
-        <h4 class="user-name pt-4"><%= user.first_name + ' ' + user.last_name %></h4>
-        <div class="d-flex align-items-center justify-content-around pb-1 border-bottom" style="font-size: 14px">
-            <p>
-                Ваш баланс: 300
-            </p>
-            <p>
-                <a href="#" class="nav-link text-white text-decoration-none d-flex align-items-center"
-                   style="padding: 0!important; font-size: 14px;">
-                    Пополнить <img class="pl-1" src="/images/wallet-icon.png" alt="">
-                </a>
-            </p>
-        </div>
-        <div class="list-group text-left pt-3">
-            <div class="pt-1 pb-1">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
-                    <i class="fas fa-shopping-bag"></i> Мои заказы</a>
-            </div>
-            <div class="pt-1 pb-1">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
-                    <i class="fas fa-shopping-basket"></i> Корзина</a>
-            </div>
-            <div class="pt-1 pb-1">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
-                    <i class="fas fa-question-circle"></i> Помощь</a>
-            </div>
-            <div class="pt-1 pb-1">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent border-0 text-white pr-0">
-                    <i class="fas fa-cog"></i> Настройки</a>
-            </div>
-        </div>
-        <a href="/logout" class="nav-link text-white position-absolute bottom-0"><i class="fas fa-arrow-circle-left"></i> Выйти</a>
-    </div>
+    <%- include includes/user-sidebar.ejs %>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->

@@ -59,6 +59,21 @@ body {
     background-color: transparent;
 }
 
+.color-52 {
+    color: #525252 !important;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 /*Chrome*/
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     input[type='range'] {

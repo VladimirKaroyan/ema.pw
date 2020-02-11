@@ -1,0 +1,113 @@
+<html>
+<head>
+    <%- include ../includes/app.scripts.ejs %>
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/product.css" rel="stylesheet">
+    <style>
+        a[data-toggle="collapse"], textarea {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            background: white !important;
+            color: black !important;
+            border: 0;
+            border-radius: 30px;
+            outline: none !important;
+        }
+
+        .help-question-block, .new-question {
+            padding: 10px;
+        }
+
+        .question-answer .card {
+            border: 0 !important;
+            background: transparent !important;
+        }
+
+        textarea {
+            height: 190px;
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <%- include ../includes/user-sidebar.ejs %>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <%- include ../includes/header.ejs %>
+
+        <div class="container">
+            <div class="questions w-100 pt-3 pb-3">
+                <div class="help-question-block">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                       aria-expanded="false"
+                       aria-controls="collapseExample">
+                        Вопрос
+                    </a>
+                    <div class="collapse question-answer" id="collapseExample">
+                        <div class="card card-body">
+                            Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в
+                            постели превратился в страшное насекомое.
+                        </div>
+                    </div>
+                </div>
+                <div class="help-question-block">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample1" role="button"
+                       aria-expanded="false"
+                       aria-controls="collapseExample1">
+                        Вопрос
+                    </a>
+                    <div class="collapse question-answer" id="collapseExample1">
+                        <div class="card card-body">
+                            Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в
+                            постели превратился в страшное насекомое.
+                        </div>
+                    </div>
+                </div>
+                <div class="help-question-block">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button"
+                       aria-expanded="false"
+                       aria-controls="collapseExample2">
+                        Вопрос
+                    </a>
+                    <div class="collapse question-answer" id="collapseExample2">
+                        <div class="card card-body">
+                            Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в
+                            постели превратился в страшное насекомое.
+                        </div>
+                    </div>
+                </div>
+                <div class="help-question-block">
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button"
+                       aria-expanded="false"
+                       aria-controls="collapseExample3">
+                        Вопрос
+                    </a>
+                    <div class="collapse question-answer" id="collapseExample3">
+                        <div class="card card-body">
+                            Проснувшись однажды утром после беспокойного сна, Грегор Замза обнаружил, что он у себя в
+                            постели превратился в страшное насекомое.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="new-question">
+                <label class="pl-3" for="newQuestion">Задайте свой вопрос:</label>
+                <textarea name="newquestion" id="newQuestion" class="w-100"></textarea>
+            </div>
+            <div class="text-center pb-5 mb-5">
+                <button class="btn btn-order mt-4">Отправить</button>
+            </div>
+            <div class="bottom-image text-right float-right" style="margin-top: -160px;">
+                <img src="/images/help-bottom.png" class="w-75" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
