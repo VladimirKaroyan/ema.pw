@@ -174,7 +174,7 @@ ul#shop-product-tabs {
 ul#shop-product-tabs li a {
     border-radius: 30px;
     border: 0;
-    height: 100%;
+    /*height: 100%;*/
     display: flex;
     align-items: center;
     justify-content: space-between;
