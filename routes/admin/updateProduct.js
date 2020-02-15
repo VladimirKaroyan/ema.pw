@@ -8,10 +8,11 @@ router.post('/', isLoggedIn, function (req, res, next) {
     let prodName = req.body.prodname;
     let prodLine = req.body.prodline;
     let prodDesc = req.body.proddesc;
-    let prodQty = req.body.prodqty;
-    let prodPrice = req.body.prodprice;
+    let slowPrice = req.body.prodslowPrice;
+    let mediumPrice = req.body.prodmediumPrice;
+    let fastPrice = req.body.prodfastPrice;
     let prodPreviewImage = req.body.prodpreviewimage;
-    shopservice.updateProduct(prodCode, prodName, prodLine, prodDesc, prodQty, prodPrice, prodPreviewImage).then(function (data) {
+    shopservice.updateProduct(prodCode, prodName, prodLine, prodDesc, slowPrice, mediumPrice, fastPrice, prodPreviewImage).then(function (data) {
         req.flash('successMessage', 'Product Was Successfully Updated.');
         res.redirect('/admin-panel');
     });

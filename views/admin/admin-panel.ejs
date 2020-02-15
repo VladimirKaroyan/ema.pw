@@ -169,7 +169,7 @@
                                                 <th width="190px"> Product Code</th>
                                                 <th width="170px">Product Name</th>
                                                 <th width="170px">Product Line</th>
-                                                <th width="500px">Product Description</th>
+                                                <th width="200px">Product Description</th>
                                                 <th>Quantity In Stock</th>
                                                 <th>Price</th>
                                                 <th>Action</th>
@@ -184,7 +184,9 @@
                                                     <td class="prod_line"><%= product.productLine %></td>
                                                     <td class="prod_desc"><%= product.productDescription %></td>
                                                     <td class="prod_qty"><%= product.quantityInStock %></td>
-                                                    <td class="prod_price"><%= product.buyPrice %>$</td>
+                                                    <td class="prod_price"><%= product.slowPrice + "-" + product.mediumPrice + "-" + product.fastPrice %>
+                                                        руб
+                                                    </td>
                                                     <td>
                                                         <a data-toggle="modal" data-target="#updProdModal" href="#">
                                                             <i class="fa fa-edit"></i>
@@ -294,12 +296,19 @@
                                   style="min-height: 150px;"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="prod-qty" class="col-form-label">Product Quantity:</label>
-                        <input type="number" class="form-control" id="prod-qty" name="prodqty" min="0" required>
+                        <label for="prod-slow-price" class="col-form-label">Product Price (Low Speed):</label>
+                        <input type="number" class="form-control" id="prod-slow-price" name="prodslowPrice" min="0"
+                               required step="0.1">
                     </div>
                     <div class="form-group">
-                        <label for="prod-price" class="col-form-label">Product Price ($):</label>
-                        <input type="number" class="form-control" id="prod-price" name="prodprice" min="0" step="0.01"
+                        <label for="prod-medium-price" class="col-form-label">Product Price (Medium Speed):</label>
+                        <input type="number" class="form-control" id="prod-slow-price" name="prodmediumPrice" min="0"
+                               required step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-fast-price" class="col-form-label">Product Price (Fast Speed):</label>
+                        <input type="number" class="form-control" id="prod-price" name="prodfastPrice" min="0"
+                               step="0.1"
                                required>
                     </div>
                     <div class="form-group">
@@ -350,13 +359,23 @@
                                   style="min-height: 150px;"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="prod-qty" class="col-form-label">Product Quantity:</label>
-                        <input type="number" class="form-control" id="addprod-qty" name="addprodqty" min="0" required>
+                        <label for="addprod-slow-price" class="col-form-label">Product Price (Low Speed):</label>
+                        <input type="number" class="form-control" id="addprod-slow-price" name="addProdslowPrice"
+                               step="0.1"
+                               min="0" required>
                     </div>
                     <div class="form-group">
-                        <label for="prod-price" class="col-form-label">Product Price ($):</label>
-                        <input type="number" class="form-control" id="addprod-price" name="addprodprice" min="0"
-                               step="0.01" required>
+                        <label for="addprod-medium-price" class="col-form-label">Product Price (Medium Speed):</label>
+                        <input type="number" class="form-control" id="addprod-medium-price" name="addProdmediumPrice"
+                               step="0.1"
+                               min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addprod-fast-price" class="col-form-label">Product Price (Fast Speed):</label>
+                        <input type="number" class="form-control" id="addprod-fast-price" name="addProdfastPrice"
+                               step="0.1"
+                               min="0"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="prod-preview-image" class="col-form-label">Product Preview Image Link:</label>

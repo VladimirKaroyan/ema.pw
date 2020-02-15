@@ -92,7 +92,7 @@ input:-webkit-autofill:active {
     input[type='range']::-webkit-slider-thumb {
         cursor: pointer;
         background-color: #57B894;
-        box-shadow: -300px 0 0 300px #4D4A76;
+        box-shadow: -500px 0 0 500px #4D4A76;
     }
 
 }
@@ -106,6 +106,10 @@ input[type="range"]::-ms-thumb {
     cursor: pointer;
     background-color: #57B894;
     box-shadow: none !important;
+}
+
+.products-row {
+    height: 388px;
 }
 
 @media (min-width: 768px) {

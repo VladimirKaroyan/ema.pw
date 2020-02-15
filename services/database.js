@@ -18,7 +18,7 @@ con = mysql.createPool({
 con.on('error', function (err) {
     console.error(err);
 });
-console.log(con);
+// console.log(con);
 
 async function getConnection() {
     if (con === undefined) getConnection();
@@ -114,7 +114,6 @@ async function getProductLines() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            console.log(connection);
             connection.query(`SELECT * FROM productlines`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
@@ -137,11 +136,11 @@ async function deleteProduct(productCode) {
     });
 }
 
-async function updateProduct(code, name, line, desc, qty, price, preview) {
+async function updateProduct(code, name, line, desc, slowPrice, mediumPrice, fastPrice, preview) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', quantityInStock = '${qty}', buyPrice = '${price}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
+            connection.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', slowPrice = '${slowPrice}', mediumPrice = '${mediumPrice}', fastPrice = '${fastPrice}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -150,11 +149,11 @@ async function updateProduct(code, name, line, desc, qty, price, preview) {
     });
 }
 
-async function addProduct(code, name, line, desc, qty, price, preview) {
+async function addProduct(code, name, line, desc, slowPrice, mediumPrice, fastPrice, preview) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, quantityInStock, buyPrice, MSRP, previewImage) VALUES ('${code}', '${name}', '${line}', '', '${desc}', '${qty}', '${price}', '0', '${preview}')`, function (err, rows, fields) {
+            connection.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, slowPrice, mediumPrice, fastPrice, previewImage) VALUES ('${code}', '${name}', '${line}', '', '${desc}', '${slowPrice}', '${mediumPrice}', '${fastPrice}', '${preview}')`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
