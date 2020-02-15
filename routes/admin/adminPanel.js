@@ -16,7 +16,8 @@ router.get('/', isLoggedIn, function (req, res, next) {
             orders: data['orders'],
             earnings: data['earnings'],
             itemsSold: data['productSum'],
-            lastWeekOrders: data['lastWeekOrders']
+            lastWeekOrders: data['lastWeekOrders'],
+            blogPosts: data['blogPosts']
             // earnings: getEarnings(data),
             // itemsSold: getSoldProductsQty(data),
             // lastWeekOrders: getLastWeekOrders(7)

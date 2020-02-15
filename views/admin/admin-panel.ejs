@@ -100,6 +100,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#products" role="tab">Products</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#blogposts" role="tab">Blog
+                                        Posts</a>
+                                </li>
                             </ul>
                             <div class="tab-content" id="myTabContent" style="width: 100%;">
                                 <div class="tab-pane fade show active" id="orders" role="tabpanel"
@@ -191,6 +195,54 @@
                                                     </td>
                                                     <input type="hidden" class="prod_preview_image"
                                                            value="<%= product.previewImage %>">
+                                                </tr>
+                                            <% }) %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="blogposts" role="tabpanel">
+                                    <div class="container">
+                                        <div class="col-md-12"
+                                             style="text-align: right; padding-right: 0; padding-top: 15px;">
+                                            <button type="button" class="btn btn-primary add_new_product"
+                                                    data-toggle="modal" data-target="#addBlogPostModal">
+                                                <i class="fas fa-plus"></i> Add New Blog Post
+                                            </button>
+                                        </div>
+                                        <table style="text-align: center;" id="blogposts_table"
+                                               class="table table-responsive-md">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th width="20px">Post ID</th>
+                                                <th> Post Title</th>
+                                                <th> Post Content</th>
+                                                <th> Post Category</th>
+                                                <th> Post Preview Image URL</th>
+                                                <th width="30px">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% blogPosts.forEach(function(post, index){ %>
+                                                <tr>
+                                                    <td class="post_id"><%= post.id %></td>
+                                                    <td class="post_title"><%= post.title %></td>
+                                                    <td class="post_content">
+                                                        <%= post.content.substring(0, 100) %>...
+                                                        <span class="post_content_all d-none">
+                                                            <%- post.content %>
+                                                        </span>
+                                                    </td>
+                                                    <td class="post_category"><%= post.category %></td>
+                                                    <td class="prod_preview_image"><%= post.previewImage %></td>
+                                                    <td>
+                                                        <a data-toggle="modal" data-target="#updBlogPostModal" href="#">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a><br>
+                                                        <a href="/delete-blogpost/<%= post.id %>">
+                                                            <i class="fa fa-trash-alt"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             <% }) %>
                                             </tbody>
@@ -319,11 +371,101 @@
         </div>
     </div>
 </div>
+<div class="modal fade bd-example-modal-lg" id="updBlogPostModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updBlogPostForm" action="/update-blogpost" method="post">
+                    <div class="form-group">
+                        <label for="post-id" class="col-form-label">Post ID:</label>
+                        <input type="text" class="form-control" id="post-id" name="postId" readonly="readonly"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-title" class="col-form-label">Post Title:</label>
+                        <input type="text" class="form-control" id="post-title" name="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-content" class="col-form-label">Post Content:</label>
+                        <textarea type="text" class="form-control" id="post-content" name="postContent"
+                                  required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-category" class="col-form-label">Post Category:</label>
+                        <select class="form-control" id="post-category" name="postCategory">
+                            <% productLines.forEach(function(line) { %>
+                                <option value="<%= line['productLine'] %>"><%= line['productLine'] %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-prew-image" class="col-form-label">Post Preview Image:</label>
+                        <input type="text" class="form-control" id="post-prew-image" name="postPrewImage" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="addBlogPostModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addBlogPostForm" action="/add-blogpost" method="post">
+                    <div class="form-group">
+                        <label for="post-title" class="col-form-label">Post Title:</label>
+                        <input type="text" class="form-control" id="post-title" name="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-content" class="col-form-label">Post Content:</label>
+                        <textarea type="text" class="form-control" id="post-content" name="postContent"
+                                  required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-category" class="col-form-label">Post Category:</label>
+                        <select class="form-control" id="post-category" name="postCategory">
+                            <% productLines.forEach(function(line) { %>
+                                <option value="<%= line['productLine'] %>"><%= line['productLine'] %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="post-prew-image" class="col-form-label">Post Preview Image:</label>
+                        <input type="text" class="form-control" id="post-prew-image" name="postPrewImage" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Main JS-->
 <script>
     $(document).ready(function () {
         $('#order_table').DataTable();
         $('#product_table').DataTable();
+        $('#blogposts_table').DataTable();
     });
 </script>
 

@@ -20,11 +20,11 @@
                     <a class="nav-link shop" href="/shop">
                         Магазин
                     </a>
-                    <a class="nav-link blog" href="/logout">
+                    <a class="nav-link blog" href="/blog">
                         Блог
                     </a>
                     <% if (user) { %>
-                        <a class="nav-link user" href="#">
+                        <a class="nav-link user" href="/shop">
                             <img src="/images/user-icon.png" class="glyphicon-resize-small" alt="">
                             <%= user['first_name'] + ' ' + user['last_name'] %>
                         </a>

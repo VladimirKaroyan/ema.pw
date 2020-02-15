@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Express Shop</title>
+    <!-- Bootstrap core CSS -->
+    <%- include includes/app.scripts.ejs %>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!-- Custom styles for this template -->
+</head>
+<body class="position-relative" style="padding: 0; background: whitesmoke;">
+<%- include includes/header.ejs %>
+<div class="col-md-12 position-relative">
+    <div class="container">
+        <div class="col-md-12">
+            <img src="<%= post.previewImage %>" class="w-100 pb-5" alt="">
+            <h1 class="font-weight-bold pt-5 pb-5"><%= post.title %></h1>
+            <div class="content pb-5 color-61">
+                <p>
+                    <%- post.content.replace(/(?:\r\n|\r|\n)/g, '<br>') %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <%- include includes/background-small-images.ejs %>
+    <%- include includes/footer.ejs %>
+</div>
+</body>
+</html>

@@ -14678,3 +14678,7 @@ h4 {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+
+textarea {
+    min-height: 300px;
+}

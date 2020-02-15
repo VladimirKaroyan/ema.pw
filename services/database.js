@@ -45,11 +45,63 @@ async function getAllProducts() {
     });
 }
 
-async function getProduct(productCode) {
+async function getAllBlogPosts() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`SELECT * FROM products WHERE productCode = '${productCode}'`, function (err, rows, fields) {
+            connection.query(`SELECT * FROM blogposts`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function getBlogPost(postId) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`SELECT * FROM blogposts WHERE id = '${postId}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function deleteBlogPost(postId) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`DELETE FROM blogposts WHERE id = '${postId}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function updateBlogPost(postId, title, content, category, preview) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`UPDATE blogposts SET title = '${title}', content = '${content}', category = '${category}', previewImage = '${preview}' WHERE blogposts.id = '${postId}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function addBlogPost(title, content, category, preview) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`INSERT INTO blogposts(title, content, category, previewImage) VALUES ('${title}', '${content}', '${category}', '${preview}')`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -180,6 +232,7 @@ async function getAdminPanel() {
     return promise = new Promise(async function (resolve, reject) {
         let orders = await getAllOrders();
         let products = await getAllProducts();
+        let blogPosts = await getAllBlogPosts();
         let lastWeekOrders = await getOrdersWithInterval(7);
         let productLines = await getProductLines();
         let productSum = await getProductQtySum();
@@ -190,7 +243,8 @@ async function getAdminPanel() {
             'productLines': productLines,
             'lastWeekOrders': lastWeekOrders,
             'productSum': productSum[0].val,
-            'earnings': earnings[0].val
+            'earnings': earnings[0].val,
+            'blogPosts': blogPosts
         })
     });
 }
@@ -215,7 +269,11 @@ async function createOrder(order, orderTotalPrice, user_id) {
 
 module.exports = {
     getConnection,
-    getProduct,
+    getBlogPost,
+    getAllBlogPosts,
+    deleteBlogPost,
+    updateBlogPost,
+    addBlogPost,
     getAllProducts,
     getUserOrders,
     createOrder,
