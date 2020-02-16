@@ -61,7 +61,8 @@
                                                        data-toggle="tab"
                                                        role="tab">
                                                         <div class="card-body m-0 h-100 bg-white border-30 shadow hover-6c">
-                                                            <h2 class="text-center color-61"><%= product.productName %></h2>
+                                                            <h2 class="text-center color-61 productName"><%= product.productName %></h2>
+                                                            <h2 class="text-center color-61 productDesc d-none"><%= product.productDescription %></h2>
                                                             <img src="<%= product.previewImage %>"
                                                                  alt="">
                                                         </div>
@@ -71,6 +72,12 @@
                                                                value="<%= product.mediumPrice %>">
                                                         <input type="hidden" class="productFastPrice"
                                                                value="<%= product.fastPrice %>">
+                                                        <input type="hidden"
+                                                               class="productTaskType"
+                                                               value="<%= product.productVendor %>">
+                                                        <input type="hidden"
+                                                               class="productServiceType"
+                                                               value="<%= product.service_type %>">
                                                     </a>
                                                 </li>
                                             <% }) %>
@@ -97,7 +104,8 @@
                                    min="0" max="5000"
                                    id="count" oninput="$('#countText').val(this.value)">
                         </div>
-                        <a class="btn btn-primary p-t-2 pb-2" data-toggle="collapse" href="#prodcountcollapse" role="button"
+                        <a class="btn btn-primary p-t-2 pb-2" data-toggle="collapse" href="#prodcountcollapse"
+                           role="button"
                            aria-expanded="false" aria-controls="prodcountcollapse">
                             Ввести число в ручную
                         </a>
@@ -133,7 +141,7 @@
             </div>
             <div class="finish-part text-center pb-5 mb-5">
                 <h4 class="color-6c m-0">Итого: <span class="price"></span> руб</h4>
-                <button class="btn btn-order mt-4">Оформить заказ</button>
+                <button class="btn btn-order mt-4" id="addToCart">Добавить в корзину</button>
             </div>
             <div class="bottom-image text-right float-right" style="margin-top: -160px;">
                 <img src="/images/shop-bottom.png" class="w-75" alt="">

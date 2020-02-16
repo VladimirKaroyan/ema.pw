@@ -54,13 +54,23 @@
             </div>
             <div class="modal-body">
                 <table class="show-cart table table-responsive-md">
+                    <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Итого</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
+                    </tbody>
                 </table>
-                <div>Total price: $<span class="total-cart"></span></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="make-order-button">Order now</button>
+                <div class="finish-part text-center">
+                    <h4 class="color-6c m-0">Итого: <span class="total-cart"></span> руб</h4>
+                    <button class="btn btn-order mt-4" id="make-order-button">Оформить заказ</button>
+                </div>
             </div>
         </div>
     </div>

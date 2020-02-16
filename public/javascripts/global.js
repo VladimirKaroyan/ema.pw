@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    MathUtils = {
+        roundToPrecision: function(subject, precision) {
+            return +((+subject).toFixed(precision));
+        }
+    };
     // ************************************************
 // Shopping Cart API
 // ************************************************
@@ -10,11 +15,13 @@ $(document).ready(function () {
         cart = [];
 
         // Constructor
-        function Item(name, price, count, productCode) {
+        function Item(name, service_type, task_type, count, speed, price) {
             this.name = name;
-            this.price = price;
+            this.service_type = service_type;
+            this.task_type = task_type;
             this.count = count;
-            this.productcode = productCode;
+            this.speed = speed;
+            this.price = price;
         }
 
         // Save cart
@@ -38,28 +45,21 @@ $(document).ready(function () {
         let obj = {};
 
         // Add to cart
-        obj.addItemToCart = function (name, price, count, productCode) {
-            for (let item in cart) {
-                if (cart[item].name === name) {
-                    cart[item].count++;
-                    saveCart();
-                    return;
-                }
-            }
-            let item = new Item(name, price, count, productCode);
+        obj.addItemToCart = function (name, service_type, task_type, count, speed, price) {
+            let item = new Item(name, service_type, task_type, count, speed, price);
             cart.push(item);
             saveCart();
         };
         // Set count from item
-        obj.setCountForItem = function (name, count) {
-            for (let i in cart) {
-                if (cart[i].name === name) {
-                    cart[i].count = count;
-                    break;
-                }
-            }
-            saveCart();
-        };
+        // obj.setCountForItem = function (name, count) {
+        //     for (let i in cart) {
+        //         if (cart[i].name === name) {
+        //             cart[i].count = count;
+        //             break;
+        //         }
+        //     }
+        //     saveCart();
+        // };
         // Remove item from cart
         obj.removeItemFromCart = function (name) {
             for (let item in cart) {
@@ -75,13 +75,8 @@ $(document).ready(function () {
         };
 
         // Remove all items from cart
-        obj.removeItemFromCartAll = function (name) {
-            for (let item in cart) {
-                if (cart[item].name === name) {
-                    cart.splice(item, 1);
-                    break;
-                }
-            }
+        obj.removeItemFromCartAll = function (item) {
+            cart.splice(item, 1);
             if (cart.length === 0) {
                 $('#cart').modal('hide');
                 $('body').removeClass('modal-open');
@@ -105,9 +100,9 @@ $(document).ready(function () {
         obj.totalCart = function () {
             let totalCart = 0;
             for (let item in cart) {
-                totalCart += cart[item].price * cart[item].count;
+                totalCart += parseFloat(cart[item].price);
             }
-            return Number(totalCart.toFixed(2));
+            return totalCart.toFixed(2);
         };
 
         // List cart
@@ -145,12 +140,15 @@ $(document).ready(function () {
 // Triggers / Events
 // *****************************************
 // Add item
-    $('.add-to-cart').click(function (event) {
+    $('#addToCart').click(function (event) {
         event.preventDefault();
-        let name = $('.product-title').text();
-        let price = parseInt($('.price').text().replace(/^\D+/g, ''));
-        let productCode = $('.productCode').text();
-        shoppingCart.addItemToCart(name, price, 1, productCode);
+        let name = $('.tab-pane.active .product.active').find('.productDesc').text();
+        let service_type = $('.tab-pane.active .product.active').find('.productName').text();
+        let task_type = window.activeProductService;
+        let count = window.activeProductCount;
+        let speed = window.activeProductSpeed;
+        let price = window.price;
+        shoppingCart.addItemToCart(name, service_type, task_type, count, speed, price);
         $('#cart').modal('show');
         displayCart();
     });
@@ -161,31 +159,27 @@ $(document).ready(function () {
         displayCart();
     });
 
-    function getItem(itemSelector) {
-        let name = $(itemSelector).find('.item-name').text();
-        let price = parseFloat($(itemSelector).find('.item-price').text().replace('$', ''));
-        let count = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
-        let productCode = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
-        return [name, price, count, productCode];
-    }
+    // function getItem(itemSelector) {
+    //     let name = $(itemSelector).find('.item-name').text();
+    //     let price = parseFloat($(itemSelector).find('.item-price').text().replace('$', ''));
+    //     let count = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
+    //     let productCode = (parseInt($(itemSelector).find('.item-count').prop('value')) >= 1) ? parseInt($(itemSelector).find('.item-count').prop('value')) : 0;
+    //     return [name, price, count, productCode];
+    // }
 
     function displayCart() {
         let cartArray = shoppingCart.listCart();
         let output = "";
         for (let i in cartArray) {
-            output += "<tr class='item'>"
+            output += `<tr class='item' data-id='${i}'>`
                 + "<td><div class='item-name'>" + cartArray[i].name + "</div></td>"
-                + "<td><div class='item-price'>$" + cartArray[i].price + "</div></td>"
-                + "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" + cartArray[i].name + ">-</button>"
-                + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
-                + "<button class='plus-item btn btn-primary input-group-addon' data-name=" + cartArray[i].name + ">+</button></div></td>"
-                + "<td><button class='delete-item btn btn-danger' data-name=" + cartArray[i].name + ">X</button></td>"
-                + " = "
-                + "<td>" + cartArray[i].total + "$</td>"
-                + "<input type='hidden' value='" + cartArray[i].productcode + "'/>"
+                + "<td><div class='item-price'>" + MathUtils.roundToPrecision(cartArray[i].price / cartArray[i].count, 1) + " руб</div></td>"
+                + "<td><div class='item-count'>" + cartArray[i].count + "</div></td>"
+                + "<td>" + cartArray[i].price + " руб</td>"
+                + "<td><button class='delete-item btn btn-danger'>X</button></td>"
                 + "</tr>";
         }
-        $('.show-cart').html(output);
+        $('.show-cart tbody').html(output);
         $('.total-cart').html(shoppingCart.totalCart());
         $('.total-count').html(shoppingCart.totalCount());
     }
@@ -202,29 +196,29 @@ $(document).ready(function () {
 // Delete item button
 
     $('.show-cart').on("click", ".delete-item", function (event) {
-        let item = getItem($(this).closest('.item'));
-        shoppingCart.removeItemFromCartAll(item[0]);
+        let itemId = $(this).closest('tr').data('id');
+        shoppingCart.removeItemFromCartAll(itemId);
         displayCart();
-    })
+    });
 
 
 // -1
-    $('.show-cart').on("click", ".minus-item", function (event) {
-        let item = getItem($(this).closest('.item'));
-        let count = item[2] - 1;
-        if (item[2] <= 1) {
-            shoppingCart.removeItemFromCartAll(item[0], count);
-        }
-        shoppingCart.setCountForItem(item[0], count);
-        displayCart();
-    });
+//     $('.show-cart').on("click", ".minus-item", function (event) {
+//         let item = getItem($(this).closest('.item'));
+//         let count = item[2] - 1;
+//         if (item[2] <= 1) {
+//             shoppingCart.removeItemFromCartAll(item[0], count);
+//         }
+//         shoppingCart.setCountForItem(item[0], count);
+//         displayCart();
+//     });
 // +1
-    $('.show-cart').on("click", ".plus-item", function (event) {
-        let item = getItem($(this).closest('.item'));
-        let count = item[2] + 1;
-        shoppingCart.setCountForItem(item[0], count);
-        displayCart();
-    });
+//     $('.show-cart').on("click", ".plus-item", function (event) {
+//         let item = $(this).closest('tr').data('id');
+//         let count = item[2] + 1;
+//         shoppingCart.setCountForItem(item[0], count);
+//         displayCart();
+//     });
 
 // Item count input
     $('.show-cart').on("change", ".item-count", function (event) {

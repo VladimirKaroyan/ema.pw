@@ -257,11 +257,11 @@ async function createOrder(order, orderTotalPrice, user_id) {
                 if (err) resolve(err);
                 resolve(rows);
             });
-            connection.query(`UPDATE products SET quantityInStock = ${`quantityInStock`}-${order.count} WHERE products.productCode = '${order.productcode}'`, function (err, rows, fields) {
-                connection.release();
-                if (err) resolve(err);
-                resolve(rows);
-            });
+            // connection.query(`UPDATE products SET quantityInStock = ${`quantityInStock`}-${order.count} WHERE products.productCode = '${order.productcode}'`, function (err, rows, fields) {
+            //     connection.release();
+            //     if (err) resolve(err);
+            //     resolve(rows);
+            // });
         });
     });
 }
