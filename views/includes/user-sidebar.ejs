@@ -2,8 +2,8 @@
     <img class="pt-5" src="/images/user-icon-big.png" alt="">
     <h4 class="user-name pt-4"><%= user.first_name + ' ' + user.last_name %></h4>
     <div class="d-flex align-items-center justify-content-around pb-1 border-bottom" style="font-size: 14px">
-        <p>
-            Ваш баланс: 300
+        <p cl>
+            Ваш баланс: <span class="userBalance"><%= user.balance %></span> руб.
         </p>
         <p>
             <a href="#" class="nav-link text-white text-decoration-none d-flex align-items-center"

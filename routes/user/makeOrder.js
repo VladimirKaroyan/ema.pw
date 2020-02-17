@@ -4,22 +4,31 @@ let shopservice = require('../../services/database');
 
 /* GET home page. */
 router.post('/', isLoggedIn, function (req, res, next) {
-    // let orderData = JSON.parse(req.body.data);
-    // let orderTotalPrice = JSON.parse(req.body.totalPrice);
-    // let user_id = req.user.id;
-    // let createOrders = new Promise(function (resolve, reject) {
-    //     let orderCodes = [];
-    //     orderData.map(function (order) {
-    //         shopservice.createOrder(order, orderTotalPrice, user_id).then(function (data) {
-    //             if (data instanceof Error) throw res.render('error', {error: data});
-    //             orderCodes.push(data.insertId);
-    //         });
-    //     });
-    //     setTimeout(resolve, 1000, orderCodes);
-    // });
-    // createOrders.then(function (values) {
-    //     res.send(values);
-    // });
+    let orderData = JSON.parse(req.body.data);
+    let orderTotalPrice = JSON.parse(req.body.totalPrice);
+    let user = req.user;
+    let createOrders = new Promise(function (resolve, reject) {
+        if (user['balance'] < orderTotalPrice) reject({
+            error: true,
+            message: 'Недостаточно средств на балансе, пополните ваш счёт.',
+        });
+        else {
+            const userNewBalance = Number(user['balance']) - Number(orderTotalPrice);
+            console.log(userNewBalance);
+            shopservice.updateUserBalance(user['id'], userNewBalance).then(function () {
+                resolve({
+                    error: false,
+                    message: 'Покупка успешно совершена.',
+                    newBalance: userNewBalance
+                });
+            });
+        }
+    });
+    createOrders.then(function (values) {
+        res.send(values);
+    }, function (error) {
+        res.send(error);
+    });
 });
 
 function isLoggedIn(req, res, next) {

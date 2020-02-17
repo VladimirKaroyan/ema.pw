@@ -1,6 +1,6 @@
 $(document).ready(function () {
     MathUtils = {
-        roundToPrecision: function(subject, precision) {
+        roundToPrecision: function (subject, precision) {
             return +((+subject).toFixed(precision));
         }
     };
@@ -238,9 +238,17 @@ $(document).ready(function () {
                 totalPrice: shoppingCart.totalCart()
             },
             success: function (req, res) {
-                let ids = JSON.stringify(req);
-                let text = (cart.length > 1) ? 'Your Order IDs Are - ' + ids : 'Your Order ID Is - ' + ids;
-                $('.order-id').text(text);
+                let orderResponse = req;
+                if (orderResponse['error']) {
+                    $('.order-message').text(orderResponse['message']);
+                    $('.swal2-animate-success-icon').addClass('d-none');
+                    $('.swal2-animate-error-icon').removeClass('d-none');
+                } else {
+                    $('.order-message').text(orderResponse['message']);
+                    $('.userBalance').text(orderResponse['newBalance'])
+                    $('.swal2-animate-success-icon').removeClass('d-none');
+                    $('.swal2-animate-error-icon').addClass('d-none');
+                }
                 $('#cart').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();

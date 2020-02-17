@@ -18,6 +18,7 @@ con = mysql.createPool({
 con.on('error', function (err) {
     console.error(err);
 });
+
 // console.log(con);
 
 async function getConnection() {
@@ -141,6 +142,19 @@ async function updateProduct(code, name, line, desc, slowPrice, mediumPrice, fas
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
             connection.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', slowPrice = '${slowPrice}', mediumPrice = '${mediumPrice}', fastPrice = '${fastPrice}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function updateUserBalance(userId, newBalance) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`UPDATE users SET balance = ${newBalance} WHERE users.id = ${userId}`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -277,6 +291,7 @@ module.exports = {
     getUserOrders,
     createOrder,
     getAdminPanel,
+    updateUserBalance,
     deleteProduct,
     getProductLines,
     updateProduct,
