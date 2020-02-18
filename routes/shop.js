@@ -8,6 +8,7 @@ let lineList = {
     "Youtube": 4,
     "Twitter": 5,
     "Odnoklassniki": 7,
+    "Telegram": 6,
 };
 /* GET home page. */
 router.get('/', isLoggedIn, function (req, res, next) {

@@ -15,13 +15,15 @@ $(document).ready(function () {
         cart = [];
 
         // Constructor
-        function Item(name, service_type, task_type, count, speed, price) {
+        function Item(name, service_type, task_type, count, speed, price, bosslike_points, service_url) {
             this.name = name;
             this.service_type = service_type;
             this.task_type = task_type;
             this.count = count;
             this.speed = speed;
             this.price = price;
+            this.bosslike_points = bosslike_points;
+            this.service_url = service_url;
         }
 
         // Save cart
@@ -45,8 +47,8 @@ $(document).ready(function () {
         let obj = {};
 
         // Add to cart
-        obj.addItemToCart = function (name, service_type, task_type, count, speed, price) {
-            let item = new Item(name, service_type, task_type, count, speed, price);
+        obj.addItemToCart = function (name, service_type, task_type, count, speed, price, bosslike_points, service_url) {
+            let item = new Item(name, service_type, task_type, count, speed, price, bosslike_points, service_url);
             cart.push(item);
             saveCart();
         };
@@ -143,12 +145,14 @@ $(document).ready(function () {
     $('#addToCart').click(function (event) {
         event.preventDefault();
         let name = $('.tab-pane.active .product.active').find('.productDesc').text();
-        let service_type = $('.tab-pane.active .product.active').find('.productName').text();
-        let task_type = window.activeProductService;
+        let service_type = window.activeProductService;
+        let task_type = window.activeProduct;
         let count = window.activeProductCount;
         let speed = window.activeProductSpeed;
         let price = window.price;
-        shoppingCart.addItemToCart(name, service_type, task_type, count, speed, price);
+        let bosslike_points = price * 0.025;
+        let service_url = $('#profile_url').val();
+        shoppingCart.addItemToCart(name, service_type, task_type, count, speed, price, bosslike_points, service_url);
         $('#cart').modal('show');
         displayCart();
     });
@@ -240,12 +244,12 @@ $(document).ready(function () {
             success: function (req, res) {
                 let orderResponse = req;
                 if (orderResponse['error']) {
-                    $('.order-message').text(orderResponse['message']);
+                    $('.order-message').html(orderResponse['message']);
                     $('.swal2-animate-success-icon').addClass('d-none');
                     $('.swal2-animate-error-icon').removeClass('d-none');
                 } else {
                     $('.order-message').text(orderResponse['message']);
-                    $('.userBalance').text(orderResponse['newBalance'])
+                    $('.userBalance').text(orderResponse['newBalance']);
                     $('.swal2-animate-success-icon').removeClass('d-none');
                     $('.swal2-animate-error-icon').addClass('d-none');
                 }
