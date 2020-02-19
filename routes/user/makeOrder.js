@@ -10,6 +10,7 @@ function sendRequest(postData) {
             url: 'https://api-public.bosslike.ru/v1/tasks/create/',
             method: 'POST',
             headers: {
+                "Accept": "application/json",
                 'X-Api-Key': '8fbbb71593b1a9101303e00f740c9c2f24aacae7cdfc9111',
                 'X-Api-Signature': 'Z9mToeqY+eIFL2fEnV1uoObVrSoHGISCcbfJZZhdbvY=',
                 'X-Api-Timestamp': new Date().getTime(),
@@ -18,8 +19,7 @@ function sendRequest(postData) {
             json: true,
         };
         request(options, function (error, response) {
-            // console.log(response.body.errors);
-            if (response.body.errors.length) {
+            if (response.body.errors && response.body.errors.length) {
                 let messages = response.body.errors.filter(function (error) {
                     return (error['field'] !== "owner_price" && error['field'] !== "count")
                 }).map(function (message) {
@@ -45,14 +45,12 @@ router.post('/', isLoggedIn, function (req, res, next) {
             const userNewBalance = parseFloat(parseFloat(user['balance']) - parseFloat(orderTotalPrice)).toFixed(2);
             shopservice.updateUserBalance(user['id'], userNewBalance).then(function () {
                 orderData.map((order) => {
-                    console.log(parseInt(order['price']));
                     let data = {
                         'service_type': order['service_type'],
                         'task_type': order['task_type'],
                         'service_url': order['service_url'],
-                        'price': order['bosslike_points'],
-                        'count': order['count'],
-                        "owner_price": parseInt(order['price'])
+                        'price': 2,
+                        'count': order['count']
                     };
                     sendRequest(data).then(
                         (sendDataToApi) => {
