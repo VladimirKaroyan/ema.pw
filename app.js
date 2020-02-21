@@ -14,6 +14,8 @@ let blogPostRouter = require('./routes/blogpost');
 let shopRouter = require('./routes/shop');
 let helpRouter = require('./routes/user/help');
 let settingsRouter = require('./routes/user/settings');
+let paymentSuccessRouter = require('./routes/payments/payment-success');
+let paymentFailRouter = require('./routes/payments/payment-fail');
 let loginRouter = require('./routes/user/login');
 let bodyParser = require('body-parser');
 let morgan = require('morgan');
@@ -67,6 +69,8 @@ app.use('/make-order', ordersRouter);
 app.use('/myorders', UserOrdersRouter);
 app.use('/admin-panel', adminPanel);
 app.use('/download-order-report', downloadOrdersReport);
+app.use('/payment-success', paymentSuccessRouter);
+app.use('/payment-fail', paymentFailRouter);
 app.use('/logout', function (req, res) {
     req.logout();
     res.redirect('/');

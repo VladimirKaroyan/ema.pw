@@ -3,12 +3,13 @@ let con;
 
 console.log('Connecting to DB');
 con = mysql.createPool({
-    connectionLimit: 20,
-    host: "remotemysql.com",
+    queueLimit: 0, // unlimited queueing
+    connectionLimit: 0, // unlimited connections
+    host: "sql2.freemysqlhosting.net",
     port: "3306",
-    user: "i5t70PMWgi",
-    password: "LRWwmlebWZ",
-    database: "i5t70PMWgi"
+    user: "sql2324121",
+    password: "eA3!tT5%",
+    database: "sql2324121"
     // host: "localhost",
     // port: "3306",
     // user: "root",
@@ -162,6 +163,18 @@ async function updateUserBalance(userId, newBalance) {
         });
     });
 }
+async function addToUserBalance(userId, addValue) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) reject(err);
+            connection.query(`UPDATE users SET balance = balance + ${addValue} WHERE users.id = ${userId} `, function (err, rows, fields) {
+                connection.release();
+                if (err) reject(err);
+                resolve(rows);
+            });
+        });
+    });
+}
 
 async function addProduct(code, name, line, desc, slowPrice, mediumPrice, fastPrice, preview) {
     return promise = new Promise(async function (resolve, reject) {
@@ -294,6 +307,7 @@ module.exports = {
     updateUserBalance,
     deleteProduct,
     getProductLines,
+    addToUserBalance,
     updateProduct,
     addProduct,
     getAllOrders
