@@ -150,7 +150,7 @@ $(document).ready(function () {
         let count = window.activeProductCount;
         let speed = window.activeProductSpeed;
         let price = window.price;
-        let bosslike_points = price * 0.025;
+        let bosslike_points = window.bosslikepoints;
         let service_url = $('#profile_url').val();
         shoppingCart.addItemToCart(name, service_type, task_type, count, speed, price, bosslike_points, service_url);
         $('#cart').modal('show');

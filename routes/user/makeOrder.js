@@ -43,45 +43,58 @@ router.post('/', isLoggedIn, function (req, res, next) {
         });
         else {
             const userNewBalance = parseFloat(parseFloat(user['balance']) - parseFloat(orderTotalPrice)).toFixed(2);
-            shopservice.updateUserBalance(user['id'], userNewBalance).then(function () {
-                orderData.map((order) => {
-                    let data = {
-                        'service_type': order['service_type'],
-                        'task_type': order['task_type'],
-                        'service_url': order['service_url'],
-                        'price': 2,
-                        'count': order['count']
-                    };
-                    sendRequest(data).then(
-                        (sendDataToApi) => {
+            let promises = orderData.map((order) => {
+                let data = {
+                    'service_type': order['service_type'],
+                    'task_type': order['task_type'],
+                    'service_url': order['service_url'],
+                    'price': order['bosslike_points'],
+                    'count': order['count']
+                };
+                return sendRequest(data).then(
+                    (sendDataToApi) => {
+                        shopservice.updateUserBalance(user['id'], order['price']).then(function (rows) {
                             resolve({
                                 error: false,
                                 message: 'Покупка успешно совершена.',
                                 newBalance: userNewBalance
                             });
-                        },
-                        (error) => {
+                        }, function (err) {
                             reject({
                                 error: true,
-                                message: `Произошла ошибка при выполнении заказа.<br><br>${error.messages.join('<br><br>')}<br><br>Попробуйте ещё раз. `,
+                                message: 'Произошла ошибка при выполнении заказа. Попробуйте ещё раз.',
                             });
-                        },
-                    );
-                });
-            }, function () {
-                reject({
-                    error: true,
-                    message: 'Произошла ошибка при выполнении заказа. Попробуйте ещё раз.',
-                });
+                        });
+                    },
+                    (error) => {
+                        reject({
+                            error: true,
+                            message: `Произошла ошибка при выполнении заказа.<br><br>${error.messages.join('<br><br>')}<br><br>Попробуйте ещё раз. `,
+                        });
+                    },
+                );
             });
+            Promise.all(promises).then(
+                () => {
+                    resolve({
+                        error: false,
+                        message: 'Покупка успешно совершена.',
+                        newBalance: userNewBalance
+                    });
+                },
+                (error) => {
+                    reject(error);
+                }
+            )
         }
-    });
+    })
     createOrders.then(function (values) {
         res.send(values);
     }, function (error) {
         res.send(error);
     });
-});
+})
+;
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

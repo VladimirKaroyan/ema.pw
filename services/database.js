@@ -138,11 +138,11 @@ async function deleteProduct(productCode) {
     });
 }
 
-async function updateProduct(code, name, line, desc, slowPrice, mediumPrice, fastPrice, preview) {
+async function updateProduct(code, name, line, vendor, desc, slowPrice, mediumPrice, fastPrice, bosslikepoints_slow, bosslikepoints_medium, bosslikepoints_fast, preview) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', slowPrice = '${slowPrice}', mediumPrice = '${mediumPrice}', fastPrice = '${fastPrice}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
+            connection.query(`UPDATE products SET productName = '${name}', productDescription = '${desc}', productLine = '${line}', productVendor = '${vendor}', slowPrice = '${slowPrice}', mediumPrice = '${mediumPrice}', fastPrice = '${fastPrice}', bosslikepoints_slow = '${bosslikepoints_slow}',  bosslikepoints_medium = '${bosslikepoints_medium}',  bosslikepoints_fast = '${bosslikepoints_fast}', previewImage = '${preview}' WHERE products.productCode = '${code}'`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -151,18 +151,20 @@ async function updateProduct(code, name, line, desc, slowPrice, mediumPrice, fas
     });
 }
 
-async function updateUserBalance(userId, newBalance) {
+async function updateUserBalance(userId, value) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
-            if (err) resolve(err);
-            connection.query(`UPDATE users SET balance = ${newBalance} WHERE users.id = ${userId}`, function (err, rows, fields) {
+            if (err) reject(err);
+            connection.query(`UPDATE users SET balance = balance - ${value} WHERE users.id = ${userId} `, function (err, rows, fields) {
                 connection.release();
-                if (err) resolve(err);
+                if (err) reject(err);
+                console.log('ddddd');
                 resolve(rows);
             });
         });
     });
 }
+
 async function addToUserBalance(userId, addValue) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
@@ -176,11 +178,11 @@ async function addToUserBalance(userId, addValue) {
     });
 }
 
-async function addProduct(code, name, line, desc, slowPrice, mediumPrice, fastPrice, preview) {
+async function addProduct(code, name, line, vendor, desc, slowPrice, mediumPrice, fastPrice, bosslikepoints_slow, bosslikepoints_medium, bosslikepoints_fast, preview) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, slowPrice, mediumPrice, fastPrice, previewImage) VALUES ('${code}', '${name}', '${line}', '', '${desc}', '${slowPrice}', '${mediumPrice}', '${fastPrice}', '${preview}')`, function (err, rows, fields) {
+            connection.query(`INSERT INTO products(productCode, productName, productLine, productVendor, productDescription, slowPrice, mediumPrice, fastPrice, bosslikepoints_slow, bosslikepoints_medium, bosslikepoints_fast, previewImage) VALUES ('${code}', '${name}', '${line}', '${vendor}', '${desc}', '${slowPrice}', '${mediumPrice}', '${fastPrice}', '${bosslikepoints_slow}', '${bosslikepoints_medium}', '${bosslikepoints_fast}', '${preview}')`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
