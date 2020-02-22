@@ -47,6 +47,32 @@ async function getAllProducts() {
     });
 }
 
+async function getSiteOptions() {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`SELECT * FROM site_options`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
+async function updateSiteOption(name, value) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`UPDATE site_options SET option_value = '${value}' WHERE site_options.option_name = '${name}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) resolve(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
 async function getAllBlogPosts() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
@@ -312,5 +338,7 @@ module.exports = {
     addToUserBalance,
     updateProduct,
     addProduct,
-    getAllOrders
+    getAllOrders,
+    getSiteOptions,
+    updateSiteOption
 };

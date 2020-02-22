@@ -11,7 +11,16 @@ let lineList = {
     "Telegram": 6,
 };
 /* GET home page. */
-router.get('/', isLoggedIn, function (req, res, next) {
+router.get('/', isLoggedIn, async function (req, res, next) {
+    let siteOptions = await shopservice.getSiteOptions().then((data) => {
+        let sortData = {};
+        data.map((row) => {
+            let name = row['option_name'];
+            let value = row['option_value'];
+            sortData[name] = value;
+        });
+        return sortData;
+    });
     shopservice.getAllProducts().then(function (data) {
         if (data instanceof Error) throw res.render('error', {error: data});
         let sortedData = {};
@@ -23,7 +32,9 @@ router.get('/', isLoggedIn, function (req, res, next) {
         res.render('shop', {
             title: 'Express',
             sortData: sortedData,
-            user: req.user
+            user: req.user,
+            site_options: siteOptions,
+            site_options: siteOptions
         });
     });
 });

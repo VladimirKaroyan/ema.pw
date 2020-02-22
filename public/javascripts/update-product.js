@@ -31,5 +31,9 @@ $(document).ready(function () {
         modal.find('#post-content').prop('value', postContent);
         modal.find('#post-category').prop('value', postCategory);
         modal.find('#post-prew-image').prop('value', prodPreviewImage);
+    });
+
+    $('.site_option').change(function () {
+        $(this).closest('form').submit();
     })
 });

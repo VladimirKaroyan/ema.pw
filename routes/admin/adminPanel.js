@@ -3,7 +3,16 @@ let router = express.Router();
 let shopservice = require('../../services/database');
 
 /* GET home page. */
-router.get('/', isLoggedIn, function (req, res, next) {
+router.get('/', isLoggedIn, async function (req, res, next) {
+    let siteOptions = await shopservice.getSiteOptions().then((data) => {
+        let sortData = {};
+        data.map((row) => {
+            let name = row['option_name'];
+            let value = row['option_value'];
+            sortData[name] = value;
+        });
+        return sortData;
+    });
     shopservice.getAdminPanel().then(function (data) {
         if (data instanceof Error) throw res.render('error', {error: data});
         res.render('admin/admin-panel', {
@@ -11,6 +20,7 @@ router.get('/', isLoggedIn, function (req, res, next) {
             message: req.flash('successMessage'),
             data: data['orders'],
             user: req.user,
+            site_options: siteOptions,
             products: data['products'],
             productLines: data['productLines'],
             orders: data['orders'],

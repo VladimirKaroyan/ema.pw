@@ -89,6 +89,19 @@
                                 </div>
                             </div>
                         </div>
+                        <form action="/update-site-option" method="post">
+                            <input type="hidden" name="option_name" value="font_size">
+                            <div class="form-group w-25 d-flex align-items-baseline flex-wrap">
+                                <label for="site-option-font-size" class="col-form-label pr-3">Font Sizes:</label>
+                                <select class="form-control w-25 site_option" id="site-option-font-size"
+                                        name="option_value">
+                                    <% for (let i = 1; i <= 40; i++) { %>
+                                        <option value="<%= i %>" <%= (parseInt(site_options['font_size']) == i) ? 'selected' : '' %>><%= i %></option>
+                                    <% } %>
+                                </select>
+                                <span class="pl-1">px</span>
+                            </div>
+                        </form>
                     </div>
                     <div class="row">
                         <div class="container">
