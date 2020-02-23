@@ -185,7 +185,7 @@ ul#shop-product-tabs li a {
     /*height: 100%;*/
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 ul#shop-product-tabs li a i {
@@ -455,7 +455,7 @@ i.fab.fa-facebook {
 }
 
 @media screen and (max-width: 472px) {
-    li.nav-item {
+    ul#shop-product-tabs li.nav-item {
         width: 50%;
         text-align: left;
     }

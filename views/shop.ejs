@@ -81,7 +81,7 @@
                                             <% sortData[key].forEach(function(product, index){ %>
                                                 <li class="carousel-item h-100 <%= (index === 0) ? "active" : "" %> nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 pr-0 text-center cursor-pointer">
                                                     <a class="nav-link border-0 h-100 bg-transparent p-0 product <%= (index === 0) ? "active" : "" %>"
-                                                       href="#"
+                                                       href="#<%= key.replace(/ /g, '') %>#<%= product.productName.replace(/ /g, '') %>"
                                                        data-toggle="tab"
                                                        role="tab">
                                                         <div class="card-body m-0 h-100 bg-white border-30 shadow hover-6c">
