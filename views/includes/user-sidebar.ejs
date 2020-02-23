@@ -1,14 +1,16 @@
 <div class="border-right text-center position-relative" id="sidebar-wrapper">
     <img class="pt-5" src="/images/user-icon-big.png" alt="">
     <h4 class="user-name pt-4"><%= user.first_name + ' ' + user.last_name %></h4>
-    <div class="d-flex align-items-baseline flex-wrap justify-content-around pb-1 border-bottom" style="font-size: 14px">
-        <p class="d-flex">
+    <div class="d-flex align-items-baseline flex-wrap flex-column justify-content-center pb-1 border-bottom"
+         style="font-size: 14px">
+        <p class="ml-auto mr-auto">
             <span class="pr-1">Ваш баланс:</span>
             <span><span class="userBalance"><%= user.balance %></span> руб.</span>
         </p>
-        <p>
+        <p class="ml-auto mr-auto mb-2">
             <a href="#" class="nav-link text-white text-decoration-none d-flex align-items-center"
-               style="padding: 0!important; font-size: 14px;" data-toggle="modal" data-target="#add_balance">
+               style="font-size: 14px; border: 2px solid #57B894; border-radius: 30px; padding: 5px 10px!important; margin: 0 auto;"
+               data-toggle="modal" data-target="#add_balance">
                 Пополнить <img class="pl-1" src="/images/wallet-icon.png" alt="">
             </a>
         </p>
