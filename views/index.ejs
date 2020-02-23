@@ -61,7 +61,7 @@
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
-                                    <a class="carousel-control-prev position-relative"
+                                    <a class="carousel-control-prev position-relative <%= sortData[key].length <= 3 ? 'd-none' : ''%>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
                                         <i class="fas fa-chevron-left"></i>
@@ -69,7 +69,7 @@
                                     </a>
                                     <div class="carousel-inner row mx-auto" role="listbox">
                                         <% sortData[key].forEach(function(product, index){ %>
-                                            <div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
+                                            <div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3" style="height: 300px;">
                                                 <div class="card h-100 border-0 bg-transparent">
                                                     <a class="text-center"
                                                        href="shop#<%= key %>">
@@ -81,7 +81,7 @@
                                                         <h4 class="card-title">
                                                             <a href="shop#<%= key %>"><%= product.productName %></a>
                                                         </h4>
-                                                        <p class="card-text"><%= product.productDescription %></p>
+                                                        <!--<p class="card-text"><%= product.productDescription %></p>-->
                                                         <h5>От <%= product.slowPrice %> руб.</h5>
                                                         <a class="nav-link" href="/shop#<%= key %>">
                                                             Заказать
@@ -91,7 +91,7 @@
                                             </div>
                                         <% }) %>
                                     </div>
-                                    <a class="carousel-control-next text-faded position-relative"
+                                    <a class="carousel-control-next text-faded position-relative <%= sortData[key].length <= 3 ? 'd-none' : ''%>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
                                         <i class="fas fa-chevron-right"></i>
@@ -130,45 +130,78 @@
                         Отзывы
                     </h1>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade" id="1" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade" id="review-1" role="tabpanel" aria-labelledby="home-tab">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                     <span style="color: #656565;" class="mt-4 font-weight-bolder">
-                                        Анастасия Дашкевич
-                                    </span>
-                                <span style="color: #B8B8B8;" class="mt-4">
-                                        23.04.19
+                                        Коля Фомин
                                     </span>
                             </div>
                             <p style="color: #656565;" class="mt-4 text-justify">
-                                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem
-                                Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то
-                                время некий
+                                Для участвия во многих ICO требуются раскрученные аккаунты. Чем больше у меня
+                                подписчиков- тем больше моя прибыль.
                             </p>
                         </div>
-                        <div class="tab-pane fade" id="review-2" role="tabpanel" aria-labelledby="profile-tab">...
+                        <div class="tab-pane fade" id="review-2" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <span style="color: #656565;" class="mt-4 font-weight-bolder">
+                                        Лариса Смольная
+                                    </span>
+                            </div>
+                            <p style="color: #656565;" class="mt-4 text-justify">
+                                Я очень довольна лайками и подписчиками с этого сервиса. Благодаря им мои блоги
+                                постоянно развиваются и вместе с ними растет мой профит.
+                            </p>
                         </div>
-                        <div class="tab-pane fade" id="review-3" role="tabpanel" aria-labelledby="contact-tab">...
+                        <div class="tab-pane fade" id="review-3" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <span style="color: #656565;"
+                                          class="mt-4 font-weight-bolder">
+                                        Михаил Павлычев
+                                    </span>
+                            </div>
+                            <p style="color: #656565;" class="mt-4 text-justify">
+                                В моем бизнесе главное это репутация. Этот сервис отлично поднимает статусность
+                                страниц
+                                моей компании.
+                            </p>
                         </div>
-                        <div class="tab-pane fade" id="review-4" role="tabpanel" aria-labelledby="contact-tab">...
+                        <div class="tab-pane fade" id="review-4" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <span style="color: #656565;"
+                                          class="mt-4 font-weight-bolder">
+                                        Витя Граур
+                                    </span>
+                            </div>
+                            <p style="color: #656565;" class="mt-4 text-justify">
+                                Этот сервис меня здорово выручает в моей работе, когда необходимо поднять сайт в
+                                ТОП, я
+                                просто заказываю хосты.
+                            </p>
                         </div>
                         <div class="tab-pane fade show active" id="review-5" role="tabpanel"
                              aria-labelledby="contact-tab">
                             <div class="d-flex flex-row justify-content-between align-items-center">
                                     <span style="color: #656565;"
                                           class="mt-4 font-weight-bolder">
-                                        Анастасия Дашкевич
-                                    </span>
-                                <span style="color: #B8B8B8;" class="mt-4">
-                                        23.04.19
+                                        Марина Рязанова
                                     </span>
                             </div>
                             <p style="color: #656565;" class="mt-4 text-justify">
-                                Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem
-                                Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то
-                                время некий
+                                У меня часто возникает необходимость в старте моих статей. SMMLike мне сильно в этом
+                                помогает.
                             </p>
                         </div>
-                        <div class="tab-pane fade" id="review-6" role="tabpanel" aria-labelledby="contact-tab">...
+                        <div class="tab-pane fade" id="review-6" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                    <span style="color: #656565;"
+                                          class="mt-4 font-weight-bolder">
+                                        Эдуард Влогов
+                                    </span>
+                            </div>
+                            <p style="color: #656565;" class="mt-4 text-justify">
+                                Эта компания помогает мне поднимать целую сеть блогов. Я доволен их ценами и качеством
+                                предоставляемых услуг.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -178,37 +211,37 @@
                             <a class="nav-link btn btn-order mt-4" id="home-tab" data-toggle="tab"
                                href="#review-1"
                                role="tab"
-                               aria-selected="true">Максим ковач</a>
+                               aria-selected="true">Коля Фомин</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link btn btn-order mt-4" id="profile-tab" data-toggle="tab"
                                href="#review-2"
                                role="tab"
-                               aria-selected="false">Максим ковач</a>
+                               aria-selected="false">Лариса Смольная</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link btn btn-order mt-4" id="contact-tab" data-toggle="tab"
                                href="#review-3"
                                role="tab"
-                               aria-selected="false">Максим ковач</a>
+                               aria-selected="false">Михаил Павлычев</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link btn btn-order mt-4" id="home-tab" data-toggle="tab"
                                href="#review-4"
                                role="tab"
-                               aria-selected="true">Максим ковач</a>
+                               aria-selected="true">Витя Граур</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link active btn btn-order mt-4" id="profile-tab" data-toggle="tab"
                                href="#review-5"
                                role="tab"
-                               aria-selected="false">Анастасия Дашкевич</a>
+                               aria-selected="false">Марина Рязанова</a>
                         </li>
                         <li class="nav-item col-md-6">
                             <a class="nav-link btn btn-order mt-4" id="contact-tab" data-toggle="tab"
                                href="#review-6"
                                role="tab"
-                               aria-selected="false">Максим ковач</a>
+                               aria-selected="false">Эдуард Влогов</a>
                         </li>
                     </ul>
                 </div>
@@ -225,61 +258,68 @@
                         <div class="carousel-inner row w-100 mx-auto" role="listbox">
                             <div class="carousel-item active col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <img class="card-img-top"
-                                         src="/images/twitter-icon-big.png"
-                                         alt="">
+                                    <a href="/blog-post/2" class="w-100 bg-white text-center">
+                                        <img class="card-img-top" style="max-width: 220px;" src="https://smmlike.ru/wp-content/uploads/2018/03/twitter-clipart-tranparent-17.png" alt="">
+                                    </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            Подготовка и раскрутка твиттер
+                                            Подготовка и раскрутка Twitter для работы в рекламных кампаниях
                                         </h4>
-                                        <p class="card-text">Lorem Ipsum - это текст-"рыба", часто используемый в печати
-                                            и
-                                            вэб-дизайне. Lorem Ipsum </p>
+                                        <p class="card-text">
+                                            В стремительно развивающейся цифровой экономике с каждым годом появляется
+                                            все больше интернет проектов и инструментов, с ними связанных. В связи со
+                                            становлением интернет бизнеса...</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <img class="card-img-top"
-                                         src="/images/twitter-icon-big.png"
-                                         alt="">
+                                    <a href="/blog-post/3">
+                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/Depositphotos_65177259_m-2015.jpg" alt="">
+                                    </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            Подготовка и раскрутка твиттер
+                                            Просмотры на Youtube
                                         </h4>
-                                        <p class="card-text">Lorem Ipsum - это текст-"рыба", часто используемый в печати
-                                            и
-                                            вэб-дизайне. Lorem Ipsum </p>
+                                        <p class="card-text">
+                                            Любой начинающий ютубер сталкивается с проблемой дальнейшего развития своего
+                                            канала и увеличением просмотров. Вы завоевали преданную аудиторию, и ваш
+                                            канал набрал определенное количество...
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <img class="card-img-top"
-                                         src="/images/twitter-icon-big.png"
-                                         alt="">
+                                    <a href="/blog-post/5">
+                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/AAEAAQAAAAAAAAGjAAAAJDM5ODRlMzFlLTc3MTctNDBmNi05ZWVjLTVlZmQzZmY4ZTlkMA.jpg" alt="">
+                                    </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            Подготовка и раскрутка твиттер
+                                            Безопасная накрутка подписчиков в Instagram
                                         </h4>
-                                        <p class="card-text">Lorem Ipsum - это текст-"рыба", часто используемый в печати
-                                            и
-                                            вэб-дизайне. Lorem Ipsum </p>
+                                        <p class="card-text">
+                                            Как можно накрутить подписчиков в Instagram?
+                                            По поводу развития аккаунта в Instagram и увеличения его подписчиков
+                                            существует множество мнений, который придерживаются крайних позиций...
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <img class="card-img-top"
-                                         src="/images/twitter-icon-big.png"
-                                         alt="">
+                                    <a href="/blog-post/4">
+                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/social-networks.jpg" alt="">
+                                    </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            Подготовка и раскрутка твиттер
+                                            Ретвиты в Twitter бесплатно и платно
                                         </h4>
-                                        <p class="card-text">Lorem Ipsum - это текст-"рыба", часто используемый в печати
-                                            и
-                                            вэб-дизайне. Lorem Ipsum </p>
+                                        <p class="card-text">
+                                            В современном мире существует много разных социальных сетей, в их числе и
+                                            Twitter. Twitter – это микроблог, где люди делятся и обмениваются разными
+                                            новостями по всему миру...
+                                        </p>
                                     </div>
                                 </div>
                             </div>

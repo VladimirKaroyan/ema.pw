@@ -31,7 +31,7 @@
                     </li>
                 <% } %>
             </ul>
-            <div class="tab-content w-100" id="shop-content">
+            <div class="tab-content w-100 pb-5" id="shop-content">
                 <% for (let key in sortData) { %>
                     <div class="col-md-12 p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
                          id="<%= key.replace(/ /g, '') %>" role="tabpanel"
@@ -52,9 +52,9 @@
                                                     <%= post.title %>
                                                 </h4>
                                             </a>
-                                            <p class="card-text">
-                                                <%= post.content.substring(0, 74) %>...
-                                            </p>
+                                            <!--<p class="card-text">-->
+                                                <!--<%= post.content.substring(0, 74) %>...-->
+                                            <!--</p>-->
                                         </div>
                                     </div>
                                 </div>

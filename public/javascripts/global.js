@@ -1,4 +1,27 @@
 $(document).ready(function () {
+    $('.carousel').on('slide.bs.carousel', function (e) {
+        /*
+            CC 2.0 License Iatek LLC 2018 - Attribution required
+        */
+        var $e = $(e.relatedTarget);
+        var idx = $e.index();
+        var itemsPerSlide = 3;
+        var totalItems = $(this).find('.carousel-item').length;
+        var carInner = $(this).find('.carousel-inner');
+
+        if (idx >= totalItems-(itemsPerSlide-1)) {
+            var it = itemsPerSlide - (totalItems - idx);
+            for (var i=0; i<it; i++) {
+                // append slides to end
+                if (e.direction=="left") {
+                    $(this).find('.carousel-item').eq(i).appendTo(carInner);
+                }
+                else {
+                    $(this).find('.carousel-item').eq(0).appendTo(carInner);
+                }
+            }
+        }
+    });
     MathUtils = {
         roundToPrecision: function (subject, precision) {
             return +((+subject).toFixed(precision));

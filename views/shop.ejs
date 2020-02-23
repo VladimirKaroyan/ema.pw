@@ -60,7 +60,7 @@
                                     <div class="carousel-inner row mx-auto" role="listbox">
                                         <ul class="nav nav-tabs border-0 col-md-12 p-0" role="tablist">
                                             <% sortData[key].forEach(function(product, index){ %>
-                                                <li class="carousel-item h-100 <%= (index === 0) ? "active" : "" %> nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 text-center cursor-pointer">
+                                                <li class="carousel-item h-100 <%= (index === 0) ? "active" : "" %> nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 pr-0 text-center cursor-pointer">
                                                     <a class="nav-link border-0 h-100 bg-transparent p-0 product <%= (index === 0) ? "active" : "" %>"
                                                        href="#"
                                                        data-toggle="tab"
@@ -115,12 +115,7 @@
                                    min="0" max="5000"
                                    id="count" oninput="$('#countText').val(this.value)">
                         </div>
-                        <a class="btn btn-primary p-t-2 pb-2" data-toggle="collapse" href="#prodcountcollapse"
-                           role="button"
-                           aria-expanded="false" aria-controls="prodcountcollapse">
-                            Ввести число в ручную
-                        </a>
-                        <div id="prodcountcollapse" class="collapse pt-2">
+                        <div class="pt-2">
                             <div class="form-group d-flex align-items-baseline">
                                 <label for="countText" class="pr-2">Ввести число в ручную: </label>
                                 <input type="number" class="form-control productCountText w-25" name="productCount"
@@ -135,9 +130,9 @@
                             <input type="range" class="custom-range productSpeed w-100" min="0" max="2" id="speed">
                         </div>
                         <div class="input-hints">
-                            <span>Среднее</span>
-                            <span>Хорошее</span>
-                            <span>Элит</span>
+                            <span>Медленно</span>
+                            <span>Умеренно</span>
+                            <span>Быстро</span>
                         </div>
                     </div>
                 </div>
