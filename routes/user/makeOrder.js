@@ -2,6 +2,15 @@ let express = require('express');
 let router = express.Router();
 let shopservice = require('../../services/database');
 let request = require('request');
+let lineList = [
+    "Vkontakte",
+    "Facebook",
+    "Instagram",
+    "Youtube",
+    "Twitter",
+    "Odnoklassniki",
+    "Telegram",
+];
 
 function sendRequest(postData) {
     return new Promise(function (resolve, reject) {
@@ -51,14 +60,24 @@ router.post('/', isLoggedIn, function (req, res, next) {
                     'price': order['bosslike_points'],
                     'count': order['count']
                 };
+                let orderName = order['name'] + " x" + order['count'];
                 return sendRequest(data).then(
                     (sendDataToApi) => {
                         shopservice.updateUserBalance(user['id'], order['price']).then(function (rows) {
-                            resolve({
-                                error: false,
-                                message: 'Покупка успешно совершена.',
-                                newBalance: userNewBalance
-                            });
+                            shopservice.createOrder(user['id'], orderName, order['count'], orderTotalPrice, lineList[order['service_type']-1]).then(
+                                () => {
+                                    resolve({
+                                        error: false,
+                                        message: 'Покупка успешно совершена.',
+                                        newBalance: userNewBalance
+                                    });
+                                },
+                                () => {
+                                    reject({
+                                        error: true,
+                                        message: 'Произошла ошибка при выполнении заказа. Попробуйте ещё раз.',
+                                    });
+                                })
                         }, function (err) {
                             reject({
                                 error: true,

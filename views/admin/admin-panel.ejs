@@ -51,7 +51,7 @@
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
-                                                <h2><%= lastWeekOrders.length %></h2>
+                                                <h2><%= lastWeekOrders.length || 0 %></h2>
                                                 <span>Orders This Week</span>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                                 <i class="zmdi zmdi-card"></i>
                                             </div>
                                             <div class="text">
-                                                <h2><%= earnings %>$</h2>
+                                                <h2><%= earnings %> руб</h2>
                                                 <span>Total Earnings</span>
                                             </div>
                                         </div>
@@ -136,29 +136,25 @@
                                                class="table table-responsive-md">
                                             <thead class="thead-dark">
                                             <tr>
-                                                <!--<th>#</th>-->
-                                                <th>Order ID</th>
-                                                <th>User ID</th>
-                                                <th>Order Date</th>
-                                                <th>Product Name</th>
-                                                <th>Quantity</th>
-                                                <th>Product</th>
-                                                <th>Total Price</th>
+                                                <th>Номер Заказа</th>
+                                                <th>Номер пользоваетля</th>
+                                                <th>Дата Заказа</th>
+                                                <th>Продукт</th>
+                                                <th>Кол-во</th>
+                                                <th>Конечная цена</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <% orders.forEach(function(order, index){ %>
                                                 <tr>
-                                                    <!--<td><%= index %></td>-->
-                                                    <td><%= order.orderId %></td>
+                                                    <td><%= order.id %></td>
                                                     <td><%= order.user_id %></td>
-                                                    <td><%= new Date(new Date(order.order_date) + ' UTC').toLocaleString() %></td>
-                                                    <td><%= order.productName %></td>
-                                                    <td><%= order.productQty %></td>
+                                                    <td><%= new Date(new Date(order.orderDate) + ' UTC').toLocaleString() %></td>
                                                     <td>
-                                                        <a href="/product/<%= order.productCode %>"><%= order.productCode %></a>
+                                                        <a href="/shop#<%= order.orderCategory %>"><%= order.orderName %></a>
                                                     </td>
-                                                    <td><%= order.productTotalPrice %>$</td>
+                                                    <td><%= order.orderQty %></td>
+                                                    <td><%= order.orderTotalPrice %> руб</td>
                                                 </tr>
                                             <% }) %>
                                             </tbody>
@@ -429,7 +425,8 @@
                     </div>
                     <div class="form-group">
                         <label for="addprod-medium-balls" class="col-form-label">BossLike Points (Medium Speed):</label>
-                        <input type="number" class="form-control" id="addprod-medium-balls" name="addProdbosspointssmedium"
+                        <input type="number" class="form-control" id="addprod-medium-balls"
+                               name="addProdbosspointssmedium"
                                step="0.01"
                                min="0" required>
                     </div>

@@ -5,11 +5,16 @@ console.log('Connecting to DB');
 con = mysql.createPool({
     queueLimit: 0, // unlimited queueing
     connectionLimit: 0, // unlimited connections
-    host: "sql2.freemysqlhosting.net",
+    host: "remotemysql.com",
     port: "3306",
-    user: "sql2324121",
-    password: "eA3!tT5%",
-    database: "sql2324121"
+    user: "i5t70PMWgi",
+    password: "LRWwmlebWZ",
+    database: "i5t70PMWgi",
+    // host: "sql2.freemysqlhosting.net",
+    // port: "3306",
+    // user: "sql2324121",
+    // password: "eA3!tT5%",
+    // database: "sql2324121"
     // host: "localhost",
     // port: "3306",
     // user: "root",
@@ -260,7 +265,7 @@ async function getProductQtySum() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`SELECT SUM(productQty) as val FROM orders`, function (err, rows, fields) {
+            connection.query(`SELECT SUM(orderQty) as val FROM orders`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -273,7 +278,7 @@ async function getEarnings() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`SELECT SUM(productTotalPrice) as val FROM orders`, function (err, rows, fields) {
+            connection.query(`SELECT SUM(orderTotalPrice) as val FROM orders`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -286,7 +291,7 @@ async function getOrdersWithInterval(interval) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`select * from orders where order_date >= DATE_SUB(CURDATE(), INTERVAL ${interval} DAY)`, function (err, rows, fields) {
+            connection.query(`select * from orders where orderDate >= DATE_SUB(CURDATE(), INTERVAL ${interval} DAY)`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);
@@ -316,21 +321,22 @@ async function getAdminPanel() {
     });
 }
 
-async function createOrder(order, orderTotalPrice, user_id) {
+async function createOrder(userId, name, qty, totalPrice, category) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
-            if (err) resolve(err);
-            connection.query(`INSERT INTO orders (${`orderId`}, ${`productName`}, ${`productCode`}, ${`productQty`}, ${`productTotalPrice`}, ${`user_id`}) VALUES (null ,'${order.name}','${order.productcode}','${order.count}','${orderTotalPrice}', '${user_id}')`, function (err, rows, fields) {
-                connection.release();
                 if (err) resolve(err);
-                resolve(rows);
-            });
-            // connection.query(`UPDATE products SET quantityInStock = ${`quantityInStock`}-${order.count} WHERE products.productCode = '${order.productcode}'`, function (err, rows, fields) {
-            //     connection.release();
-            //     if (err) resolve(err);
-            //     resolve(rows);
-            // });
-        });
+                connection.query(`INSERT INTO orders (id, user_id, orderName, orderQty, orderTotalPrice, orderCategory, orderDate) VALUES (NULL, '${userId}', '${name}', '${qty}', '${totalPrice}', '${category}', CURRENT_TIMESTAMP)`, function (err, rows, fields) {
+                    connection.release();
+                    if (err) resolve(err);
+                    resolve(rows);
+                });
+                // connection.query(`UPDATE products SET quantityInStock = ${`quantityInStock`}-${order.count} WHERE products.productCode = '${order.productcode}'`, function (err, rows, fields) {
+                //     connection.release();
+                //     if (err) resolve(err);
+                //     resolve(rows);
+                // });
+            }
+        );
     });
 }
 

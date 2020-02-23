@@ -24,7 +24,7 @@
             <table style="text-align: center" id="product_table" class="table">
                 <thead>
                 <tr>
-                    <th class="border-top-0 font-weight-normal">Товар</th>
+                    <th class="border-top-0 font-weight-normal w-50">Товар</th>
                     <th class="border-top-0 font-weight-normal">Цена</th>
                     <th class="border-top-0 font-weight-normal">Количество</th>
                     <th class="border-top-0 font-weight-normal">Итого</th>
@@ -34,11 +34,11 @@
                 <% orders.forEach(function(order, index){ %>
                     <tr>
                         <td><img class="w-10 pr-3"
-                                 src="<%= "/images/" + order.productLine.toLowerCase() + "-icon-medium.png" || 'http://placehold.it/700x400' %>"
-                                 alt=""><a href="/shop"><%= order.productName %></a></td>
-                        <td><%= order.productTotalPrice / order.productQty %> руб.</td>
-                        <td><%= order.productQty %> штуки</td>
-                        <td><%= order.productTotalPrice %> руб.</td>
+                                 src="<%= "/images/" + order.orderCategory.toLowerCase() + "-icon-medium.png" || 'http://placehold.it/700x400' %>"
+                                 alt=""><a href="/shop#<%= order.orderCategory %>"><%= order.orderName %></a></td>
+                        <td><%= order.orderTotalPrice / order.orderQty %> руб.</td>
+                        <td><%= order.orderQty %> штуки</td>
+                        <td><%= order.orderTotalPrice %> руб.</td>
                     </tr>
                 <% }) %>
                 </tbody>
