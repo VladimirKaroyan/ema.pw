@@ -454,6 +454,13 @@ i.fab.fa-facebook {
     }
 }
 
+@media screen and (max-width: 472px) {
+    li.nav-item {
+        width: 50%;
+        text-align: left;
+    }
+}
+
 @media screen and (max-width: 991px) {
     #shop-content .card-body {
         padding-left: 0;
