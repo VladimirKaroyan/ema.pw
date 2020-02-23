@@ -21,8 +21,8 @@ a.nav-link {
     color: #6C6C6C;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 21px;
+    font-size: 15px;
+    line-height: 20px;
 }
 
 a.nav-link.shop {
@@ -133,8 +133,12 @@ footer {
     border-top: 1px solid #BABABA;
 }
 
+.h2, h2 {
+    font-size: 1.5rem !important;
+}
+
 /*#shop-content {*/
-    /*padding-top: 50px;*/
+/*padding-top: 50px;*/
 /*}*/
 
 #shop-content .card-body {
