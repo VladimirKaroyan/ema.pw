@@ -21,7 +21,7 @@ a.nav-link {
     color: #6C6C6C;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 21px;
 }
 
@@ -273,7 +273,7 @@ i.fab.fa-twitter {
 
 i.fab.fa-facebook {
     color: #3225FF;
-    padding: 0.5rem 0.8rem !important;
+    padding: 0.5rem 0.56rem !important;
 }
 
 .fa-facebook:before {

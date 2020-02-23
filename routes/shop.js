@@ -44,7 +44,6 @@ function isLoggedIn(req, res, next) {
     res.status(402);
     req.flash('loginMessage', 'You must Sign-In first');
     res.redirect('/login');
-    res.send('loginerr');
 }
 
 module.exports = router;

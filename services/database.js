@@ -73,6 +73,19 @@ async function updateSiteOption(name, value) {
     });
 }
 
+async function updateUserSettings(id, email, username, password, first_name, last_name) {
+    return promise = new Promise(async function (resolve, reject) {
+        con.getConnection(function (err, connection) {
+            if (err) resolve(err);
+            connection.query(`UPDATE users SET email = '${email}', username = '${username}', password = '${password}', first_name = '${first_name}', last_name = '${last_name}' WHERE users.id = '${id}'`, function (err, rows, fields) {
+                connection.release();
+                if (err) reject(err);
+                resolve(rows);
+            });
+        });
+    });
+}
+
 async function getAllBlogPosts() {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
@@ -340,5 +353,6 @@ module.exports = {
     addProduct,
     getAllOrders,
     getSiteOptions,
-    updateSiteOption
+    updateSiteOption,
+    updateUserSettings
 };

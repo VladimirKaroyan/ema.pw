@@ -17,12 +17,12 @@
         <%- include ../includes/header.ejs %>
 
         <div class="container">
-            <form action="/settings" method="post">
+            <form action="/save-settings" method="post">
                 <div class="pt-1 pl-3 pr-3 w-100">
                     <label for="first_name" class="m-0 p-3 color-52">Имя: </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="text" class="border-0 w-100 form-control" required id="first_name"
+                            <input type="text" class="border-0 w-100 form-control" required id="first_name" name="first_name"
                                    value="<%= user.first_name %>">
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     <label for="last_name" class="m-0 p-3 color-52">Фамилия: </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="text" class="border-0 w-100 form-control" required id="last_name"
+                            <input type="text" class="border-0 w-100 form-control" required id="last_name" name="last_name"
                                    value="<%= user.last_name %>">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <label for="username" class="m-0 p-3 color-52">Логин: </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="text" class="border-0 w-100 form-control" required id="username"
+                            <input type="text" class="border-0 w-100 form-control" required id="username" name="userName"
                                    value="<%= user.username %>">
                         </div>
                     </div>
@@ -49,26 +49,24 @@
                     <label for="email" class="m-0 p-3 color-52">Почта: </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="email" class="border-0 w-100 form-control" required id="email"
+                            <input type="email" class="border-0 w-100 form-control" required id="email" name="email"
                                    value="<%= user.email %>">
                         </div>
                     </div>
                 </div>
                 <div class="pt-1 pl-3 pr-3 w-100">
-                    <label for="current_password" class="m-0 p-3 color-52">Действующий пароль ( не заполняйте что бы оставить
-                        прежним): </label>
+                    <label for="current_password" class="m-0 p-3 color-52">Действующий пароль ( не заполняйте, чтобы оставить прежним ): </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="password" class="border-0 w-100 form-control" required id="current_password">
+                            <input type="password" class="border-0 w-100 form-control" required id="current_password" name="current_password">
                         </div>
                     </div>
                 </div>
                 <div class="pt-1 pl-3 pr-3 w-100">
-                    <label for="new_password" class="m-0 p-3 color-52">Новый пароль ( не заполняйте что бы оставить
-                        прежним): </label>
+                    <label for="new_password" class="m-0 p-3 color-52">Новый пароль ( не заполняйте, чтобы оставить прежним ): </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="password" class="border-0 w-100 form-control" id="new_password">
+                            <input type="password" class="border-0 w-100 form-control" id="new_password" name="new_password">
                         </div>
                     </div>
                 </div>
@@ -76,7 +74,7 @@
                     <label for="new_password_again" class="m-0 p-3 color-52">Подтвердите пароль: </label>
                     <div class="border-30 bg-white">
                         <div class="p-3 w-100 m-0 form-group">
-                            <input type="password" class="border-0 w-100 form-control" id="new_password_again">
+                            <input type="password" class="border-0 w-100 form-control" id="new_password_again" name="new_password_again">
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
 
         <div class="container">
             <div class="services pt-3">
-                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center" id="shop-product-tabs" role="tablist">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline" id="shop-product-tabs" role="tablist">
                     <% for (let key in sortData) { %>
                         <li class="nav-item">
                             <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -44,7 +44,7 @@
             <div class="products pt-5 pb-5">
                 <div class="tab-content w-100" id="shop-content">
                     <% for (let key in sortData) { %>
-                        <div class="col-md-12 p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
+                        <div class="col-md-10 m-auto p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
                              id="<%= key.replace(/ /g, '') %>" role="tabpanel"
                              aria-labelledby="home-tab">
                             <div class="products-row">
@@ -58,7 +58,7 @@
                                         <span class="sr-only">Previous</span>
                                     </a>
                                     <div class="carousel-inner row mx-auto" role="listbox">
-                                        <ul class="nav nav-tabs border-0 col-md-12 p-0" role="tablist">
+                                        <ul class="nav nav-tabs border-0 col-md-12 p-0 d-flex justify-content-around" role="tablist">
                                             <% sortData[key].forEach(function(product, index){ %>
                                                 <li class="carousel-item h-100 <%= (index === 0) ? "active" : "" %> nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 pr-0 text-center cursor-pointer">
                                                     <a class="nav-link border-0 h-100 bg-transparent p-0 product <%= (index === 0) ? "active" : "" %>"
@@ -138,9 +138,9 @@
                 </div>
                 <div class="pt-5 pb-5 pl-3 pr-3 w-100">
                     <div class="border-30 bg-white">
-                        <div class="p-3 d-flex">
+                        <div class="p-3 d-flex form-group align-items-baseline">
                             <label for="profile_url" class="m-0 pr-2">Ссылка на вашу страницу: </label>
-                            <input type="text" class="border-0 w-75" id="profile_url">
+                            <input type="text" class="form-control p-1 w-75" id="profile_url">
                         </div>
                     </div>
                 </div>
