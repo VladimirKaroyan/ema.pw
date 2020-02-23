@@ -49,9 +49,9 @@ module.exports = function (passport) {
                                     last_name: last_name,
                                     email: email,
                                 };
-                                var insertQuery = "INSERT INTO users (email, username, password, first_name, last_name) values (?, ?, ?, ?, ?)";
+                                var insertQuery = "INSERT INTO users (email, username, password, first_name, last_name, balance, admin) values (?, ?, ?, ?, ?, ? ,?)";
                                 connection.getConnection(function (err, con) {
-                                    con.query(insertQuery, [newUserMysql.email, newUserMysql.username, newUserMysql.password, newUserMysql.first_name, newUserMysql.last_name],
+                                    con.query(insertQuery, [newUserMysql.email, newUserMysql.username, newUserMysql.password, newUserMysql.first_name, newUserMysql.last_name, 0, 0],
                                         function (err, rows) {
                                             if (err) console.error(err);
                                             con.release();
