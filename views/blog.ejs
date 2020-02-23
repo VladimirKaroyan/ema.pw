@@ -25,9 +25,9 @@
 <body>
 <%- include includes/header.ejs %>
 <div class="col-md-12">
-    <div class="container">
+    <div class="container pr-5">
         <div class="my-4">
-            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-3 p-0" id="shop-product-tabs"
+            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-2 p-0" id="shop-product-tabs"
                 role="tablist">
                 <% for (let key in sortData) { %>
                     <li class="nav-item">
@@ -47,18 +47,18 @@
                          aria-labelledby="home-tab">
                         <div class="blog-posts-row col-md-12 p-3">
                             <% sortData[key].forEach(function(post, index){ %>
-                                <div class="col-md-3 pl-0">
+                                <div class="col-md-3 pl-0 pt-5">
                                     <div class="card h-100 border-0 bg-transparent">
                                         <a class="w-100 border-30-top-bottom bg-white text-center"
                                            href="/blog-post/<%= post.id %>">
-                                            <img class="card-img-top" style="max-height: 200px; width: auto;"
+                                            <img class="card-img-top" style="max-height: 200px; width: auto; max-width: 100%;"
                                                  src="<%= post.previewImage %>"
                                                  alt="">
                                         </a>
                                         <div class="card-body">
                                             <a href="/blog-post/<%= post.id %>"
                                                class="font-weight-bold card-title text-decoration-none">
-                                                <h4 class="card-title">
+                                                <h4 class="card-title p-3">
                                                     <%= post.title %>
                                                 </h4>
                                             </a>

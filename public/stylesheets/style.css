@@ -459,9 +459,35 @@ i.fab.fa-facebook {
         width: 50%;
         text-align: left;
     }
+
+    .card-body .nav-link {
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width: 572px) {
+    .show-cart .item-name {
+        min-width: max-content !important;
+    }
+
+    .show-cart button.delete-item.btn.btn-danger {
+        padding: 0;
+        background: transparent;
+        color: red;
+        border: 0;
+    }
+
+    .show-cart.table {
+        font-size: 3.05vw;
+    }
+
+    .show-cart.table td, .show-cart.table th {
+        padding: .5rem !important;
+    }
 }
 
 @media screen and (max-width: 991px) {
+
     #shop-content .card-body {
         padding-left: 0;
         padding-right: 0;
