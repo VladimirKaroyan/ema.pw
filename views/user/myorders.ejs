@@ -33,9 +33,13 @@
                 <tbody>
                 <% orders.forEach(function(order, index){ %>
                     <tr>
-                        <td><img class="w-10 pr-3"
-                                 src="<%= "/images/" + order.orderCategory.toLowerCase() + "-icon-medium.png" || 'http://placehold.it/700x400' %>"
-                                 alt=""><a href="/shop#<%= order.orderCategory %>"><%= order.orderName %></a></td>
+                        <td>
+                            <div class="w-50 m-auto d-flex align-items-center justify-content-between">
+                                <img style="width: 50px!important;"
+                                     src="<%= "/images/" + order.orderCategory.toLowerCase() + "-icon-medium.png" || 'http://placehold.it/700x400' %>"
+                                     alt=""><a href="/shop#<%= order.orderCategory %>"><%= order.orderName %></a>
+                            </div>
+                        </td>
                         <td><%= order.orderTotalPrice / order.orderQty %> руб.</td>
                         <td><%= order.orderQty %> штуки</td>
                         <td><%= order.orderTotalPrice %> руб.</td>

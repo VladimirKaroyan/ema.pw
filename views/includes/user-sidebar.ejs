@@ -1,9 +1,10 @@
 <div class="border-right text-center position-relative" id="sidebar-wrapper">
     <img class="pt-5" src="/images/user-icon-big.png" alt="">
     <h4 class="user-name pt-4"><%= user.first_name + ' ' + user.last_name %></h4>
-    <div class="d-flex align-items-center justify-content-around pb-1 border-bottom" style="font-size: 14px">
-        <p cl>
-            Ваш баланс: <span class="userBalance"><%= user.balance %></span> руб.
+    <div class="d-flex align-items-baseline justify-content-around pb-1 border-bottom" style="font-size: 14px">
+        <p class="d-flex flex-wrap">
+            <span>Ваш баланс:</span>
+            <span><span class="userBalance"><%= user.balance %></span> руб.</span>
         </p>
         <p>
             <a href="#" class="nav-link text-white text-decoration-none d-flex align-items-center"

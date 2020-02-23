@@ -19,6 +19,12 @@
         footer i.fab, #shop-product-tabs i.fab {
             padding: 0.45em;
         }
+
+        .card-img-top {
+            -webkit-border-radius: 30px 30px 0 0;
+            -moz-border-radius: 30px 30px 0 0;
+            border-radius: 30px 30px 0 0;
+        }
     </style>
 </head>
 
@@ -50,7 +56,8 @@
                 Магазин
             </h1>
             <div class="row my-4">
-                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline" id="shop-product-tabs" role="tablist">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline"
+                    id="shop-product-tabs" role="tablist">
                     <% for (let key in sortData) { %>
                         <li class="nav-item">
                             <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -73,7 +80,8 @@
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
-                                    <a class="carousel-control-prev position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
+                                    <a class="carousel-control-prev position-relative"
+                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
                                         <i class="fas fa-chevron-left"></i>
@@ -105,7 +113,8 @@
                                             </div>
                                         <% }) %>
                                     </div>
-                                    <a class="carousel-control-next text-faded position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
+                                    <a class="carousel-control-next text-faded position-relative"
+                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
                                         <i class="fas fa-chevron-right"></i>
@@ -131,7 +140,7 @@
                     <span style="color: #656565;" class="mt-4">
                             Продвинуть аккаунт в социальных сетях, выдвигая его в ТОП ─ задача не из простых. Она включает в себя множество факторов и требует системного и методичного подхода. В первую очередь необходимо обратить внимание на сами сети и выбрать наиболее подходящие для вашего бизнеса.
                         </span>
-                    <a href="/shop">
+                    <a href="mailto:info@smmlike.ru">
                         <button class="btn btn-order mt-4">Заказать</button>
                     </a>
                 </div>
@@ -272,8 +281,8 @@
                         <div class="carousel-inner row w-100 mx-auto" role="listbox">
                             <div class="carousel-item active col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <a href="/blog-post/2" class="w-100 bg-white text-center">
-                                        <img class="card-img-top" style="max-width: 220px;"
+                                    <a href="/blog-post/2" class="w-100 bg-white border-30-top-bottom text-center">
+                                        <img class="card-img-top" style="max-width: 220px; margin-top: 10px;"
                                              src="https://smmlike.ru/wp-content/uploads/2018/03/twitter-clipart-tranparent-17.png"
                                              alt="">
                                     </a>
@@ -283,14 +292,13 @@
                                         </h4>
                                         <p class="card-text">
                                             В стремительно развивающейся цифровой экономике с каждым годом появляется
-                                            все больше интернет проектов и инструментов, с ними связанных. В связи со
-                                            становлением интернет бизнеса...</p>
+                                            все больше интернет проектов и инструментов...</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <a href="/blog-post/3">
+                                    <a href="/blog-post/3" class="w-100 bg-white border-30-top-bottom text-center">
                                         <img class="card-img-top"
                                              src="https://smmlike.ru/wp-content/uploads/2018/01/Depositphotos_65177259_m-2015.jpg"
                                              alt="">
@@ -302,14 +310,14 @@
                                         <p class="card-text">
                                             Любой начинающий ютубер сталкивается с проблемой дальнейшего развития своего
                                             канала и увеличением просмотров. Вы завоевали преданную аудиторию, и ваш
-                                            канал набрал определенное количество...
+                                            канал набрал определенное...
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <a href="/blog-post/5">
+                                    <a href="/blog-post/5" class="w-100 bg-white border-30-top-bottom text-center">
                                         <img class="card-img-top"
                                              src="https://smmlike.ru/wp-content/uploads/2018/01/AAEAAQAAAAAAAAGjAAAAJDM5ODRlMzFlLTc3MTctNDBmNi05ZWVjLTVlZmQzZmY4ZTlkMA.jpg"
                                              alt="">
@@ -328,8 +336,8 @@
                             </div>
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
-                                    <a href="/blog-post/4">
-                                        <img class="card-img-top"
+                                    <a href="/blog-post/4" class="w-100 bg-white border-30-top-bottom text-center">
+                                        <img class="card-img-top" style="max-width: 220px;"
                                              src="https://smmlike.ru/wp-content/uploads/2018/01/social-networks.jpg"
                                              alt="">
                                     </a>
@@ -367,10 +375,9 @@
                         Обратная связь
                     </h1>
                     <span style="color: #656565;" class="mt-4">
-                        Если у вас есть вопросы или предложения мы всегда рады <br> вам, напишите нам и наши специалисты ответят вам в течении <br>
-                        нескольких минут.
+                        Если у вас есть вопросы или предложения, напишите нам и мы ответим в течение нескольких минут.
                     </span>
-                    <a href="/help">
+                    <a href="mailto:info@smmlike.ru">
                         <button class="btn btn-order mt-4">Оставить заявку</button>
                     </a>
                 </div>

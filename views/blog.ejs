@@ -11,6 +11,14 @@
         h1 {
             font-size: <%= site_options['font_size'] + 'px!important' %>;
         }
+
+        #shop-product-tabs i.fab {
+            color: black !important;
+        }
+
+        ul#shop-product-tabs li a {
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -19,7 +27,7 @@
 <div class="col-md-12">
     <div class="container">
         <div class="my-4">
-            <ul class="nav nav-tabs col-md-12 d-flex justify-content-center" id="shop-product-tabs" role="tablist">
+            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-3 p-0" id="shop-product-tabs" role="tablist">
                 <% for (let key in sortData) { %>
                     <li class="nav-item">
                         <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -36,12 +44,12 @@
                     <div class="col-md-12 p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
                          id="<%= key.replace(/ /g, '') %>" role="tabpanel"
                          aria-labelledby="home-tab">
-                        <div class="blog-posts-row col-md-12 p-0">
+                        <div class="blog-posts-row col-md-12 p-3">
                             <% sortData[key].forEach(function(post, index){ %>
                                 <div class="col-md-3 pl-0">
                                     <div class="card h-100 border-0 bg-transparent">
-                                        <a href="/blog-post/<%= post.id %>">
-                                            <img class="card-img-top"
+                                        <a class="w-100 border-30-top-bottom bg-white text-center" href="/blog-post/<%= post.id %>">
+                                            <img class="card-img-top" style="max-width: 200px"
                                                  src="<%= post.previewImage %>"
                                                  alt="">
                                         </a>
@@ -53,7 +61,7 @@
                                                 </h4>
                                             </a>
                                             <!--<p class="card-text">-->
-                                                <!--<%= post.content.substring(0, 74) %>...-->
+                                            <!--<%= post.content.substring(0, 74) %>...-->
                                             <!--</p>-->
                                         </div>
                                     </div>
