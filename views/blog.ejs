@@ -27,7 +27,8 @@
 <div class="col-md-12">
     <div class="container">
         <div class="my-4">
-            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-3 p-0" id="shop-product-tabs" role="tablist">
+            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-3 p-0" id="shop-product-tabs"
+                role="tablist">
                 <% for (let key in sortData) { %>
                     <li class="nav-item">
                         <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -48,8 +49,9 @@
                             <% sortData[key].forEach(function(post, index){ %>
                                 <div class="col-md-3 pl-0">
                                     <div class="card h-100 border-0 bg-transparent">
-                                        <a class="w-100 border-30-top-bottom bg-white text-center" href="/blog-post/<%= post.id %>">
-                                            <img class="card-img-top" style="max-width: 200px"
+                                        <a class="w-100 border-30-top-bottom bg-white text-center"
+                                           href="/blog-post/<%= post.id %>">
+                                            <img class="card-img-top" style="max-height: 200px; width: auto;"
                                                  src="<%= post.previewImage %>"
                                                  alt="">
                                         </a>
