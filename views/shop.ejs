@@ -51,7 +51,7 @@
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
-                                    <a class="carousel-control-prev position-relative"
+                                    <a class="carousel-control-prev position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0!important;' : 'dd'%>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
                                         <i class="fas fa-chevron-left"></i>
@@ -94,7 +94,7 @@
                                             <% }) %>
                                         </ul>
                                     </div>
-                                    <a class="carousel-control-next text-faded position-relative"
+                                    <a class="carousel-control-next text-faded position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0!important;' : ''%>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
                                         <i class="fas fa-chevron-right"></i>

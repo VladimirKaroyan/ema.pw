@@ -8,6 +8,7 @@ $(document).ready(function () {
         var itemsPerSlide = 3;
         var totalItems = $(this).find('.carousel-item').length;
         var carInner = $(this).find('.carousel-inner');
+        if ($(this).find('.carousel-inner ul').length) carInner = $(this).find('.carousel-inner ul');
 
         if (idx >= totalItems-(itemsPerSlide-1)) {
             var it = itemsPerSlide - (totalItems - idx);
