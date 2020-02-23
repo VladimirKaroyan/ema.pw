@@ -7,6 +7,18 @@
         h1 {
             font-size: <%= site_options['font_size'] + 'px!important' %>;
         }
+
+        #shop-content .card-body {
+            padding-top: 15% !important;
+        }
+
+        i.fab.fa-facebook {
+            padding: 0.5rem 0.7rem !important;
+        }
+
+        footer i.fab, #shop-product-tabs i.fab {
+            padding: 0.45em;
+        }
     </style>
 </head>
 
@@ -38,7 +50,7 @@
                 Магазин
             </h1>
             <div class="row my-4">
-                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center" id="shop-product-tabs" role="tablist">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline" id="shop-product-tabs" role="tablist">
                     <% for (let key in sortData) { %>
                         <li class="nav-item">
                             <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -61,7 +73,7 @@
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
-                                    <a class="carousel-control-prev position-relative <%= sortData[key].length <= 3 ? 'd-none' : ''%>"
+                                    <a class="carousel-control-prev position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
                                         <i class="fas fa-chevron-left"></i>
@@ -69,7 +81,8 @@
                                     </a>
                                     <div class="carousel-inner row mx-auto" role="listbox">
                                         <% sortData[key].forEach(function(product, index){ %>
-                                            <div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3" style="height: 300px;">
+                                            <div class="carousel-item <%= (index === 0) ? "active" : "" %> col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 pr-0"
+                                                 style="height: 300px;">
                                                 <div class="card h-100 border-0 bg-transparent">
                                                     <a class="text-center"
                                                        href="shop#<%= key %>">
@@ -77,7 +90,8 @@
                                                              src="<%= "/images/" + key.toLowerCase() + "-icon-medium.png" || 'http://placehold.it/700x400' %>"
                                                              alt="">
                                                     </a>
-                                                    <div class="card-body w-75 pt-lg-5 text-center d-flex justify-content-around flex-column">
+                                                    <div class="card-body pt-lg-5 text-center d-flex justify-content-around flex-column"
+                                                         style="width: 87%">
                                                         <h4 class="card-title">
                                                             <a href="shop#<%= key %>"><%= product.productName %></a>
                                                         </h4>
@@ -91,7 +105,7 @@
                                             </div>
                                         <% }) %>
                                     </div>
-                                    <a class="carousel-control-next text-faded position-relative <%= sortData[key].length <= 3 ? 'd-none' : ''%>"
+                                    <a class="carousel-control-next text-faded position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
                                         <i class="fas fa-chevron-right"></i>
@@ -259,7 +273,9 @@
                             <div class="carousel-item active col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
                                     <a href="/blog-post/2" class="w-100 bg-white text-center">
-                                        <img class="card-img-top" style="max-width: 220px;" src="https://smmlike.ru/wp-content/uploads/2018/03/twitter-clipart-tranparent-17.png" alt="">
+                                        <img class="card-img-top" style="max-width: 220px;"
+                                             src="https://smmlike.ru/wp-content/uploads/2018/03/twitter-clipart-tranparent-17.png"
+                                             alt="">
                                     </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -275,7 +291,9 @@
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
                                     <a href="/blog-post/3">
-                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/Depositphotos_65177259_m-2015.jpg" alt="">
+                                        <img class="card-img-top"
+                                             src="https://smmlike.ru/wp-content/uploads/2018/01/Depositphotos_65177259_m-2015.jpg"
+                                             alt="">
                                     </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -292,7 +310,9 @@
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
                                     <a href="/blog-post/5">
-                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/AAEAAQAAAAAAAAGjAAAAJDM5ODRlMzFlLTc3MTctNDBmNi05ZWVjLTVlZmQzZmY4ZTlkMA.jpg" alt="">
+                                        <img class="card-img-top"
+                                             src="https://smmlike.ru/wp-content/uploads/2018/01/AAEAAQAAAAAAAAGjAAAAJDM5ODRlMzFlLTc3MTctNDBmNi05ZWVjLTVlZmQzZmY4ZTlkMA.jpg"
+                                             alt="">
                                     </a>
                                     <div class="card-body">
                                         <h4 class="card-title">
@@ -309,7 +329,9 @@
                             <div class="carousel-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3">
                                 <div class="card h-100 border-0 bg-transparent">
                                     <a href="/blog-post/4">
-                                        <img class="card-img-top" src="https://smmlike.ru/wp-content/uploads/2018/01/social-networks.jpg" alt="">
+                                        <img class="card-img-top"
+                                             src="https://smmlike.ru/wp-content/uploads/2018/01/social-networks.jpg"
+                                             alt="">
                                     </a>
                                     <div class="card-body">
                                         <h4 class="card-title">

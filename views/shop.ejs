@@ -12,6 +12,18 @@
         h1 {
             font-size: <%= site_options['font_size'] + 'px!important' %>;
         }
+
+        footer i.fab, #shop-product-tabs i.fab {
+            padding: 0.45em;
+        }
+
+        i.fab.fa-telegram {
+            padding: 0.4rem 0.4rem !important;
+        }
+
+        i.fab.fa-odnoklassniki {
+            padding: 0.4rem 0.55rem !important;
+        }
     </style>
 </head>
 <body style="padding: 0; background: whitesmoke;">
@@ -28,7 +40,8 @@
 
         <div class="container">
             <div class="services pt-3">
-                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline" id="shop-product-tabs" role="tablist">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline"
+                    id="shop-product-tabs" role="tablist">
                     <% for (let key in sortData) { %>
                         <li class="nav-item">
                             <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
@@ -51,14 +64,16 @@
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
-                                    <a class="carousel-control-prev position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0!important;' : 'dd'%>"
+                                    <a class="carousel-control-prev position-relative"
+                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
                                         <i class="fas fa-chevron-left"></i>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                     <div class="carousel-inner row mx-auto" role="listbox">
-                                        <ul class="nav nav-tabs border-0 col-md-12 p-0 d-flex justify-content-around" role="tablist">
+                                        <ul class="nav nav-tabs border-0 col-md-12 p-0 d-flex justify-content-around"
+                                            role="tablist">
                                             <% sortData[key].forEach(function(product, index){ %>
                                                 <li class="carousel-item h-100 <%= (index === 0) ? "active" : "" %> nav-item col-lg-4 col-md-6 col-sm-12 pt-3 pb-3 pr-0 text-center cursor-pointer">
                                                     <a class="nav-link border-0 h-100 bg-transparent p-0 product <%= (index === 0) ? "active" : "" %>"
@@ -94,7 +109,8 @@
                                             <% }) %>
                                         </ul>
                                     </div>
-                                    <a class="carousel-control-next text-faded position-relative" style="<%= sortData[key].length <= 3 ? 'opacity: 0!important;' : ''%>"
+                                    <a class="carousel-control-next text-faded position-relative"
+                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
                                         <i class="fas fa-chevron-right"></i>
