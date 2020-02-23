@@ -33,7 +33,12 @@ $(document).ready(function () {
         modal.find('#post-prew-image').prop('value', prodPreviewImage);
     });
 
-    $('.site_option').change(function () {
+    $('select.site_option').change(function () {
         $(this).closest('form').submit();
-    })
+    });
+
+    $('.delete_all_notifiations').click(function () {
+        $('#site-option-notification').prop('value', '');
+        $('#addNotificationModal form').submit();
+    });
 });

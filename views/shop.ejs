@@ -37,8 +37,12 @@
     <div id="page-content-wrapper">
 
         <%- include includes/header.ejs %>
-
         <div class="container">
+            <% if (site_options['notification_text'] && site_options['notification_text'] !== '') { %>
+                <div class="m-2 alert alert-warning" role="alert">
+                    <%- site_options['notification_text'] %>
+                </div>
+            <% } %>
             <div class="services pt-3">
                 <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline"
                     id="shop-product-tabs" role="tablist">

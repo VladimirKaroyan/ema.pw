@@ -115,6 +115,7 @@ $(document).ready(function () {
         obj.clearCart = function () {
             cart = [];
             saveCart();
+            displayCart();
         };
 
         // Count cart
@@ -249,12 +250,12 @@ $(document).ready(function () {
 //     });
 
 // Item count input
-    $('.show-cart').on("change", ".item-count", function (event) {
-        let name = $(this).data('name');
-        let count = Number($(this).val());
-        shoppingCart.setCountForItem(name, count);
-        displayCart();
-    });
+//     $('.show-cart').on("change", ".item-count", function (event) {
+//         let name = $(this).data('name');
+//         let count = Number($(this).val());
+//         shoppingCart.setCountForItem(name, count);
+//         displayCart();
+//     });
 //Make order
     $('#make-order-button').click(function () {
         $(this).prop('disabled', true);
@@ -276,6 +277,7 @@ $(document).ready(function () {
                     $('.userBalance').text(orderResponse['newBalance']);
                     $('.swal2-animate-success-icon').removeClass('d-none');
                     $('.swal2-animate-error-icon').addClass('d-none');
+                    shoppingCart.clearCart();
                 }
                 $('#cart').modal('hide');
                 $('body').removeClass('modal-open');

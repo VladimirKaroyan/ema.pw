@@ -202,7 +202,6 @@ async function updateUserBalance(userId, value) {
             connection.query(`UPDATE users SET balance = balance - ${value} WHERE users.id = ${userId} `, function (err, rows, fields) {
                 connection.release();
                 if (err) reject(err);
-                console.log('ddddd');
                 resolve(rows);
             });
         });
