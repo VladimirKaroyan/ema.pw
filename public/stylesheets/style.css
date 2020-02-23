@@ -460,7 +460,7 @@ i.fab.fa-facebook {
         text-align: left;
     }
 
-    .card-body .nav-link {
+    #shop-content .card-body .nav-link {
         width: 70% !important;
     }
 }

@@ -118,7 +118,7 @@ router.post('/', isLoggedIn, function (req, res, next) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.status(402);
-    req.flash('loginMessage', 'You must Sign-In first');
+    req.flash('loginMessage', 'Сначала войдите в систему.');
     res.send('loginerr');
 }
 

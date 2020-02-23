@@ -22,7 +22,7 @@ function isLoggedIn(req, res, next) {
         }
         return next();
     }
-    req.flash('loginMessage', 'You must Sign-In first');
+    req.flash('loginMessage', 'Сначала войдите в систему.');
     res.redirect('/login');
 }
 
