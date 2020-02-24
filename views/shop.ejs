@@ -38,11 +38,6 @@
 
         <%- include includes/header.ejs %>
         <div class="container">
-            <% if (site_options['notification_text'] && site_options['notification_text'] !== '') { %>
-                <div class="m-2 alert alert-warning" role="alert">
-                    <%- site_options['notification_text'] %>
-                </div>
-            <% } %>
             <div class="services pt-3">
                 <ul class="nav nav-tabs col-md-12 d-flex justify-content-center align-items-baseline"
                     id="shop-product-tabs" role="tablist">
@@ -64,6 +59,11 @@
                         <div class="col-md-10 m-auto p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"
                              id="<%= key.replace(/ /g, '') %>" role="tabpanel"
                              aria-labelledby="home-tab">
+                            <% if (site_options['notification_text'] && site_options['notification_text'][0].toString().replace(/ /g, '').length !== 0 && site_options['notification_text'][1] === key) { %>
+                                <div class="mt-4 mb-1 alert alert-warning" role="alert">
+                                    <%- site_options['notification_text'][0] %>
+                                </div>
+                            <% } %>
                             <div class="products-row">
                                 <div id="carousel<%= key.replace(/ /g, '').toLowerCase() %>"
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
@@ -132,14 +132,14 @@
                         <div class="d-flex align-items-baseline">
                             <label for="count" class="pr-2">Количество: </label>
                             <input type="range" class="custom-range productCount" name="productCount" value="2000"
-                                   min="0" max="10000"
+                                   min="390" max="10000"
                                    id="count" oninput="$('#countText').val(this.value)">
                         </div>
                         <div class="pt-2">
                             <div class="form-group d-flex align-items-baseline">
                                 <label for="countText" class="pr-2">Ввести число вручную: </label>
                                 <input type="number" class="form-control productCountText w-25" name="productCount"
-                                       min="0" value="2000" id="countText"
+                                       min="390" value="2000" id="countText"
                                        oninput="$('#count').val(this.value)">
                             </div>
                         </div>

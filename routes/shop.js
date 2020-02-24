@@ -17,7 +17,8 @@ router.get('/', isLoggedIn, async function (req, res, next) {
         data.map((row) => {
             let name = row['option_name'];
             let value = row['option_value'];
-            sortData[name] = value;
+            let category = row['option_category'];
+            sortData[name] = (category) ? [value, category] : value;
         });
         return sortData;
     });

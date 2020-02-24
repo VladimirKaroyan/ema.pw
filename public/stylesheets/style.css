@@ -209,7 +209,8 @@ ul#shop-product-tabs li a.active i {
     padding: 60px;
 }
 
-#shop-content .carousel-control-prev i, #shop-content .carousel-control-next i {
+#shop-content .carousel-control-prev i, #shop-content .carousel-control-next i,
+#carouselExampleIndicators .carousel-control-prev i, #carouselExampleIndicators .carousel-control-next i {
     background: #6C63FF;
     font-size: 35px;
     border-radius: 60px;
@@ -237,7 +238,8 @@ ul#shop-product-tabs li a.active i {
     background: #FFFFFF;
 }
 
-#shop-content .carousel-control-prev, #shop-content .carousel-control-next {
+#shop-content .carousel-control-prev, #shop-content .carousel-control-next,
+#carouselExampleIndicators .carousel-control-prev, #carouselExampleIndicators .carousel-control-next {
     width: max-content !important;
 }
 
@@ -488,6 +490,10 @@ i.fab.fa-facebook {
 
 @media screen and (max-width: 991px) {
 
+    .show-mobile {
+        display: flex !important;
+    }
+
     #shop-content .card-body {
         padding-left: 0;
         padding-right: 0;
@@ -499,7 +505,8 @@ i.fab.fa-facebook {
         justify-content: space-between !important;
     }
 
-    #shop-content .carousel-control-prev i, #shop-content .carousel-control-next i {
+    #shop-content .carousel-control-prev i, #shop-content .carousel-control-next i,
+    #carouselExampleIndicators .carousel-control-prev i, #carouselExampleIndicators .carousel-control-next i {
         font-size: 25px;
     }
 

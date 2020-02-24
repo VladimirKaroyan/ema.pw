@@ -65,11 +65,11 @@ async function getSiteOptions() {
     });
 }
 
-async function updateSiteOption(name, value) {
+async function updateSiteOption(name, value, category) {
     return promise = new Promise(async function (resolve, reject) {
         con.getConnection(function (err, connection) {
             if (err) resolve(err);
-            connection.query(`UPDATE site_options SET option_value = '${value}' WHERE site_options.option_name = '${name}'`, function (err, rows, fields) {
+            connection.query(`UPDATE site_options SET option_value = '${value}', option_category = ${category || null} WHERE site_options.option_name = '${name}'`, function (err, rows, fields) {
                 connection.release();
                 if (err) resolve(err);
                 resolve(rows);

@@ -1,8 +1,8 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark w-100 container">
     <div class="container col-md-12" style="margin: 0;">
-        <a class="navbar-brand pl-3" href="/">
-            <img src="/images/smmlike-logo.png" alt="">
+        <a class="navbar-brand pl-2" href="/">
+            <img src="/images/smmlike-logo.png" style="max-width: 200px;" alt="">
         </a>
         <button class="navbar-toggler text-black-50" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
@@ -38,6 +38,20 @@
                             Admin Panel
                         </a>
                     <% } %>
+                    <div class="align-items-baseline flex-wrap flex-column justify-content-center pb-1 border-bottom w-100 show-mobile"
+                         style="font-size: 14px; display: none;">
+                        <p class="ml-auto mr-auto">
+                            <span class="pr-1">Ваш баланс:</span>
+                            <span><span class="userBalance"><%= user.balance %></span> руб.</span>
+                        </p>
+                        <p class="ml-auto mr-auto mb-2">
+                            <a href="#" class="nav-link text-black-50 text-decoration-none d-flex align-items-center"
+                               style="font-size: 14px; border: 2px solid #57B894; border-radius: 30px; padding: 5px 10px!important; margin: 0 auto;"
+                               data-toggle="modal" data-target="#add_balance">
+                                Пополнить
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
