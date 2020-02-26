@@ -16,12 +16,15 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <div>
-                <div class="d-flex flex-wrap justify-content-between">
+                <div class="d-flex flex-wrap justify-content-around">
                     <a class="nav-link shop" href="/shop">
                         Магазин
                     </a>
                     <a class="nav-link blog" href="/blog">
                         Блог
+                    </a>
+                    <a class="nav-link blog" href="/help">
+                        Помощь
                     </a>
                     <% if (user) { %>
                         <a class="nav-link user" href="/shop">
@@ -38,6 +41,7 @@
                             Admin Panel
                         </a>
                     <% } %>
+                    <% if (user) { %>
                     <div class="align-items-baseline flex-wrap flex-column justify-content-center pb-1 border-bottom w-100 show-mobile"
                          style="font-size: 14px; display: none;">
                         <p class="ml-auto mr-auto">
@@ -52,6 +56,7 @@
                             </a>
                         </p>
                     </div>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -117,6 +122,24 @@
                     </span>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add_balance" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Пополнить баланс</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center w-100" style="overflow-x: auto;">
+                <iframe name="iframe1" id="iframe1" src="//www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=<%= user.id %>&default-sum=200&P_PHONE=&button-text=Оплатить&hint=&encoding=UTF8&type=big&m=118524&id=767279"
+                        style="width: 100%; min-height: 230px;" frameBorder="0" target="_parent"></iframe>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
 a.nav-link {
     color: #6C6C6C;
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 14px;
     line-height: 20px;
 }
@@ -489,6 +489,9 @@ i.fab.fa-facebook {
 }
 
 @media screen and (max-width: 991px) {
+    #iframe1 {
+        width: 250% !important;
+    }
 
     .show-mobile {
         display: flex !important;
@@ -549,6 +552,12 @@ i.fab.fa-facebook {
 
     footer {
         padding-left: 0 !important;;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 991px) {
+    #iframe1 {
+        width: 180% !important;
     }
 }
 

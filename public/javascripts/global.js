@@ -10,14 +10,13 @@ $(document).ready(function () {
         var carInner = $(this).find('.carousel-inner');
         if ($(this).find('.carousel-inner ul').length) carInner = $(this).find('.carousel-inner ul');
 
-        if (idx >= totalItems-(itemsPerSlide-1)) {
+        if (idx >= totalItems - (itemsPerSlide - 1)) {
             var it = itemsPerSlide - (totalItems - idx);
-            for (var i=0; i<it; i++) {
+            for (var i = 0; i < it; i++) {
                 // append slides to end
-                if (e.direction=="left") {
+                if (e.direction == "left") {
                     $(this).find('.carousel-item').eq(i).appendTo(carInner);
-                }
-                else {
+                } else {
                     $(this).find('.carousel-item').eq(0).appendTo(carInner);
                 }
             }

@@ -19,6 +19,14 @@
         ul#shop-product-tabs li a {
             height: 100%;
         }
+
+        ul#shop-product-tabs li a {
+            padding: .5rem 1.5rem !important;
+        }
+
+        ul#shop-product-tabs li a i {
+            font-size: 19px !important;
+        }
     </style>
 </head>
 
@@ -27,7 +35,7 @@
 <div class="col-md-12">
     <div class="container pr-5">
         <div class="my-4">
-            <ul class="nav nav-tabs col-md-12 d-flex justify-content-start ml-2 p-0" id="shop-product-tabs"
+            <ul class="nav nav-tabs col-md-12 d-flex justify-content-center ml-2 p-0" id="shop-product-tabs"
                 role="tablist">
                 <% for (let key in sortData) { %>
                     <li class="nav-item">
@@ -51,7 +59,8 @@
                                     <div class="card h-100 border-0 bg-transparent">
                                         <a class="w-100 border-30-top-bottom bg-white text-center"
                                            href="/blog-post/<%= post.id %>">
-                                            <img class="card-img-top" style="max-height: 200px; width: auto; max-width: 100%;"
+                                            <img class="card-img-top"
+                                                 style="max-height: 200px; width: auto; max-width: 100%;"
                                                  src="<%= post.previewImage %>"
                                                  alt="">
                                         </a>
