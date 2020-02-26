@@ -28,7 +28,7 @@
 @media (max-width: 962px) {
     .blog-posts-row {
         padding: 0 !important;
-        margin-left: -5px;
+        margin-left: 3px;
         justify-content: center !important;
     }
 

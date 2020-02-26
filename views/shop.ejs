@@ -141,10 +141,10 @@
                                 <input type="number" class="form-control productCountText w-25" name="productCount"
                                        min="390" value="2000" id="countText"
                                        oninput="$('#count').val(this.value)">
-                                <i class="far fa-question-circle pl-2"
-                                   data-toggle="tooltip"
-                                   data-placement="top"
-                                   title="Нужно больше? Введите число"></i>
+                                <i class="far fa-question-circle pl-2 example-popover" data-container="body"
+                                        data-toggle="popover" data-placement="top"
+                                        data-content="Нужно больше? Введите число">
+                                </i>
                             </div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                 </div>
                 <div class="pt-5 pb-5 pl-3 pr-3 w-100">
                     <div class="border-30 bg-white">
-                        <div class="p-3 d-flex form-group align-items-baseline">
+                        <div class="p-3 d-flex form-group align-items-center">
                             <label for="profile_url" class="m-0 pr-2">Ссылка на вашу страницу: </label>
                             <input type="text" class="form-control p-1 w-75" id="profile_url">
                         </div>
