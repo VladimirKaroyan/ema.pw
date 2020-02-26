@@ -64,8 +64,10 @@ router.post('/', isLoggedIn, function (req, res, next) {
                 return sendRequest(data).then(
                     (sendDataToApi) => {
                         shopservice.updateUserBalance(user['id'], order['price']).then(function (rows) {
-                            shopservice.createOrder(user['id'], orderName, order['count'], orderTotalPrice, lineList[order['service_type']-1]).then(
-                                () => {
+                            shopservice.createOrder(user['id'], orderName, order['count'], orderTotalPrice, lineList[order['service_type'] - 1]).then(
+                                (data) => {
+                                    let text = `Заказ № ${data['insertId']}\nИмя заказа - ${orderName}\nЦена заказа - ${order['price']} руб.`;
+                                    request('https://api.telegram.org/bot997146272:AAG2dqkAPMBr7-AzXAVswcDInkFBQfkPs3w/sendMessage?chat_id=-217535956&text=' + encodeURIComponent(text));
                                     resolve({
                                         error: false,
                                         message: 'Покупка успешно совершена.',
