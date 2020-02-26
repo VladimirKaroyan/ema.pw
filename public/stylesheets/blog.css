@@ -25,6 +25,22 @@
     margin-right: 20px;
 }
 
+@media (max-width: 962px) {
+    .blog-posts-row {
+        padding: 0 !important;
+        margin-left: -5px;
+        justify-content: center !important;
+    }
+
+    .blog-posts-row > div {
+        padding-right: 0 !important;
+    }
+
+    .blog-posts-row a.w-100.border-30-top-bottom.bg-white.text-center {
+        max-width: 98%;
+    }
+}
+
 @media (min-height: 700px) {
     html {
         height: -webkit-fill-available
