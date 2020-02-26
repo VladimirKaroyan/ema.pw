@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Фев 23 2020 г., 17:10
+-- Время создания: Фев 24 2020 г., 21:36
 -- Версия сервера: 8.0.13-4
 -- Версия PHP: 7.2.24-0ubuntu0.18.04.3
 
@@ -72,7 +72,8 @@ INSERT INTO `orders` (`id`, `user_id`, `orderName`, `orderQty`, `orderTotalPrice
 (2, 2, 'Лайки в Vkontakte x34', 34, 8.5, 'Vkontakte'),
 (3, 2, 'Лайки в Vkontakte x5', 5, 1.25, 'Vkontakte'),
 (4, 2, 'Лайки в Vkontakte x5', 5, 1.25, 'Vkontakte'),
-(5, 2, 'Лайки в Vkontakte x20', 20, 5, 'Vkontakte');
+(5, 2, 'Лайки в Vkontakte x20', 20, 5, 'Vkontakte'),
+(6, 2, 'Лайки в Vkontakte x5', 5, 1.75, 'Vkontakte');
 
 -- --------------------------------------------------------
 
@@ -162,16 +163,22 @@ INSERT INTO `products` (`productCode`, `productName`, `productLine`, `productVen
 CREATE TABLE `site_options` (
   `id` int(11) NOT NULL,
   `option_name` varchar(50) NOT NULL,
-  `option_value` text
+  `option_value` text,
+  `option_category` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `site_options`
 --
 
-INSERT INTO `site_options` (`id`, `option_name`, `option_value`) VALUES
-(1, 'font_size', '23'),
-(2, 'notification_text', '');
+INSERT INTO `site_options` (`id`, `option_name`, `option_value`, `option_category`) VALUES
+(1, 'font_size', '18', NULL),
+(2, 'notification_text', '', 'Facebook'),
+(3, 'slider_image_1', 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17078fe18f5%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17078fe18f5%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22276.9921875%22%20y%3D%22217.7%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', NULL),
+(4, 'slider_image_2', 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17078fe18f3%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17078fe18f3%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.9140625%22%20y%3D%22217.7%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', NULL),
+(5, 'slider_image_3', 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17078fe18f4%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17078fe18f4%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3125%22%20y%3D%22217.7%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', NULL),
+(6, 'slider_image_4', 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17078fe18f3%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17078fe18f3%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.9140625%22%20y%3D%22217.7%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', NULL),
+(7, 'slider_image_5', 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17078fe18f5%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17078fe18f5%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22276.9921875%22%20y%3D%22217.7%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +203,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `first_name`, `last_name`, `balance`, `admin`) VALUES
 (1, 'vladimir.kryan@gmail.com', 'vladimirkaroyan', '$2a$10$mpf4pYLmfoh/C9w80lYrhuWImYREoV91acuKHLlvDgPeuSW6mdWPS', 'Vladimir', 'Karoyan', 11878.3, 1),
-(2, 'admin@gmail.com', 'admin', '$2a$10$pj6P2obdX0I.IFmHiwaNr.Ry6vQjVthP9InR7.zSM/5zt.Ibs3ieO', 'Admin', 'Admin', 19639.6, 1),
+(2, 'admin@gmail.com', 'admin', '$2a$10$pj6P2obdX0I.IFmHiwaNr.Ry6vQjVthP9InR7.zSM/5zt.Ibs3ieO', 'Admin', 'Admin', 19637.8, 1),
 (3, '1887879test@mail.ru', 'vladimirkaroyan22', '$2a$10$vNdx.1J5F8jMJGI7w7zvD.S4KaePRrO09XX...8BK.Zh0DP.ggP6q', 'Vladimir', 'Karoyan', 0, NULL),
 (4, '1887879test@mail.ru', 'vladimirkaroyan231', '$2a$10$i8Cq0Yxefzo2y2NDNkajPeBwwuJsSIXIfzjsnTsO2okfnsGOnCtMG', 'Vladimir22', 'Karoyan22', 0, NULL),
 (5, 'vladimir.kryan@gmail.com', 'admindd', '$2a$10$kzadel0gYPoQxzfS5Bz.TOcEDlPJ5GGvx.6ARBet3Rz7Ms6qFRBj.', 'Vladimir', 'Karoyan', 0, 0);
@@ -236,7 +243,8 @@ ALTER TABLE `products`
 -- Индексы таблицы `site_options`
 --
 ALTER TABLE `site_options`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `option_category` (`option_category`);
 
 --
 -- Индексы таблицы `users`
@@ -258,13 +266,13 @@ ALTER TABLE `blogposts`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `site_options`
 --
 ALTER TABLE `site_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -281,6 +289,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `category` FOREIGN KEY (`orderCategory`) REFERENCES `productlines` (`productline`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ограничения внешнего ключа таблицы `site_options`
+--
+ALTER TABLE `site_options`
+  ADD CONSTRAINT `option_category` FOREIGN KEY (`option_category`) REFERENCES `productlines` (`productline`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

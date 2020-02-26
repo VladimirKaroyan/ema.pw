@@ -243,6 +243,29 @@ ul#shop-product-tabs li a.active i {
     width: max-content !important;
 }
 
+span.price.sale:after {
+    content: '';
+    font-size: 10px;
+    position: absolute;
+}
+
+span.price.sale.sale-5:after {
+    content: "-5%";
+}
+
+span.price.sale.sale-10:after {
+    content: "-10%";
+}
+
+span.price.sale.sale-15:after {
+    content: "-15%";
+}
+
+span.price.sale {
+    color: red;
+    margin-right: 15px;
+}
+
 /*Icons*/
 
 i.fab.fa-instagram {

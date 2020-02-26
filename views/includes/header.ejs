@@ -42,20 +42,21 @@
                         </a>
                     <% } %>
                     <% if (user) { %>
-                    <div class="align-items-baseline flex-wrap flex-column justify-content-center pb-1 border-bottom w-100 show-mobile"
-                         style="font-size: 14px; display: none;">
-                        <p class="ml-auto mr-auto">
-                            <span class="pr-1">Ваш баланс:</span>
-                            <span><span class="userBalance"><%= user.balance %></span> руб.</span>
-                        </p>
-                        <p class="ml-auto mr-auto mb-2">
-                            <a href="#" class="nav-link text-black-50 text-decoration-none d-flex align-items-center"
-                               style="font-size: 14px; border: 2px solid #57B894; border-radius: 30px; padding: 5px 10px!important; margin: 0 auto;"
-                               data-toggle="modal" data-target="#add_balance">
-                                Пополнить
-                            </a>
-                        </p>
-                    </div>
+                        <div class="align-items-baseline flex-wrap flex-column justify-content-center pb-1 border-bottom w-100 show-mobile"
+                             style="font-size: 14px; display: none;">
+                            <p class="ml-auto mr-auto">
+                                <span class="pr-1">Ваш баланс:</span>
+                                <span><span class="userBalance"><%= user.balance %></span> руб.</span>
+                            </p>
+                            <p class="ml-auto mr-auto mb-2">
+                                <a href="#"
+                                   class="nav-link text-black-50 text-decoration-none d-flex align-items-center"
+                                   style="font-size: 14px; border: 2px solid #57B894; border-radius: 30px; padding: 5px 10px!important; margin: 0 auto;"
+                                   data-toggle="modal" data-target="#add_balance">
+                                    Пополнить
+                                </a>
+                            </p>
+                        </div>
                     <% } %>
                 </div>
             </div>
@@ -126,22 +127,25 @@
         </div>
     </div>
 </div>
-<div id="add_balance" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+<% if (user) { %>
+    <div id="add_balance" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Пополнить баланс</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center w-100" style="overflow-x: auto;">
-                <iframe name="iframe1" id="iframe1" src="//www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=<%= user.id %>&default-sum=200&P_PHONE=&button-text=Оплатить&hint=&encoding=UTF8&type=big&m=118524&id=767279"
-                        style="width: 100%; min-height: 230px;" frameBorder="0" target="_parent"></iframe>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Пополнить баланс</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center w-100" style="overflow-x: auto;">
+                    <iframe name="iframe1" id="iframe1"
+                            src="//www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=<%= user.id %>&default-sum=200&P_PHONE=&button-text=Оплатить&hint=&encoding=UTF8&type=big&m=118524&id=767279"
+                            style="width: 100%; min-height: 230px;" frameBorder="0" target="_parent"></iframe>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<% } %>
 <!-- //-->
