@@ -137,7 +137,10 @@
                         </div>
                         <div class="pt-2">
                             <div class="form-group d-flex align-items-baseline">
-                                <label for="countText" class="pr-2">Ввести число вручную: </label>
+                                <label for="countText" class="pr-2">Ввести число вручную: <i class="far fa-question-circle"
+                                                                                             data-toggle="tooltip"
+                                                                                             data-placement="top"
+                                                                                             title="Нужно больше? Введите число"></i></label>
                                 <input type="number" class="form-control productCountText w-25" name="productCount"
                                        min="390" value="2000" id="countText"
                                        oninput="$('#count').val(this.value)">
