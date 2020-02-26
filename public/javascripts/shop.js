@@ -26,13 +26,13 @@ $(document).ready(function () {
         window.activeProductSpeed = $('input.productSpeed').val();
         window.price = (prices[activeProductSpeed] * activeProductCount).toFixed(2);
         if (window.price >= 500 && window.price < 1000) {
-            window.price = parseFloat(window.price - window.price * discounts['500'] / 100);
+            window.price = parseFloat(window.price - window.price * discounts['500'] / 100).toFixed(2);
             $('.price').addClass('sale').removeClass('sale-10').removeClass('sale-15').addClass('sale-5');
         } else if (window.price >= 1000 && window.price < 5000) {
-            window.price = parseFloat(window.price - window.price * discounts['1000'] / 100);
+            window.price = parseFloat(window.price - window.price * discounts['1000'] / 100).toFixed(2);
             $('.price').addClass('sale').removeClass('sale-5').removeClass('sale-15').addClass('sale-10');
         } else if (window.price >= 5000) {
-            window.price = parseFloat(window.price - window.price * discounts['5000'] / 100);
+            window.price = parseFloat(window.price - window.price * discounts['5000'] / 100).toFixed(2);
             $('.price').addClass('sale').removeClass('sale-10').removeClass('sale-5').addClass('sale-15');
         }
         else {
