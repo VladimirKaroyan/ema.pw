@@ -40,9 +40,9 @@
                                      alt=""><a href="/shop#<%= order.orderCategory %>"><%= order.orderName %></a>
                             </div>
                         </td>
-                        <td><%= order.orderTotalPrice / order.orderQty %> руб.</td>
+                        <td><%= (order.orderTotalPrice / order.orderQty).toFixed(2) %> руб.</td>
                         <td><%= order.orderQty %> штуки</td>
-                        <td><%= order.orderTotalPrice %> руб.</td>
+                        <td><%= order.orderTotalPrice.toFixed(2) %> руб.</td>
                     </tr>
                 <% }) %>
                 </tbody>

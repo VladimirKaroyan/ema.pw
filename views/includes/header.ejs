@@ -140,9 +140,22 @@
                     </button>
                 </div>
                 <div class="modal-body text-center w-100" style="overflow-x: auto;">
-                    <iframe name="iframe1" id="iframe1"
-                            src="//www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=<%= user.id %>&default-sum=200&P_PHONE=&button-text=Оплатить&hint=&encoding=UTF8&type=big&m=118524&id=767279"
-                            style="width: 100%; min-height: 230px;" frameBorder="0" target="_parent"></iframe>
+                    <form action="http://www.free-kassa.ru/merchant/cash.php" method="get">
+                        <input type="hidden" name="o" value="<%= user['id'] %>">
+                        <div class="form-group w-50 ml-auto mr-auto">
+                            <label for="sum" class="col-form-label pr-3">Сумма (руб)</label>
+                            <input class="form-control" type="number" id="sum"
+                                   name="oa" required>
+                        </div>
+                        <input type="hidden" name="m" value="118524">
+                        <input type="hidden" name="go_2pay" value="1">
+                        <input type="hidden" name="enc" value="UTF-8">
+                        <input type="hidden" name="form_id" value="767279">
+                        <button type="submit" class="btn btn-order">Пополнить</button>
+                    </form>
+                    <!--<iframe name="iframe1" id="iframe1"-->
+                            <!--src="//www.free-kassa.ru/merchant/forms.php?gen_form=1&writer=seller&targets=<%= user.id %>&default-sum=200&P_PHONE=&button-text=Оплатить&hint=&encoding=UTF8&type=big&m=118524&id=767279"-->
+                            <!--style="width: 100%; min-height: 230px;" frameBorder="0" target="_parent"></iframe>-->
                 </div>
             </div>
         </div>

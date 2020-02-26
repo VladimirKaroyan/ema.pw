@@ -33,21 +33,23 @@
 <body>
 <%- include includes/header.ejs %>
 <div class="col-md-12">
-    <div class="container pr-5">
+    <div class="container">
         <div class="my-4">
-            <ul class="nav nav-tabs col-md-12 d-flex justify-content-center ml-2 p-0" id="shop-product-tabs"
-                role="tablist">
-                <% for (let key in sortData) { %>
-                    <li class="nav-item">
-                        <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
-                           id="profile-tab"
-                           data-toggle="tab" href="#<%= key.replace(/ /g, '') %>"
-                           role="tab">
-                            <i class="fab fa-<%= key.toLowerCase().trim() %>"></i> <%= key %>
-                        </a>
-                    </li>
-                <% } %>
-            </ul>
+            <div class="tabs">
+                <ul class="nav nav-tabs col-md-12 d-flex justify-content-center ml-2 p-0" id="shop-product-tabs"
+                    role="tablist">
+                    <% for (let key in sortData) { %>
+                        <li class="nav-item">
+                            <a class="nav-link <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %> font-weight-bold"
+                               id="profile-tab"
+                               data-toggle="tab" href="#<%= key.replace(/ /g, '') %>"
+                               role="tab">
+                                <i class="fab fa-<%= key.toLowerCase().trim() %>"></i> <%= key %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
             <div class="tab-content w-100 pb-5" id="shop-content">
                 <% for (let key in sortData) { %>
                     <div class="col-md-12 p-0 tab-pane fade show <%= (key == Object.keys(sortData)[0]) ? 'active' : '' %>"

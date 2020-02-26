@@ -20,6 +20,11 @@
     background: #FFFFFF;
 }
 
+.tabs {
+    margin-left: -15px;
+    margin-right: 20px;
+}
+
 @media (min-height: 700px) {
     html {
         height: -webkit-fill-available

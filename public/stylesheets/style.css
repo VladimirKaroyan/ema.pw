@@ -30,8 +30,8 @@ a.nav-link {
 }
 
 a.nav-link.shop {
-    color: #6C63FF;
-    font-weight: 500;
+    /*color: #6C63FF;*/
+    /*font-weight: 500;*/
 }
 
 .btn-order {
@@ -262,7 +262,7 @@ span.price.sale.sale-15:after {
 }
 
 span.price.sale {
-    color: red;
+    color: #57B894;
     margin-right: 15px;
 }
 
@@ -541,7 +541,7 @@ i.fab.fa-facebook {
     }
 
     .col-lg-12.main-container {
-        padding: 0;
+        /*padding: 0;*/
     }
 
     footer a.nav-link {
