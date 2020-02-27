@@ -69,10 +69,9 @@
                                      class="carouselPrograms carousel slide w-100 d-flex" data-ride="carousel"
                                      data-interval="false">
                                     <a class="carousel-control-prev position-relative"
-                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="prev">
-                                        <i class="fas fa-chevron-left"></i>
+                                        <i class="fas fa-chevron-left" style="<%= sortData[key].length <= 3 ? 'opacity: 0;' : '' %>"></i>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                     <div class="carousel-inner row mx-auto" role="listbox">
@@ -114,10 +113,9 @@
                                         </ul>
                                     </div>
                                     <a class="carousel-control-next text-faded position-relative"
-                                       style="<%= sortData[key].length <= 3 ? 'opacity: 0 !important;' : '' %>"
                                        href="#carousel<%= key.replace(/ /g, '').toLowerCase() %>" role="button"
                                        data-slide="next">
-                                        <i class="fas fa-chevron-right"></i>
+                                        <i class="fas fa-chevron-right" style="<%= sortData[key].length <= 3 ? 'opacity: 0;' : '' %>"></i>
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
