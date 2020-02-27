@@ -801,6 +801,10 @@ h5.order-id {
     .review-tabs .btn {
         font-size: 3.5vw !important;
     }
+
+    a.carousel-control-next i, a.carousel-control-prev i {
+        opacity: 1 !important;
+    }
 }
 
 @-webkit-keyframes swal2-show {
