@@ -46,11 +46,17 @@ router.post('/', isLoggedIn, function (req, res, next) {
     let orderTotalPrice = JSON.parse(req.body.totalPrice);
     let user = req.user;
     let createOrders = new Promise(function (resolve, reject) {
-        if (user['balance'] < orderTotalPrice) reject({
-            error: true,
-            message: 'Недостаточно средств на балансе, пополните ваш счёт.',
-        });
-        else {
+        if (user['balance'] < orderTotalPrice) {
+            reject({
+                error: true,
+                message: 'Недостаточно средств на балансе, пополните ваш счёт.',
+            });
+        } else if (orderTotalPrice < 99) {
+            reject({
+                error: true,
+                message: 'Минимальная сумма заказа 99 рублей.',
+            });
+        } else {
             const userNewBalance = parseFloat(parseFloat(user['balance']) - parseFloat(orderTotalPrice)).toFixed(2);
             let promises = orderData.map((order) => {
                 let data = {

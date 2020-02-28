@@ -130,14 +130,14 @@
                         <div class="d-flex align-items-baseline">
                             <label for="count" class="pr-2">Количество: </label>
                             <input type="range" class="custom-range productCount" name="productCount" value="2000"
-                                   min="390" max="10000"
+                                   min="1" max="10000"
                                    id="count" oninput="$('#countText').val(this.value)">
                         </div>
                         <div class="pt-2">
                             <div class="form-group d-flex align-items-baseline">
                                 <label for="countText" class="pr-2">Ввести число вручную: </label>
                                 <input type="number" class="form-control productCountText w-25" name="productCount"
-                                       min="390" value="2000" id="countText"
+                                       min="1" value="2000" id="countText"
                                        oninput="$('#count').val(this.value)">
                                 <i class="far fa-question-circle pl-2 example-popover" data-container="body"
                                         data-toggle="popover" data-placement="top"
