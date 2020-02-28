@@ -18,7 +18,7 @@
     <div class="container">
         <div class="col-md-12">
             <div class="preview-image text-center">
-                <img src="/images/<%= post.category.replace(/ /g, '') %>-blog.svg" class="w-50 pb-5" alt="">
+                <img src="/images/<%= post.category.toLowerCase().replace(/ /g, '') %>-blog.svg" class="w-50 pb-5" alt="">
             </div>
             <h1 class="font-weight-bold pt-5 pb-5"><%= post.title %></h1>
             <div class="content pb-5 color-61">
